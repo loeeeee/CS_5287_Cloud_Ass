@@ -152,6 +152,8 @@ I set all the VM with the same configuration besides IP addresses
 
 I added a http proxy for Ubuntu source utilizing my local apt-cacher-ng server located in DMZ, because using public repo too much may results in my IP being banned.
 
+The process of creating VM can be automated by utilizing cloud-init system, but it is a bit too complicate for now.
+
 Inside `/etc/apt/apt.conf.d/00aptproxy`,
 
 ```conf
