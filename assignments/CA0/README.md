@@ -46,13 +46,91 @@ The internal is so crowded because it have to fit within carry-on size limit.
 
 ### Fun stuffs
 
-I have a dual socket Xeon E5 V3 server at home running Intel Engineering Sample CPUs, and never had any issues. No one thought about cooling Server CPUs with water block back then, and I could not buy compatible mounting brackets for those CPUs, so I zip-tied the water blocks to the socket, and it worked great.
+I have a dual socket Xeon E5 V3 server at home running Engineering Sample CPUs, and never had any issues. No one thought about cooling server CPUs with water block back then, and I could not buy compatible mounting brackets for those CPUs, so I zip-tied the water blocks to the socket, and it worked great.
 
 ## Software Stack
 
+### Message broker
+
+- Kafka
+
+### Database
+
+
+
 ## Network Diagram
 
+
+
 ## Configuration Summary Table
+
+### VMs
+
+I set all the VM with the same configuration besides IP addresses
+
+- CPU: 16 cores
+    - Type: host
+- Memory: 4 GiB
+    - No ballooning
+- Disk: 32 GiB
+    - SCSI Single
+- OS: Ubuntu 24.04 LTS
+- Region: Nashville, on my desk.
+
+### Creation steps
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/0.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/1.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/2.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/3.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/4.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/5.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/6.png)
+
+![Download Ubuntu Image](./assets/screenshots/VM_setup/7.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/8.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/9.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/10.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/11.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/12.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/13.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/14.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/15.png)
+![Download Ubuntu Image](./assets/screenshots/VM_setup/16.png)
+
+I added a http proxy for Ubuntu source utilizing my local apt-cacher-ng server located in DMZ, because using public repo too much may results in my IP being banned.
+
+Inside `/etc/apt/apt.conf.d/00aptproxy`,
+
+```conf
+Acquire::http::Proxy "http://172.22.0.106:3142";
+```
+
+After setting up apt proxy, I did `apt update` and `apt upgrade` to make sure my system has the latest packages.
+
+Overall, the installation almost use default values, and minimal changes are applied.
+
+### Kafka
+
+- Host: cs-kafka
+- IP: 172.22.0.116/24
+- Firewall:
+    - 22/TCP
+    - 9092/TCP
+
+### MongoDB
+
+- Host: cs-kafka
+- IP: 172.22.0.117/24
+- Firewall:
+    - 22/TCP
+    - 27017/TCP
 
 ## Demo Video
 
