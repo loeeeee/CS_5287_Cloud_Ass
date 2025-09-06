@@ -134,14 +134,21 @@ I set all the VM with the same configuration besides IP addresses
 
 ![Setup DHCP at Pfsense](./assets/screenshots/VM_setup/8.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/9.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/10.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/11.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/12.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/13.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/14.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/15.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/16.png)
+![Language](./assets/screenshots/VM_setup/12.png)
+
+![Keyboard layout](./assets/screenshots/VM_setup/13.png)
+
+![Server edition](./assets/screenshots/VM_setup/14.png)
+
+![Network config](./assets/screenshots/VM_setup/15.png)
+
+![Disk setup](./assets/screenshots/VM_setup/9.png)
+
+![Partition setup](./assets/screenshots/VM_setup/10.png)
+
+![User setup](./assets/screenshots/VM_setup/11.png)
+
+![Results](./assets/screenshots/VM_setup/16.png)
 
 I added a http proxy for Ubuntu source utilizing my local apt-cacher-ng server located in DMZ, because using public repo too much may results in my IP being banned.
 
