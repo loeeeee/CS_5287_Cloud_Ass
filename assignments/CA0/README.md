@@ -79,6 +79,18 @@ I followed [Getting Started Guide][https://docs.docker.com/engine/install/ubuntu
 
 Then, I followed [Getting Started Guide for K8s](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management) and [Getting Started Guide for MiniKube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download) to set up the environment.
 
+#### Issues
+
+```bash
+root@cs-k8s:~# minikube start --driver=none
+* minikube v1.36.0 on Ubuntu 24.04 (lxc/amd64)
+* Using the none driver based on user configuration
+
+X Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.33.1 requires crictl to be installed in root's path
+```
+
+The fix [Kubernetes 1.20.2 requires conntrack](https://github.com/manusa/actions-setup-minikube/issues/33#issuecomment-2124606541)
+
 ## Network Diagram
 
 Here is how the network is structured.
