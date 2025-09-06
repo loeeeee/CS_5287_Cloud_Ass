@@ -52,7 +52,11 @@ I have a dual socket Xeon E5 V3 server at home running Engineering Sample CPUs, 
 
 ### Message broker
 
-- Kafka
+Kafka with KRaft (not zookeeper)
+
+The ration behind not using zookeeper is because zookeeper is deprecated and is now a legacy component.
+
+I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set up my kafka VM.
 
 ### Database
 
@@ -60,7 +64,9 @@ I have a dual socket Xeon E5 V3 server at home running Engineering Sample CPUs, 
 
 ## Network Diagram
 
+Here is how the network is structured.
 
+![Backwater Networking](./assets/Networking@Backwater.png)
 
 ## Configuration Summary Table
 
@@ -124,13 +130,29 @@ Overall, the installation almost use default values, and minimal changes are app
     - 22/TCP
     - 9092/TCP
 
+![Ports](./assets/screenshots/security/kafka.png)
+
 ### MongoDB
 
-- Host: cs-kafka
+- Host: cs-mongodb
 - IP: 172.22.0.117/24
 - Firewall:
     - 22/TCP
     - 27017/TCP
+
+![Ports](./assets/screenshots/security/mongodb.png)
+
+### k8s
+
+- Host: cs-k8s
+- IP: 172.22.0.118/24
+- Firewall:
+    - 22/TCP
+    - 30000-32767/TCP
+
+![Ports](./assets/screenshots/security/k8s.png)
+
+![Non-root Container](./assets/screenshots/security/non-root_container.png)
 
 ## Demo Video
 
