@@ -170,3 +170,9 @@ Overall, the installation almost use default values, and minimal changes are app
 ![Ports](./assets/screenshots/security/k8s.png)
 
 ![Non-root Container](./assets/screenshots/security/non-root_container.png)
+
+### SSH key only
+
+I create a sudo non-root user on each of the machine, and changed the following config:
+
+![SSHD_config](./assets/screenshots/security/shhd_config.png)
