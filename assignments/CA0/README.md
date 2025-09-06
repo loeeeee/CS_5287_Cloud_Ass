@@ -12,6 +12,8 @@ The machine is called *deepslate*.
 
 The internal is so crowded because it have to fit within carry-on size limit.
 
+<details>
+
 ### Hardware
 
 - CPU: EPYC 7K62
@@ -47,6 +49,7 @@ The internal is so crowded because it have to fit within carry-on size limit.
 ### Fun stuffs
 
 I have a dual socket Xeon E5 V3 server at home running Engineering Sample CPUs, and never had any issues. No one thought about cooling server CPUs with water block back then, and I could not buy compatible mounting brackets for those CPUs, so I zip-tied the water blocks to the socket, and it worked great.
+</details>
 
 ## Software Stack
 
