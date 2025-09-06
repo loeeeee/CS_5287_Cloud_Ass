@@ -77,7 +77,7 @@ I choose K8s + Docker.
 
 I followed [Getting Started Guide](https://docs.docker.com/engine/install/ubuntu/) for docker installation, ([Archive](./guides-snapshot/DockerUbuntu-quick_start_guide.html)) and then I followed [Post install guide](https://docs.docker.com/engine/install/linux-postinstall/) to make sure non-root user can use Docker. ([Archive](./guides-snapshot/DockerUbuntu-post_install_guide.html)) In this case, user "kube".
 
-Then, I followed [Getting Started Guide for K8s](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management) and [Getting Started Guide for MiniKube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download) to set up the environment.
+Then, I followed [Getting Started Guide for K8s](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management) ([Archive](./guides-snapshot/K8s-quick_start_guide.html))and [Getting Started Guide for MiniKube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download) ([Archive](./guides-snapshot/Minikube-quick_start_guide.html)) to set up the environment.
 
 #### Issues
 
