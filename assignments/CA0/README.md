@@ -59,7 +59,7 @@ Kafka with KRaft (not zookeeper)
 
 The ration behind not using zookeeper is because zookeeper is deprecated and is now a legacy component.
 
-I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set up my kafka VM.
+I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set up my kafka VM. ([Archive](./guides-snapshot/ApacheKafka-quick_start_guide.html))
 
 #### Localhost event streaming
 
@@ -69,7 +69,7 @@ I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set
 
 I choose MongoDB.
 
-I followed the [Getting Started Guide](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) to install  the MongoDB with no alternation.
+I followed the [Getting Started Guide](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) to install the MongoDB with no alternation. ([Archive](./guides-snapshot/MongoDB-quick_start_guide.html))
 
 ### Orchestrator
 

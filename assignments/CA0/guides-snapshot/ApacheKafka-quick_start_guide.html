@@ -1,0 +1,1478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0035)https://kafka.apache.org/quickstart -->
+<html xmlns:og="http://ogp.me/ns#"><plasmo-csui id="jobright-helper-plugin"><template shadowrootmode="open"><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="id1759" data-token-hash="skbty6">:where(.css-1xouon8) a{color:#00f0a0;text-decoration:none;background-color:transparent;outline:none;cursor:pointer;transition:color 0.3s;-webkit-text-decoration-skip:objects;}:where(.css-1xouon8) a:hover{color:#52ffba;}:where(.css-1xouon8) a:active{color:#00c98d;}:where(.css-1xouon8) a:active,:where(.css-1xouon8) a:hover{text-decoration:none;outline:0;}:where(.css-1xouon8) a:focus{text-decoration:none;outline:0;}:where(.css-1xouon8) a[disabled]{color:rgba(0, 0, 0, 0.25);cursor:not-allowed;}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="zabdnm" data-token-hash="skbty6">:where(.css-1xouon8).ant-flex{display:flex;}:where(.css-1xouon8).ant-flex-vertical{flex-direction:column;}:where(.css-1xouon8).ant-flex-rtl{direction:rtl;}:where(.css-1xouon8).ant-flex:empty{display:none;}:where(.css-1xouon8).ant-flex-gap-small{gap:8px;}:where(.css-1xouon8).ant-flex-gap-middle{gap:16px;}:where(.css-1xouon8).ant-flex-gap-large{gap:24px;}:where(.css-1xouon8).ant-flex-wrap-wrap{flex-wrap:wrap;}:where(.css-1xouon8).ant-flex-wrap-nowrap{flex-wrap:nowrap;}:where(.css-1xouon8).ant-flex-wrap-wrap-reverse{flex-wrap:wrap-reverse;}:where(.css-1xouon8).ant-flex-align-center{align-items:center;}:where(.css-1xouon8).ant-flex-align-start{align-items:start;}:where(.css-1xouon8).ant-flex-align-end{align-items:end;}:where(.css-1xouon8).ant-flex-align-flex-start{align-items:flex-start;}:where(.css-1xouon8).ant-flex-align-flex-end{align-items:flex-end;}:where(.css-1xouon8).ant-flex-align-self-start{align-items:self-start;}:where(.css-1xouon8).ant-flex-align-self-end{align-items:self-end;}:where(.css-1xouon8).ant-flex-align-baseline{align-items:baseline;}:where(.css-1xouon8).ant-flex-align-normal{align-items:normal;}:where(.css-1xouon8).ant-flex-align-stretch{align-items:stretch;}:where(.css-1xouon8).ant-flex-justify-flex-start{justify-content:flex-start;}:where(.css-1xouon8).ant-flex-justify-flex-end{justify-content:flex-end;}:where(.css-1xouon8).ant-flex-justify-start{justify-content:start;}:where(.css-1xouon8).ant-flex-justify-end{justify-content:end;}:where(.css-1xouon8).ant-flex-justify-center{justify-content:center;}:where(.css-1xouon8).ant-flex-justify-space-between{justify-content:space-between;}:where(.css-1xouon8).ant-flex-justify-space-around{justify-content:space-around;}:where(.css-1xouon8).ant-flex-justify-space-evenly{justify-content:space-evenly;}:where(.css-1xouon8).ant-flex-justify-stretch{justify-content:stretch;}:where(.css-1xouon8).ant-flex-justify-normal{justify-content:normal;}:where(.css-1xouon8).ant-flex-justify-left{justify-content:left;}:where(.css-1xouon8).ant-flex-justify-right{justify-content:right;}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="1b1zjr2" data-token-hash="skbty6">:where(.css-1xouon8)[class^="ant-image"],:where(.css-1xouon8)[class*=" ant-image"]{font-family:Inter;font-size:14px;box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-image"]::before,:where(.css-1xouon8)[class*=" ant-image"]::before,:where(.css-1xouon8)[class^="ant-image"]::after,:where(.css-1xouon8)[class*=" ant-image"]::after{box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-image"] [class^="ant-image"],:where(.css-1xouon8)[class*=" ant-image"] [class^="ant-image"],:where(.css-1xouon8)[class^="ant-image"] [class*=" ant-image"],:where(.css-1xouon8)[class*=" ant-image"] [class*=" ant-image"]{box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-image"] [class^="ant-image"]::before,:where(.css-1xouon8)[class*=" ant-image"] [class^="ant-image"]::before,:where(.css-1xouon8)[class^="ant-image"] [class*=" ant-image"]::before,:where(.css-1xouon8)[class*=" ant-image"] [class*=" ant-image"]::before,:where(.css-1xouon8)[class^="ant-image"] [class^="ant-image"]::after,:where(.css-1xouon8)[class*=" ant-image"] [class^="ant-image"]::after,:where(.css-1xouon8)[class^="ant-image"] [class*=" ant-image"]::after,:where(.css-1xouon8)[class*=" ant-image"] [class*=" ant-image"]::after{box-sizing:border-box;}:where(.css-1xouon8).ant-image{position:relative;display:inline-block;}:where(.css-1xouon8).ant-image .ant-image-img{width:100%;height:auto;vertical-align:middle;}:where(.css-1xouon8).ant-image .ant-image-img-placeholder{background-color:rgba(0, 0, 0, 0.04);background-image:url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTQuNSAyLjVoLTEzQS41LjUgMCAwIDAgMSAzdjEwYS41LjUgMCAwIDAgLjUuNWgxM2EuNS41IDAgMCAwIC41LS41VjNhLjUuNSAwIDAgMC0uNS0uNXpNNS4yODEgNC43NWExIDEgMCAwIDEgMCAyIDEgMSAwIDAgMSAwLTJ6bTguMDMgNi44M2EuMTI3LjEyNyAwIDAgMS0uMDgxLjAzSDIuNzY5YS4xMjUuMTI1IDAgMCAxLS4wOTYtLjIwN2wyLjY2MS0zLjE1NmEuMTI2LjEyNiAwIDAgMSAuMTc3LS4wMTZsLjAxNi4wMTZMNy4wOCAxMC4wOWwyLjQ3LTIuOTNhLjEyNi4xMjYgMCAwIDEgLjE3Ny0uMDE2bC4wMTUuMDE2IDMuNTg4IDQuMjQ0YS4xMjcuMTI3IDAgMCAxLS4wMi4xNzV6IiBmaWxsPSIjOEM4QzhDIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L3N2Zz4=');background-repeat:no-repeat;background-position:center center;background-size:30%;}:where(.css-1xouon8).ant-image .ant-image-mask{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(0, 0, 0, 0.5);cursor:pointer;opacity:0;transition:opacity 0.3s;}:where(.css-1xouon8).ant-image .ant-image-mask .ant-image-mask-info{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 4px;}:where(.css-1xouon8).ant-image .ant-image-mask .ant-image-mask-info .anticon{margin-inline-end:4px;}:where(.css-1xouon8).ant-image .ant-image-mask .ant-image-mask-info .anticon svg{vertical-align:baseline;}:where(.css-1xouon8).ant-image .ant-image-mask:hover{opacity:1;}:where(.css-1xouon8).ant-image .ant-image-placeholder{position:absolute;inset:0;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview{height:100%;text-align:center;pointer-events:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-body{position:absolute;inset:0;overflow:hidden;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-img{max-width:100%;max-height:70%;vertical-align:middle;transform:scale3d(1, 1, 1);cursor:grab;transition:transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;user-select:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-img-wrapper{position:absolute;inset:0;transition:transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;display:flex;justify-content:center;align-items:center;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-img-wrapper>*{pointer-events:auto;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-img-wrapper::before{display:inline-block;width:1px;height:50%;margin-inline-end:-1px;content:"";}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-moving .ant-image-preview-preview-img{cursor:grabbing;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-moving .ant-image-preview-preview-img-wrapper{transition-duration:0s;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-wrap{z-index:1080;}:where(.css-1xouon8).ant-image-preview-operations-wrapper{position:fixed;z-index:1081;}:where(.css-1xouon8) .ant-image-preview-footer{position:fixed;bottom:32px;left:50%;display:flex;flex-direction:column;align-items:center;color:rgba(255, 255, 255, 0.65);transform:translateX(-50%);}:where(.css-1xouon8) .ant-image-preview-progress{margin-bottom:16px;}:where(.css-1xouon8) .ant-image-preview-close{position:fixed;top:32px;right:32px;display:flex;color:#fff;background-color:rgba(0, 0, 0, 0.1);border-radius:50%;padding:12px;outline:0;border:0;cursor:pointer;transition:all 0.3s;}:where(.css-1xouon8) .ant-image-preview-close:hover{background-color:rgba(0, 0, 0, 0.2);}:where(.css-1xouon8) .ant-image-preview-close>.anticon{font-size:18px;}:where(.css-1xouon8) .ant-image-preview-operations{display:flex;align-items:center;padding:0 24px;background-color:rgba(0, 0, 0, 0.1);border-radius:100px;}:where(.css-1xouon8) .ant-image-preview-operations-operation{margin-inline-start:12px;padding:12px;cursor:pointer;transition:all 0.3s;user-select:none;}:where(.css-1xouon8) .ant-image-preview-operations-operation:not(.ant-image-preview-operations-operation-disabled):hover>.anticon{color:rgba(255, 255, 255, 0.85);}:where(.css-1xouon8) .ant-image-preview-operations-operation-disabled{color:rgba(255, 255, 255, 0.25);cursor:not-allowed;}:where(.css-1xouon8) .ant-image-preview-operations-operation:first-of-type{margin-inline-start:0;}:where(.css-1xouon8) .ant-image-preview-operations-operation>.anticon{font-size:18px;}:where(.css-1xouon8) .ant-image-preview-switch-left,:where(.css-1xouon8) .ant-image-preview-switch-right{position:fixed;inset-block-start:50%;z-index:1081;display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin-top:-20px;color:rgba(255, 255, 255, 0.65);background:rgba(0, 0, 0, 0.1);border-radius:50%;transform:translateY(-50%);cursor:pointer;transition:all 0.3s;user-select:none;}:where(.css-1xouon8) .ant-image-preview-switch-left:hover,:where(.css-1xouon8) .ant-image-preview-switch-right:hover{background:rgba(0, 0, 0, 0.2);}:where(.css-1xouon8) .ant-image-preview-switch-left-disabled,:where(.css-1xouon8) .ant-image-preview-switch-right-disabled,:where(.css-1xouon8) .ant-image-preview-switch-left-disabled:hover,:where(.css-1xouon8) .ant-image-preview-switch-right-disabled:hover{color:rgba(255, 255, 255, 0.25);background:transparent;cursor:not-allowed;}:where(.css-1xouon8) .ant-image-preview-switch-left-disabled >.anticon,:where(.css-1xouon8) .ant-image-preview-switch-right-disabled >.anticon,:where(.css-1xouon8) .ant-image-preview-switch-left-disabled:hover >.anticon,:where(.css-1xouon8) .ant-image-preview-switch-right-disabled:hover >.anticon{cursor:not-allowed;}:where(.css-1xouon8) .ant-image-preview-switch-left >.anticon,:where(.css-1xouon8) .ant-image-preview-switch-right >.anticon{font-size:18px;}:where(.css-1xouon8) .ant-image-preview-switch-left{inset-inline-start:12px;}:where(.css-1xouon8) .ant-image-preview-switch-right{inset-inline-end:12px;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview.ant-zoom-enter,:where(.css-1xouon8).ant-image-preview-root .ant-image-preview.ant-zoom-appear{transform:none;opacity:0;animation-duration:0.3s;user-select:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview.ant-zoom-leave .ant-image-preview-content{pointer-events:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-mask{position:fixed;inset:0;z-index:1000;height:100%;background-color:rgba(0, 0, 0, 0.8);pointer-events:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-mask .ant-image-preview-hidden{display:none;}:where(.css-1xouon8).ant-image-preview-root .ant-image-preview-wrap{position:fixed;inset:0;z-index:1000;overflow:auto;outline:0;-webkit-overflow-scrolling:touch;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-enter,:where(.css-1xouon8).ant-image-preview-root .ant-fade-appear{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-leave{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-enter.ant-fade-enter-active,:where(.css-1xouon8).ant-image-preview-root .ant-fade-appear.ant-fade-appear-active{animation-name:css-1xouon8-antFadeIn;animation-play-state:running;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-leave.ant-fade-leave-active{animation-name:css-1xouon8-antFadeOut;animation-play-state:running;pointer-events:none;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-enter,:where(.css-1xouon8).ant-image-preview-root .ant-fade-appear{opacity:0;animation-timing-function:linear;}:where(.css-1xouon8).ant-image-preview-root .ant-fade-leave{animation-timing-function:linear;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-enter,:where(.css-1xouon8).ant-image-preview-root .ant-zoom-appear{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-leave{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-enter.ant-zoom-enter-active,:where(.css-1xouon8).ant-image-preview-root .ant-zoom-appear.ant-zoom-appear-active{animation-name:css-1xouon8-antZoomIn;animation-play-state:running;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-leave.ant-zoom-leave-active{animation-name:css-1xouon8-antZoomOut;animation-play-state:running;pointer-events:none;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-enter,:where(.css-1xouon8).ant-image-preview-root .ant-zoom-appear{transform:scale(0);opacity:0;animation-timing-function:cubic-bezier(0.08, 0.82, 0.17, 1);}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-enter-prepare,:where(.css-1xouon8).ant-image-preview-root .ant-zoom-appear-prepare{transform:none;}:where(.css-1xouon8).ant-image-preview-root .ant-zoom-leave{animation-timing-function:cubic-bezier(0.78, 0.14, 0.15, 0.86);}:where(.css-1xouon8).ant-fade-enter,:where(.css-1xouon8).ant-fade-appear{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-fade-leave{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-fade-enter.ant-fade-enter-active,:where(.css-1xouon8).ant-fade-appear.ant-fade-appear-active{animation-name:css-1xouon8-antFadeIn;animation-play-state:running;}:where(.css-1xouon8).ant-fade-leave.ant-fade-leave-active{animation-name:css-1xouon8-antFadeOut;animation-play-state:running;pointer-events:none;}:where(.css-1xouon8).ant-fade-enter,:where(.css-1xouon8).ant-fade-appear{opacity:0;animation-timing-function:linear;}:where(.css-1xouon8).ant-fade-leave{animation-timing-function:linear;}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-1xouon8-antFadeIn">@keyframes css-1xouon8-antFadeIn{0%{opacity:0;}100%{opacity:1;}}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-1xouon8-antFadeOut">@keyframes css-1xouon8-antFadeOut{0%{opacity:1;}100%{opacity:0;}}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-1xouon8-antZoomIn">@keyframes css-1xouon8-antZoomIn{0%{transform:scale(0.2);opacity:0;}100%{transform:scale(1);opacity:1;}}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="_effect-css-1xouon8-antZoomOut">@keyframes css-1xouon8-antZoomOut{0%{transform:scale(1);}100%{transform:scale(0.2);opacity:0;}}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="1trk4ns" data-token-hash="skbty6">:where(.css-1xouon8).ant-wave{font-family:Inter;font-size:14px;box-sizing:border-box;}:where(.css-1xouon8).ant-wave::before,:where(.css-1xouon8).ant-wave::after{box-sizing:border-box;}:where(.css-1xouon8).ant-wave [class^="ant-wave"],:where(.css-1xouon8).ant-wave [class*=" ant-wave"]{box-sizing:border-box;}:where(.css-1xouon8).ant-wave [class^="ant-wave"]::before,:where(.css-1xouon8).ant-wave [class*=" ant-wave"]::before,:where(.css-1xouon8).ant-wave [class^="ant-wave"]::after,:where(.css-1xouon8).ant-wave [class*=" ant-wave"]::after{box-sizing:border-box;}:where(.css-1xouon8).ant-wave{position:absolute;background:transparent;pointer-events:none;box-sizing:border-box;color:var(--wave-color, #00f0a0);box-shadow:0 0 0 0 currentcolor;opacity:0.2;}:where(.css-1xouon8).ant-wave.wave-motion-appear{transition:box-shadow 0.4s cubic-bezier(0.08, 0.82, 0.17, 1),opacity 2s cubic-bezier(0.08, 0.82, 0.17, 1);}:where(.css-1xouon8).ant-wave.wave-motion-appear-active{box-shadow:0 0 0 6px currentcolor;opacity:0;}:where(.css-1xouon8).ant-wave.wave-motion-appear.wave-quick{transition:box-shadow 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="xy4755" data-token-hash="skbty6">:where(.css-1xouon8).ant-btn{font-family:Inter;font-size:14px;box-sizing:border-box;}:where(.css-1xouon8).ant-btn::before,:where(.css-1xouon8).ant-btn::after{box-sizing:border-box;}:where(.css-1xouon8).ant-btn [class^="ant-btn"],:where(.css-1xouon8).ant-btn [class*=" ant-btn"]{box-sizing:border-box;}:where(.css-1xouon8).ant-btn [class^="ant-btn"]::before,:where(.css-1xouon8).ant-btn [class*=" ant-btn"]::before,:where(.css-1xouon8).ant-btn [class^="ant-btn"]::after,:where(.css-1xouon8).ant-btn [class*=" ant-btn"]::after{box-sizing:border-box;}:where(.css-1xouon8).ant-btn{outline:none;position:relative;display:inline-flex;gap:8px;align-items:center;justify-content:center;font-weight:400;white-space:nowrap;text-align:center;background-image:none;background:transparent;border:1px solid transparent;cursor:pointer;transition:all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);user-select:none;touch-action:manipulation;color:#000000;}:where(.css-1xouon8).ant-btn:disabled>*{pointer-events:none;}:where(.css-1xouon8).ant-btn >span{display:inline-block;}:where(.css-1xouon8).ant-btn .ant-btn-icon{line-height:1;}:where(.css-1xouon8).ant-btn >a{color:currentColor;}:where(.css-1xouon8).ant-btn:not(:disabled):focus-visible{outline:4px solid #7affc6;outline-offset:1px;transition:outline-offset 0s,outline 0s;}:where(.css-1xouon8).ant-btn.ant-btn-two-chinese-chars::first-letter{letter-spacing:0.34em;}:where(.css-1xouon8).ant-btn.ant-btn-two-chinese-chars>*:not(.anticon){margin-inline-end:-0.34em;letter-spacing:0.34em;}:where(.css-1xouon8).ant-btn-icon-end{flex-direction:row-reverse;}:where(.css-1xouon8).ant-btn{font-size:14px;line-height:1.5714285714285714;height:32px;padding:4px 15px;border-radius:6px;}:where(.css-1xouon8).ant-btn.ant-btn-icon-only{width:32px;padding-inline:0;}:where(.css-1xouon8).ant-btn.ant-btn-icon-only.ant-btn-compact-item{flex:none;}:where(.css-1xouon8).ant-btn.ant-btn-icon-only.ant-btn-round{width:auto;}:where(.css-1xouon8).ant-btn.ant-btn-icon-only .anticon{font-size:16px;}:where(.css-1xouon8).ant-btn.ant-btn-loading{opacity:0.65;cursor:default;}:where(.css-1xouon8).ant-btn .ant-btn-loading-icon{transition:width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);}:where(.css-1xouon8).ant-btn.ant-btn-circle.ant-btn{min-width:32px;padding-inline-start:0;padding-inline-end:0;border-radius:50%;}:where(.css-1xouon8).ant-btn.ant-btn-round.ant-btn{border-radius:32px;padding-inline-start:16px;padding-inline-end:16px;}:where(.css-1xouon8).ant-btn-sm{font-size:14px;line-height:1.5714285714285714;height:24px;padding:0px 7px;border-radius:4px;}:where(.css-1xouon8).ant-btn-sm.ant-btn-icon-only{width:24px;padding-inline:0;}:where(.css-1xouon8).ant-btn-sm.ant-btn-icon-only.ant-btn-compact-item{flex:none;}:where(.css-1xouon8).ant-btn-sm.ant-btn-icon-only.ant-btn-round{width:auto;}:where(.css-1xouon8).ant-btn-sm.ant-btn-icon-only .anticon{font-size:14px;}:where(.css-1xouon8).ant-btn-sm.ant-btn-loading{opacity:0.65;cursor:default;}:where(.css-1xouon8).ant-btn-sm .ant-btn-loading-icon{transition:width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);}:where(.css-1xouon8).ant-btn.ant-btn-circle.ant-btn-sm{min-width:24px;padding-inline-start:0;padding-inline-end:0;border-radius:50%;}:where(.css-1xouon8).ant-btn.ant-btn-round.ant-btn-sm{border-radius:24px;padding-inline-start:12px;padding-inline-end:12px;}:where(.css-1xouon8).ant-btn-lg{font-size:16px;line-height:1.5;height:40px;padding:7px 15px;border-radius:8px;}:where(.css-1xouon8).ant-btn-lg.ant-btn-icon-only{width:40px;padding-inline:0;}:where(.css-1xouon8).ant-btn-lg.ant-btn-icon-only.ant-btn-compact-item{flex:none;}:where(.css-1xouon8).ant-btn-lg.ant-btn-icon-only.ant-btn-round{width:auto;}:where(.css-1xouon8).ant-btn-lg.ant-btn-icon-only .anticon{font-size:18px;}:where(.css-1xouon8).ant-btn-lg.ant-btn-loading{opacity:0.65;cursor:default;}:where(.css-1xouon8).ant-btn-lg .ant-btn-loading-icon{transition:width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);}:where(.css-1xouon8).ant-btn.ant-btn-circle.ant-btn-lg{min-width:40px;padding-inline-start:0;padding-inline-end:0;border-radius:50%;}:where(.css-1xouon8).ant-btn.ant-btn-round.ant-btn-lg{border-radius:40px;padding-inline-start:20px;padding-inline-end:20px;}:where(.css-1xouon8).ant-btn.ant-btn-block{width:100%;}:where(.css-1xouon8).ant-btn-default{background:#ffffff;border-color:#d9d9d9;color:#000000;box-shadow:none;}:where(.css-1xouon8).ant-btn-default:disabled,:where(.css-1xouon8).ant-btn-default.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{color:#28fcaf;border-color:#28fcaf;background:#ffffff;}:where(.css-1xouon8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):active{color:#00c98d;border-color:#00c98d;background:#ffffff;}:where(.css-1xouon8).ant-btn-default.ant-btn-background-ghost{color:#ffffff;background:transparent;border-color:#ffffff;box-shadow:none;}:where(.css-1xouon8).ant-btn-default.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;}:where(.css-1xouon8).ant-btn-default.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;}:where(.css-1xouon8).ant-btn-default.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous{color:#ff4d4f;border-color:#ff4d4f;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):hover{color:#ff7875;border-color:#ffa39e;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):active{color:#d9363e;border-color:#d9363e;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous.ant-btn-background-ghost{color:#ff4d4f;background:transparent;border-color:#ff4d4f;box-shadow:none;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous:disabled,:where(.css-1xouon8).ant-btn-default.ant-btn-dangerous.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-primary{color:#fff;background:#00f0a0;box-shadow:0 2px 0 rgba(5, 255, 125, 0.1);}:where(.css-1xouon8).ant-btn-primary:disabled,:where(.css-1xouon8).ant-btn-primary.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover{color:#fff;background:#28fcaf;}:where(.css-1xouon8).ant-btn-primary:not(:disabled):not(.ant-btn-disabled):active{color:#fff;background:#00c98d;}:where(.css-1xouon8).ant-btn-primary.ant-btn-background-ghost{color:#00f0a0;background:transparent;border-color:#00f0a0;box-shadow:none;}:where(.css-1xouon8).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;color:#28fcaf;border-color:#28fcaf;}:where(.css-1xouon8).ant-btn-primary.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;color:#00c98d;border-color:#00c98d;}:where(.css-1xouon8).ant-btn-primary.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous{background:#ff4d4f;box-shadow:0 2px 0 rgba(255, 38, 5, 0.06);color:#fff;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):hover{background:#ff7875;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):active{background:#d9363e;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous.ant-btn-background-ghost{color:#ff4d4f;background:transparent;border-color:#ff4d4f;box-shadow:none;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;color:#ff7875;border-color:#ff7875;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;color:#d9363e;border-color:#d9363e;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous:disabled,:where(.css-1xouon8).ant-btn-primary.ant-btn-dangerous.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-dashed{background:#ffffff;border-color:#d9d9d9;color:#000000;box-shadow:none;border-style:dashed;}:where(.css-1xouon8).ant-btn-dashed:disabled,:where(.css-1xouon8).ant-btn-dashed.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-dashed:not(:disabled):not(.ant-btn-disabled):hover{color:#28fcaf;border-color:#28fcaf;background:#ffffff;}:where(.css-1xouon8).ant-btn-dashed:not(:disabled):not(.ant-btn-disabled):active{color:#00c98d;border-color:#00c98d;background:#ffffff;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-background-ghost{color:#ffffff;background:transparent;border-color:#ffffff;box-shadow:none;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous{color:#ff4d4f;border-color:#ff4d4f;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):hover{color:#ff7875;border-color:#ffa39e;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):active{color:#d9363e;border-color:#d9363e;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous.ant-btn-background-ghost{color:#ff4d4f;background:transparent;border-color:#ff4d4f;box-shadow:none;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous:disabled,:where(.css-1xouon8).ant-btn-dashed.ant-btn-dangerous.ant-btn-disabled{cursor:not-allowed;border-color:#d9d9d9;color:rgba(0, 0, 0, 0.25);background:rgba(0, 0, 0, 0.04);box-shadow:none;}:where(.css-1xouon8).ant-btn-link{color:#00f0a0;}:where(.css-1xouon8).ant-btn-link:not(:disabled):not(.ant-btn-disabled):hover{color:#52ffba;background:transparent;}:where(.css-1xouon8).ant-btn-link:not(:disabled):not(.ant-btn-disabled):active{color:#00c98d;}:where(.css-1xouon8).ant-btn-link:disabled,:where(.css-1xouon8).ant-btn-link.ant-btn-disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);}:where(.css-1xouon8).ant-btn-link.ant-btn-dangerous{color:#ff4d4f;}:where(.css-1xouon8).ant-btn-link.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):hover{color:#ff7875;}:where(.css-1xouon8).ant-btn-link.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):active{color:#d9363e;}:where(.css-1xouon8).ant-btn-link.ant-btn-dangerous:disabled,:where(.css-1xouon8).ant-btn-link.ant-btn-dangerous.ant-btn-disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);}:where(.css-1xouon8).ant-btn-text:not(:disabled):not(.ant-btn-disabled):hover{color:#000000;background:rgba(0, 0, 0, 0.06);}:where(.css-1xouon8).ant-btn-text:not(:disabled):not(.ant-btn-disabled):active{color:#000000;background:rgba(0, 0, 0, 0.15);}:where(.css-1xouon8).ant-btn-text:disabled,:where(.css-1xouon8).ant-btn-text.ant-btn-disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);}:where(.css-1xouon8).ant-btn-text.ant-btn-dangerous{color:#ff4d4f;}:where(.css-1xouon8).ant-btn-text.ant-btn-dangerous:disabled,:where(.css-1xouon8).ant-btn-text.ant-btn-dangerous.ant-btn-disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);}:where(.css-1xouon8).ant-btn-text.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):hover{color:#ff7875;background:#fff2f0;}:where(.css-1xouon8).ant-btn-text.ant-btn-dangerous:not(:disabled):not(.ant-btn-disabled):active{color:#ff7875;background:#ffccc7;}:where(.css-1xouon8).ant-btn-ghost.ant-btn-background-ghost{color:#ffffff;background:transparent;border-color:#ffffff;box-shadow:none;}:where(.css-1xouon8).ant-btn-ghost.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):hover{background:transparent;}:where(.css-1xouon8).ant-btn-ghost.ant-btn-background-ghost:not(:disabled):not(.ant-btn-disabled):active{background:transparent;}:where(.css-1xouon8).ant-btn-ghost.ant-btn-background-ghost:disabled{cursor:not-allowed;color:rgba(0, 0, 0, 0.25);border-color:#d9d9d9;}:where(.css-1xouon8).ant-btn-group{position:relative;display:inline-flex;}:where(.css-1xouon8).ant-btn-group >span:not(:last-child),:where(.css-1xouon8).ant-btn-group >.ant-btn:not(:last-child),:where(.css-1xouon8).ant-btn-group >span:not(:last-child)>.ant-btn,:where(.css-1xouon8).ant-btn-group >.ant-btn:not(:last-child)>.ant-btn{border-start-end-radius:0;border-end-end-radius:0;}:where(.css-1xouon8).ant-btn-group >span:not(:first-child),:where(.css-1xouon8).ant-btn-group >.ant-btn:not(:first-child){margin-inline-start:-1px;}:where(.css-1xouon8).ant-btn-group >span:not(:first-child),:where(.css-1xouon8).ant-btn-group >.ant-btn:not(:first-child),:where(.css-1xouon8).ant-btn-group >span:not(:first-child)>.ant-btn,:where(.css-1xouon8).ant-btn-group >.ant-btn:not(:first-child)>.ant-btn{border-start-start-radius:0;border-end-start-radius:0;}:where(.css-1xouon8).ant-btn-group .ant-btn{position:relative;z-index:1;}:where(.css-1xouon8).ant-btn-group .ant-btn:hover,:where(.css-1xouon8).ant-btn-group .ant-btn:focus,:where(.css-1xouon8).ant-btn-group .ant-btn:active{z-index:2;}:where(.css-1xouon8).ant-btn-group .ant-btn[disabled]{z-index:0;}:where(.css-1xouon8).ant-btn-group .ant-btn-icon-only{font-size:14px;}:where(.css-1xouon8).ant-btn-group >span:not(:last-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-primary:not(:last-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >span:not(:last-child)>.ant-btn-primary:not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-primary:not(:last-child)>.ant-btn-primary:not(:disabled){border-inline-end-color:#28fcaf;}:where(.css-1xouon8).ant-btn-group >span:not(:first-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-primary:not(:first-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >span:not(:first-child)>.ant-btn-primary:not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-primary:not(:first-child)>.ant-btn-primary:not(:disabled){border-inline-start-color:#28fcaf;}:where(.css-1xouon8).ant-btn-group >span:not(:last-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-danger:not(:last-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >span:not(:last-child)>.ant-btn-danger:not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-danger:not(:last-child)>.ant-btn-danger:not(:disabled){border-inline-end-color:#ff7875;}:where(.css-1xouon8).ant-btn-group >span:not(:first-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-danger:not(:first-child):not(:disabled),:where(.css-1xouon8).ant-btn-group >span:not(:first-child)>.ant-btn-danger:not(:disabled),:where(.css-1xouon8).ant-btn-group >.ant-btn-danger:not(:first-child)>.ant-btn-danger:not(:disabled){border-inline-start-color:#ff7875;}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="1tpuymn" data-token-hash="skbty6">:where(.css-1xouon8)[class^="ant-modal"],:where(.css-1xouon8)[class*=" ant-modal"]{font-family:Inter;font-size:14px;box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-modal"]::before,:where(.css-1xouon8)[class*=" ant-modal"]::before,:where(.css-1xouon8)[class^="ant-modal"]::after,:where(.css-1xouon8)[class*=" ant-modal"]::after{box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-modal"] [class^="ant-modal"],:where(.css-1xouon8)[class*=" ant-modal"] [class^="ant-modal"],:where(.css-1xouon8)[class^="ant-modal"] [class*=" ant-modal"],:where(.css-1xouon8)[class*=" ant-modal"] [class*=" ant-modal"]{box-sizing:border-box;}:where(.css-1xouon8)[class^="ant-modal"] [class^="ant-modal"]::before,:where(.css-1xouon8)[class*=" ant-modal"] [class^="ant-modal"]::before,:where(.css-1xouon8)[class^="ant-modal"] [class*=" ant-modal"]::before,:where(.css-1xouon8)[class*=" ant-modal"] [class*=" ant-modal"]::before,:where(.css-1xouon8)[class^="ant-modal"] [class^="ant-modal"]::after,:where(.css-1xouon8)[class*=" ant-modal"] [class^="ant-modal"]::after,:where(.css-1xouon8)[class^="ant-modal"] [class*=" ant-modal"]::after,:where(.css-1xouon8)[class*=" ant-modal"] [class*=" ant-modal"]::after{box-sizing:border-box;}:where(.css-1xouon8).ant-modal-root .ant-modal-wrap-rtl{direction:rtl;}:where(.css-1xouon8).ant-modal-root .ant-modal-centered{text-align:center;}:where(.css-1xouon8).ant-modal-root .ant-modal-centered::before{display:inline-block;width:0;height:100%;vertical-align:middle;content:"";}:where(.css-1xouon8).ant-modal-root .ant-modal-centered .ant-modal{top:0;display:inline-block;padding-bottom:0;text-align:start;vertical-align:middle;}@media (max-width: 767px){:where(.css-1xouon8).ant-modal-root .ant-modal{max-width:calc(100vw - 16px);margin:8px auto;}:where(.css-1xouon8).ant-modal-root .ant-modal-centered .ant-modal{flex:1;}}:where(.css-1xouon8).ant-modal{box-sizing:border-box;margin:0 auto;padding:0;color:#000000;font-size:14px;line-height:1.5714285714285714;list-style:none;font-family:Inter;pointer-events:none;position:relative;top:100px;width:auto;max-width:calc(100vw - 32px);padding-bottom:24px;}:where(.css-1xouon8).ant-modal .ant-modal-title{margin:0;color:#000000;font-weight:600;font-size:16px;line-height:1.5;word-wrap:break-word;}:where(.css-1xouon8).ant-modal .ant-modal-content{position:relative;background-color:#ffffff;background-clip:padding-box;border:0;border-radius:24px;box-shadow:none;pointer-events:auto;padding:20px 24px;}:where(.css-1xouon8).ant-modal .ant-modal-close{position:absolute;top:12px;inset-inline-end:12px;z-index:1010;padding:0;color:rgba(0, 0, 0, 0.45);font-weight:600;line-height:1;text-decoration:none;background:transparent;border-radius:4px;width:32px;height:32px;border:0;outline:0;cursor:pointer;transition:color 0.2s,background-color 0.2s;}:where(.css-1xouon8).ant-modal .ant-modal-close-x{display:flex;font-size:16px;font-style:normal;line-height:32px;justify-content:center;text-transform:none;text-rendering:auto;}:where(.css-1xouon8).ant-modal .ant-modal-close:hover{color:#000000;background-color:rgba(0, 0, 0, 0.06);text-decoration:none;}:where(.css-1xouon8).ant-modal .ant-modal-close:active{background-color:rgba(0, 0, 0, 0.15);}:where(.css-1xouon8).ant-modal .ant-modal-close:focus-visible{outline:4px solid #7affc6;outline-offset:1px;transition:outline-offset 0s,outline 0s;}:where(.css-1xouon8).ant-modal .ant-modal-header{color:#000000;background:#ffffff;border-radius:24px 24px 0 0;margin-bottom:8px;padding:0;border-bottom:none;}:where(.css-1xouon8).ant-modal .ant-modal-body{font-size:14px;line-height:1.5714285714285714;word-wrap:break-word;padding:0;}:where(.css-1xouon8).ant-modal .ant-modal-body .ant-modal-body-skeleton{width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:16px auto;}:where(.css-1xouon8).ant-modal .ant-modal-footer{text-align:end;background:transparent;margin-top:12px;padding:0;border-top:none;border-radius:0;}:where(.css-1xouon8).ant-modal .ant-modal-footer >.ant-btn+.ant-btn{margin-inline-start:8px;}:where(.css-1xouon8).ant-modal .ant-modal-open{overflow:hidden;}:where(.css-1xouon8).ant-modal-pure-panel{top:auto;padding:0;display:flex;flex-direction:column;}:where(.css-1xouon8).ant-modal-pure-panel .ant-modal-content,:where(.css-1xouon8).ant-modal-pure-panel .ant-modal-body,:where(.css-1xouon8).ant-modal-pure-panel .ant-modal-confirm-body-wrapper{display:flex;flex-direction:column;flex:auto;}:where(.css-1xouon8).ant-modal-pure-panel .ant-modal-confirm-body{margin-bottom:auto;}:where(.css-1xouon8).ant-modal-root .ant-modal-wrap-rtl{direction:rtl;}:where(.css-1xouon8).ant-modal-root .ant-modal-wrap-rtl .ant-modal-confirm-body{direction:rtl;}:where(.css-1xouon8).ant-modal-root .ant-modal.ant-zoom-enter,:where(.css-1xouon8).ant-modal-root .ant-modal.ant-zoom-appear{transform:none;opacity:0;animation-duration:0.3s;user-select:none;}:where(.css-1xouon8).ant-modal-root .ant-modal.ant-zoom-leave .ant-modal-content{pointer-events:none;}:where(.css-1xouon8).ant-modal-root .ant-modal-mask{position:fixed;inset:0;z-index:1000;height:100%;background-color:rgba(0, 0, 0, 0.8);pointer-events:none;}:where(.css-1xouon8).ant-modal-root .ant-modal-mask .ant-modal-hidden{display:none;}:where(.css-1xouon8).ant-modal-root .ant-modal-wrap{position:fixed;inset:0;z-index:1000;overflow:auto;outline:0;-webkit-overflow-scrolling:touch;}:where(.css-1xouon8).ant-modal-root .ant-fade-enter,:where(.css-1xouon8).ant-modal-root .ant-fade-appear{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-modal-root .ant-fade-leave{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-modal-root .ant-fade-enter.ant-fade-enter-active,:where(.css-1xouon8).ant-modal-root .ant-fade-appear.ant-fade-appear-active{animation-name:css-1xouon8-antFadeIn;animation-play-state:running;}:where(.css-1xouon8).ant-modal-root .ant-fade-leave.ant-fade-leave-active{animation-name:css-1xouon8-antFadeOut;animation-play-state:running;pointer-events:none;}:where(.css-1xouon8).ant-modal-root .ant-fade-enter,:where(.css-1xouon8).ant-modal-root .ant-fade-appear{opacity:0;animation-timing-function:linear;}:where(.css-1xouon8).ant-modal-root .ant-fade-leave{animation-timing-function:linear;}:where(.css-1xouon8).ant-zoom-enter,:where(.css-1xouon8).ant-zoom-appear{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-zoom-leave{animation-duration:0.2s;animation-fill-mode:both;animation-play-state:paused;}:where(.css-1xouon8).ant-zoom-enter.ant-zoom-enter-active,:where(.css-1xouon8).ant-zoom-appear.ant-zoom-appear-active{animation-name:css-1xouon8-antZoomIn;animation-play-state:running;}:where(.css-1xouon8).ant-zoom-leave.ant-zoom-leave-active{animation-name:css-1xouon8-antZoomOut;animation-play-state:running;pointer-events:none;}:where(.css-1xouon8).ant-zoom-enter,:where(.css-1xouon8).ant-zoom-appear{transform:scale(0);opacity:0;animation-timing-function:cubic-bezier(0.08, 0.82, 0.17, 1);}:where(.css-1xouon8).ant-zoom-enter-prepare,:where(.css-1xouon8).ant-zoom-appear-prepare{transform:none;}:where(.css-1xouon8).ant-zoom-leave{animation-timing-function:cubic-bezier(0.78, 0.14, 0.15, 0.86);}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="td2kyf" data-token-hash="skbty6">:where(.css-1xouon8).ant-typography{font-family:Inter;font-size:14px;box-sizing:border-box;}:where(.css-1xouon8).ant-typography::before,:where(.css-1xouon8).ant-typography::after{box-sizing:border-box;}:where(.css-1xouon8).ant-typography [class^="ant-typography"],:where(.css-1xouon8).ant-typography [class*=" ant-typography"]{box-sizing:border-box;}:where(.css-1xouon8).ant-typography [class^="ant-typography"]::before,:where(.css-1xouon8).ant-typography [class*=" ant-typography"]::before,:where(.css-1xouon8).ant-typography [class^="ant-typography"]::after,:where(.css-1xouon8).ant-typography [class*=" ant-typography"]::after{box-sizing:border-box;}:where(.css-1xouon8).ant-typography{color:#000000;word-break:break-word;line-height:1.5714285714285714;}:where(.css-1xouon8).ant-typography.ant-typography-secondary{color:rgba(0, 0, 0, 0.45);}:where(.css-1xouon8).ant-typography.ant-typography-success{color:#52c41a;}:where(.css-1xouon8).ant-typography.ant-typography-warning{color:#faad14;}:where(.css-1xouon8).ant-typography.ant-typography-danger{color:#ff4d4f;}a:where(.css-1xouon8).ant-typography.ant-typography-danger:active,a:where(.css-1xouon8).ant-typography.ant-typography-danger:focus{color:#d9363e;}a:where(.css-1xouon8).ant-typography.ant-typography-danger:hover{color:#ff7875;}:where(.css-1xouon8).ant-typography.ant-typography-disabled{color:rgba(0, 0, 0, 0.25);cursor:not-allowed;user-select:none;}div:where(.css-1xouon8).ant-typography,:where(.css-1xouon8).ant-typography p{margin-bottom:1em;}h1:where(.css-1xouon8).ant-typography,div:where(.css-1xouon8).ant-typography-h1,div:where(.css-1xouon8).ant-typography-h1>textarea,:where(.css-1xouon8).ant-typography h1{margin-bottom:0.5em;color:#000000;font-weight:600;font-size:38px;line-height:1.2105263157894737;}h2:where(.css-1xouon8).ant-typography,div:where(.css-1xouon8).ant-typography-h2,div:where(.css-1xouon8).ant-typography-h2>textarea,:where(.css-1xouon8).ant-typography h2{margin-bottom:0.5em;color:#000000;font-weight:600;font-size:30px;line-height:1.2666666666666666;}h3:where(.css-1xouon8).ant-typography,div:where(.css-1xouon8).ant-typography-h3,div:where(.css-1xouon8).ant-typography-h3>textarea,:where(.css-1xouon8).ant-typography h3{margin-bottom:0.5em;color:#000000;font-weight:600;font-size:24px;line-height:1.3333333333333333;}h4:where(.css-1xouon8).ant-typography,div:where(.css-1xouon8).ant-typography-h4,div:where(.css-1xouon8).ant-typography-h4>textarea,:where(.css-1xouon8).ant-typography h4{margin-bottom:0.5em;color:#000000;font-weight:600;font-size:20px;line-height:1.4;}h5:where(.css-1xouon8).ant-typography,div:where(.css-1xouon8).ant-typography-h5,div:where(.css-1xouon8).ant-typography-h5>textarea,:where(.css-1xouon8).ant-typography h5{margin-bottom:0.5em;color:#000000;font-weight:600;font-size:16px;line-height:1.5;}:where(.css-1xouon8).ant-typography+h1.ant-typography,:where(.css-1xouon8).ant-typography+h2.ant-typography,:where(.css-1xouon8).ant-typography+h3.ant-typography,:where(.css-1xouon8).ant-typography+h4.ant-typography,:where(.css-1xouon8).ant-typography+h5.ant-typography{margin-top:1.2em;}:where(.css-1xouon8).ant-typography div +h1,:where(.css-1xouon8).ant-typography ul +h1,:where(.css-1xouon8).ant-typography li +h1,:where(.css-1xouon8).ant-typography p +h1,:where(.css-1xouon8).ant-typography h1 +h1,:where(.css-1xouon8).ant-typography h2 +h1,:where(.css-1xouon8).ant-typography h3 +h1,:where(.css-1xouon8).ant-typography h4 +h1,:where(.css-1xouon8).ant-typography h5 +h1,:where(.css-1xouon8).ant-typography div +h2,:where(.css-1xouon8).ant-typography ul +h2,:where(.css-1xouon8).ant-typography li +h2,:where(.css-1xouon8).ant-typography p +h2,:where(.css-1xouon8).ant-typography h1 +h2,:where(.css-1xouon8).ant-typography h2 +h2,:where(.css-1xouon8).ant-typography h3 +h2,:where(.css-1xouon8).ant-typography h4 +h2,:where(.css-1xouon8).ant-typography h5 +h2,:where(.css-1xouon8).ant-typography div +h3,:where(.css-1xouon8).ant-typography ul +h3,:where(.css-1xouon8).ant-typography li +h3,:where(.css-1xouon8).ant-typography p +h3,:where(.css-1xouon8).ant-typography h1 +h3,:where(.css-1xouon8).ant-typography h2 +h3,:where(.css-1xouon8).ant-typography h3 +h3,:where(.css-1xouon8).ant-typography h4 +h3,:where(.css-1xouon8).ant-typography h5 +h3,:where(.css-1xouon8).ant-typography div +h4,:where(.css-1xouon8).ant-typography ul +h4,:where(.css-1xouon8).ant-typography li +h4,:where(.css-1xouon8).ant-typography p +h4,:where(.css-1xouon8).ant-typography h1 +h4,:where(.css-1xouon8).ant-typography h2 +h4,:where(.css-1xouon8).ant-typography h3 +h4,:where(.css-1xouon8).ant-typography h4 +h4,:where(.css-1xouon8).ant-typography h5 +h4,:where(.css-1xouon8).ant-typography div +h5,:where(.css-1xouon8).ant-typography ul +h5,:where(.css-1xouon8).ant-typography li +h5,:where(.css-1xouon8).ant-typography p +h5,:where(.css-1xouon8).ant-typography h1 +h5,:where(.css-1xouon8).ant-typography h2 +h5,:where(.css-1xouon8).ant-typography h3 +h5,:where(.css-1xouon8).ant-typography h4 +h5,:where(.css-1xouon8).ant-typography h5 +h5{margin-top:1.2em;}:where(.css-1xouon8).ant-typography code{margin:0 0.2em;padding-inline:0.4em;padding-block:0.2em 0.1em;font-size:85%;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace;background:rgba(150, 150, 150, 0.1);border:1px solid rgba(100, 100, 100, 0.2);border-radius:3px;}:where(.css-1xouon8).ant-typography kbd{margin:0 0.2em;padding-inline:0.4em;padding-block:0.15em 0.1em;font-size:90%;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace;background:rgba(150, 150, 150, 0.06);border:1px solid rgba(100, 100, 100, 0.2);border-bottom-width:2px;border-radius:3px;}:where(.css-1xouon8).ant-typography mark{padding:0;background-color:#ffe58f;}:where(.css-1xouon8).ant-typography u,:where(.css-1xouon8).ant-typography ins{text-decoration:underline;text-decoration-skip-ink:auto;}:where(.css-1xouon8).ant-typography s,:where(.css-1xouon8).ant-typography del{text-decoration:line-through;}:where(.css-1xouon8).ant-typography strong{font-weight:600;}:where(.css-1xouon8).ant-typography ul,:where(.css-1xouon8).ant-typography ol{margin-inline:0;margin-block:0 1em;padding:0;}:where(.css-1xouon8).ant-typography ul li,:where(.css-1xouon8).ant-typography ol li{margin-inline:20px 0;margin-block:0;padding-inline:4px 0;padding-block:0;}:where(.css-1xouon8).ant-typography ul{list-style-type:circle;}:where(.css-1xouon8).ant-typography ul ul{list-style-type:disc;}:where(.css-1xouon8).ant-typography ol{list-style-type:decimal;}:where(.css-1xouon8).ant-typography pre,:where(.css-1xouon8).ant-typography blockquote{margin:1em 0;}:where(.css-1xouon8).ant-typography pre{padding:0.4em 0.6em;white-space:pre-wrap;word-wrap:break-word;background:rgba(150, 150, 150, 0.1);border:1px solid rgba(100, 100, 100, 0.2);border-radius:3px;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace;}:where(.css-1xouon8).ant-typography pre code{display:inline;margin:0;padding:0;font-size:inherit;font-family:inherit;background:transparent;border:0;}:where(.css-1xouon8).ant-typography blockquote{padding-inline:0.6em 0;padding-block:0;border-inline-start:4px solid rgba(100, 100, 100, 0.2);opacity:0.85;}a:where(.css-1xouon8).ant-typography,:where(.css-1xouon8).ant-typography a{color:#00f0a0;text-decoration:none;outline:none;cursor:pointer;transition:color 0.3s;}a:where(.css-1xouon8).ant-typography:focus,:where(.css-1xouon8).ant-typography a:focus,a:where(.css-1xouon8).ant-typography:hover,:where(.css-1xouon8).ant-typography a:hover{color:#52ffba;}a:where(.css-1xouon8).ant-typography:active,:where(.css-1xouon8).ant-typography a:active{color:#00c98d;}a:where(.css-1xouon8).ant-typography:active,:where(.css-1xouon8).ant-typography a:active,a:where(.css-1xouon8).ant-typography:hover,:where(.css-1xouon8).ant-typography a:hover{text-decoration:none;}a:where(.css-1xouon8).ant-typography[disabled],:where(.css-1xouon8).ant-typography a[disabled],a:where(.css-1xouon8).ant-typography.ant-typography-disabled,:where(.css-1xouon8).ant-typography a.ant-typography-disabled{color:rgba(0, 0, 0, 0.25);cursor:not-allowed;}a:where(.css-1xouon8).ant-typography[disabled]:active,:where(.css-1xouon8).ant-typography a[disabled]:active,a:where(.css-1xouon8).ant-typography.ant-typography-disabled:active,:where(.css-1xouon8).ant-typography a.ant-typography-disabled:active,a:where(.css-1xouon8).ant-typography[disabled]:hover,:where(.css-1xouon8).ant-typography a[disabled]:hover,a:where(.css-1xouon8).ant-typography.ant-typography-disabled:hover,:where(.css-1xouon8).ant-typography a.ant-typography-disabled:hover{color:rgba(0, 0, 0, 0.25);}a:where(.css-1xouon8).ant-typography[disabled]:active,:where(.css-1xouon8).ant-typography a[disabled]:active,a:where(.css-1xouon8).ant-typography.ant-typography-disabled:active,:where(.css-1xouon8).ant-typography a.ant-typography-disabled:active{pointer-events:none;}:where(.css-1xouon8).ant-typography .ant-typography-expand,:where(.css-1xouon8).ant-typography .ant-typography-collapse,:where(.css-1xouon8).ant-typography .ant-typography-edit,:where(.css-1xouon8).ant-typography .ant-typography-copy{color:#00f0a0;text-decoration:none;outline:none;cursor:pointer;transition:color 0.3s;margin-inline-start:4px;}:where(.css-1xouon8).ant-typography .ant-typography-expand:focus,:where(.css-1xouon8).ant-typography .ant-typography-collapse:focus,:where(.css-1xouon8).ant-typography .ant-typography-edit:focus,:where(.css-1xouon8).ant-typography .ant-typography-copy:focus,:where(.css-1xouon8).ant-typography .ant-typography-expand:hover,:where(.css-1xouon8).ant-typography .ant-typography-collapse:hover,:where(.css-1xouon8).ant-typography .ant-typography-edit:hover,:where(.css-1xouon8).ant-typography .ant-typography-copy:hover{color:#52ffba;}:where(.css-1xouon8).ant-typography .ant-typography-expand:active,:where(.css-1xouon8).ant-typography .ant-typography-collapse:active,:where(.css-1xouon8).ant-typography .ant-typography-edit:active,:where(.css-1xouon8).ant-typography .ant-typography-copy:active{color:#00c98d;}:where(.css-1xouon8).ant-typography-edit-content{position:relative;}div:where(.css-1xouon8).ant-typography-edit-content{inset-inline-start:-12px;margin-top:-12px;margin-bottom:calc(1em - 12px);}:where(.css-1xouon8).ant-typography-edit-content .ant-typography-edit-content-confirm{position:absolute;inset-inline-end:10px;inset-block-end:8px;color:rgba(0, 0, 0, 0.45);font-weight:normal;font-size:14px;font-style:normal;pointer-events:none;}:where(.css-1xouon8).ant-typography-edit-content textarea{margin:0!important;-moz-transition:none;height:1em;}:where(.css-1xouon8).ant-typography .ant-typography-copy-success,:where(.css-1xouon8).ant-typography .ant-typography-copy-success:hover,:where(.css-1xouon8).ant-typography .ant-typography-copy-success:focus{color:#52c41a;}:where(.css-1xouon8).ant-typography .ant-typography-copy-icon-only{margin-inline-start:0;}a:where(.css-1xouon8).ant-typography-ellipsis,span:where(.css-1xouon8).ant-typography-ellipsis{display:inline-block;max-width:100%;}:where(.css-1xouon8).ant-typography-ellipsis-single-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}a:where(.css-1xouon8).ant-typography-ellipsis-single-line,span:where(.css-1xouon8).ant-typography-ellipsis-single-line{vertical-align:bottom;}:where(.css-1xouon8).ant-typography-ellipsis-single-line >code{padding-block:0;max-width:calc(100% - 1.2em);display:inline-block;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom;box-sizing:content-box;}:where(.css-1xouon8).ant-typography-ellipsis-multiple-line{display:-webkit-box;overflow:hidden;-webkit-line-clamp:3;-webkit-box-orient:vertical;}:where(.css-1xouon8).ant-typography-rtl{direction:rtl;}</style><style data-rc-order="prependQueue" data-css-hash="19oidbj" data-token-hash="skbty6">.anticon{display:inline-flex;align-items:center;color:inherit;font-style:normal;line-height:0;text-align:center;text-transform:none;vertical-align:-0.125em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.anticon >*{line-height:1;}.anticon svg{display:inline-block;}.anticon .anticon .anticon-icon{display:block;}</style><style>.ant-message .ant-message-notice{padding:0}.ant-message .ant-message-notice .ant-message-notice-content{background:#7df5cd;border-radius:8px;justify-content:center;align-items:center;padding:12px;display:inline-flex;box-shadow:0 6px 24px #00d28c33}.ant-drawer .ant-drawer-content-wrapper .ant-drawer-content .ant-drawer-close{border:1px solid var(--Grey,#f2f4f5);margin:0;border-radius:8px;flex-shrink:0;justify-content:center;align-items:center;width:32px;height:32px;margin-inline-end:16px;padding:0;display:flex}.ant-drawer .ant-drawer-content-wrapper .ant-drawer-content .ant-drawer-body{padding:0}.ant-divider.ant-divider-horizontal{margin:0}.handle{background:#fff;border-radius:48px 0 0 48px;transition:transform .5s;transform:translate(24px)}.handle:hover{transform:translate(0)}.handle:hover .close-button{visibility:visible}.bird-button{cursor:pointer;padding:8px;position:relative}.close-button{cursor:pointer;visibility:hidden;background:#fff;border-radius:10px;flex-shrink:0;justify-content:center;align-items:center;padding:4px;display:flex;position:absolute;top:0;left:0;box-shadow:0 0 4px #0003}@keyframes slideIn{0%{right:-100px}to{right:0}}#jobright-helper-id.jobright-helper-content-container{z-index:1001;background:linear-gradient(#f7f8f9 0%,#edeff0 100%);border:1px solid #00000008;border-radius:24px;flex-direction:column;gap:12px;width:384px;max-height:720px;margin-top:10px;padding:8px;display:flex;position:fixed;top:10px;right:10px;box-shadow:0 8px 48px #000a1414}#jobright-helper-id.jobright-helper-content-container .ant-typography{margin:0}#jobright-helper-id.jobright-helper-content-container .header{background:0 0;padding:4px}#jobright-helper-id.jobright-helper-content-container .header .toggle-handler{background:var(--deepgrey-10,#78828c1a);border:none;border-radius:16px;flex-shrink:0;justify-content:center;align-items:center;width:32px;height:32px;padding:8px;display:flex}#jobright-helper-id.jobright-helper-content-container .initial-phase-container{background:#fff;border-radius:16px;padding:24px 12px;display:flex}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .apply-hint .hint-main-title{color:var(--Black,#000);margin-bottom:0;font-size:16px;font-weight:700;line-height:20px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .apply-hint .hint-description{color:var(--Black,#000);text-align:center;font-size:13px;font-weight:400;line-height:16px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist{background:var(--Grey,#f2f4f5);border-radius:12px;padding:12px 4px 4px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .check-list-title{color:var(--Black,#000);text-transform:capitalize;text-align:center;font-size:16px;font-weight:700;line-height:20px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group{width:100%}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item{background:#fff;border-radius:8px;flex-shrink:0;width:100%;height:48px;padding:12px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item .content{gap:8px;display:flex}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item .content .check-list-item-title{color:var(--Black,#000);font-size:14px;font-weight:500;line-height:20px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item .check-list-item-status,#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item .check-list-item-btn{width:52px;height:24px;box-shadow:none;background:var(--Grey,#f2f4f5);border:none;border-radius:24px;justify-content:center;align-items:center;gap:10px;padding:4px 16px;display:flex}#jobright-helper-id.jobright-helper-content-container .initial-phase-container .quick-start-checklist .list-items-group .check-list-item .check-list-item-btn{background:var(--Green,#00f0a0);color:var(--Black,#000);text-align:center;text-transform:capitalize;font-size:13px;font-weight:600;line-height:16px}#jobright-helper-id.jobright-helper-content-container .initial-phase-container div.confirm-area{width:100%}#jobright-helper-id.jobright-helper-content-container .initial-phase-container div.confirm-area button.go-to-next-button{background:var(--Green,#00f0a0);width:144px;height:36px;box-shadow:none;color:var(--Black,#000);text-align:center;text-transform:capitalize;border:none;border-radius:24px;justify-content:center;align-items:center;padding:8px 16px;font-size:16px;font-weight:600;line-height:20px;display:flex}#jobright-helper-id.jobright-helper-content-container .initial-phase-container div.confirm-area button.go-to-next-button:hover{color:#000;background-color:#00f0a0cc}#jobright-helper-id.jobright-helper-content-container .initial-phase-container div.confirm-area button.go-to-next-button:disabled{background:var(--Grey,#f2f4f5);color:var(--black-45,#00000073)}#jobright-helper-id.jobright-helper-content-container .initial-phase-container div.confirm-area .confirm-text{width:272px;color:var(--deepgrey-50,#78828c80);text-align:center;font-family:Inter;font-size:11px;font-weight:400;line-height:14px}#jobright-helper-id.jobright-helper-content-container .job-profile-container,#jobright-helper-id.jobright-helper-content-container .not-available-status-container{background:#fff;border-radius:16px;flex-direction:column;justify-content:center;align-items:center;width:100%;max-height:650px;padding-inline:12px;display:flex}#jobright-helper-id.jobright-helper-content-container .job-profile-container .not-available-status-header,#jobright-helper-id.jobright-helper-content-container .not-available-status-container .not-available-status-header{background:#faf4f2;border:1px solid #fff;border-bottom:none;border-radius:16px 16px 0 0;align-self:stretch;margin-inline:-12px;padding:12px}#jobright-helper-id.jobright-helper-content-container .job-profile-container .not-available-status-header .not-available-status-header-title,#jobright-helper-id.jobright-helper-content-container .not-available-status-container .not-available-status-header .not-available-status-header-title{color:var(--Black,#000);text-transform:capitalize;justify-content:center;align-items:center;gap:4px;font-size:13px;font-weight:400;line-height:16px;display:flex}#jobright-helper-id.jobright-helper-content-container .job-profile-container .not-available-status-header .not-available-status-header-title .status-header-icon,#jobright-helper-id.jobright-helper-content-container .not-available-status-container .not-available-status-header .not-available-status-header-title .status-header-icon{background:var(--Red,#ff465a);border-radius:6px;width:12px;height:12px}#jobright-helper-id.jobright-helper-content-container .job-profile-container .not-available-status-header .not-available-status-submit-request,#jobright-helper-id.jobright-helper-content-container .not-available-status-container .not-available-status-header .not-available-status-submit-request{color:var(--Black,#000);text-transform:capitalize;cursor:pointer;font-size:13px;font-weight:400;line-height:16px;text-decoration:underline}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-button{border:1px solid var(--black-5,#0000000d);background:var(--Green,#00f0a0);height:48px;color:var(--Black,#000);text-align:center;text-transform:capitalize;border-radius:8px;justify-content:center;align-items:center;font-size:20px;font-weight:600;line-height:24px;display:flex;box-shadow:0 2px 6px #00b1764d}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-button:hover{color:var(--Black,#000);background:var(--Green-10,#00f0a0cc);border-color:#0000;box-shadow:0 2px 6px #00b1764d}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-button:disabled{box-shadow:none;background:var(--green-20,#00f0a033)}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-divider{margin-block:0}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-checkbox{gap:4px;display:flex}#jobright-helper-id.jobright-helper-content-container .job-profile-container .auto-fill-checkbox .ant-checkbox+span{padding:0}#jobright-helper-id.jobright-helper-content-container .autofill-status-text{color:var(--Black,#000);text-align:center;padding-block:16px;font-size:13px;font-weight:700;line-height:16px}#jobright-helper-id.jobright-helper-content-container .application-dashboard-layout{width:100%}#jobright-helper-id.jobright-helper-content-container .application-dashboard-layout .ant-progress{line-height:8px}#jobright-helper-id.jobright-helper-content-container .autofill-credit-text{cursor:pointer;color:#000;text-align:center;text-decoration-skip-ink:none;text-underline-offset:auto;text-underline-position:from-font;text-transform:capitalize;font-family:Inter;font-size:11px;font-weight:500;line-height:16px;text-decoration-line:underline;text-decoration-style:solid;text-decoration-thickness:auto}#jobright-helper-id.jobright-helper-content-container .application-dashboard-title{text-align:left;color:var(--Black,#000);margin-top:4px;font-family:Inter;font-size:14px;font-weight:600;line-height:24px}#jobright-helper-id.jobright-helper-content-container .application-dashboard-base-resume{background:var(--Grey,#f2f4f5);border-radius:8px 8px 0 0;width:100%;padding:12px}#jobright-helper-id.jobright-helper-content-container .application-dashboard-base-resume .ant-image{flex:none}#jobright-helper-id.jobright-helper-content-container .application-dashboard-base-resume .ant-btn{background:var(--Black,#000);color:#fff;border:none;border-radius:4px;align-items:center;gap:4px;width:64px;height:24px;padding:4px 8px;font-family:Inter,sans-serif;font-size:13px;font-weight:400;line-height:16px;display:flex;box-shadow:0 1px 1px #0000000d}#jobright-helper-id.jobright-helper-content-container .application-dashboard-base-resume .ant-btn:hover{color:#fff;background-color:var(--Black,#000)}#jobright-helper-id.jobright-helper-content-container .application-dashboard-base-resume .ant-typography{color:var(--Black,#000);flex:auto;font-family:Inter;font-size:13px;font-weight:600;line-height:16px}#jobright-helper-id.jobright-helper-content-container .application-dashboard-tailor-resume{border:none;border-right:1px solid var(--Grey,#f2f4f5);border-bottom:1px solid var(--Grey,#f2f4f5);border-left:1px solid var(--Grey,#f2f4f5);width:100%;height:40px;color:var(--Black,#000);background-color:#fff;border-radius:0 0 8px 8px;outline:none;justify-content:flex-start;align-items:center;gap:4px;padding:12px;font-size:13px;font-weight:600;line-height:16px;display:flex}#jobright-helper-id.jobright-helper-content-container .application-dashboard-tailor-resume:hover{color:#000}#jobright-helper-id.jobright-helper-content-container .application-dashboard-tailor-resume .ant-image:last-child{margin-left:auto}#jobright-helper-id.jobright-helper-content-container .application-completion-percentage{width:100%;color:var(--Black,#000);align-self:flex-start;font-family:Inter;font-size:13px;font-weight:600;line-height:16px}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard{width:100%;position:relative}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-progress-bar{line-height:8px}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-group .auto-fill-field-group-title{color:var(--Black,#000);text-transform:capitalize;font-size:13px;font-weight:600;line-height:16px}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-item{cursor:pointer;color:var(--Black,#000);font-family:Inter;font-size:13px;font-weight:400;line-height:16px}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-item .checked-icon,#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-item .unchecked-icon,#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-item .loading-icon{flex-shrink:0}#jobright-helper-id.jobright-helper-content-container .job-profile-application-dashboard .auto-fill-field-item .spin-loading{flex-shrink:0;transition:all .5s;animation:1s linear infinite rotate}@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap{background:var(--deepgrey-50,#828ca080);backdrop-filter:blur(50px);border-radius:24px;position:absolute;top:0;left:0}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .ant-modal-content{padding:24px 12px 12px;display:flex}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .ant-modal-body{text-align:center;color:var(--Black,#000);flex-direction:column;align-items:center;gap:16px;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;line-height:16px;display:flex}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .ant-modal-body strong{font-weight:700}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .double-confirm-text-tips{text-align:left}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .popup-modal-actions{width:100%}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .popup-modal-actions .ant-btn{height:40px;color:var(--Black,#000);text-align:center;text-transform:capitalize;border:0;outline:0;flex:50%;justify-content:center;align-items:center;padding:10px 42px 10px 41px;font-family:Inter;font-size:14px;font-style:normal;font-weight:600;line-height:20px;display:flex}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .popup-modal-actions .ant-btn-default{border:1px solid var(--Grey,#f2f4f5)}#jobright-helper-id.jobright-helper-content-container .popup-modal-wrap .popup-modal .popup-modal-actions .ant-btn-primary{background:var(--Green,#00f0a0);border-radius:8px}.ant-spin .ant-spin-dot-item{color:#00f0a0}.ant-image{justify-content:center;align-items:center;display:flex}.unchecked-icon,.checked-icon,.loading-icon{background:var(--Grey,#f2f4f5);border-radius:8px;justify-content:center;align-items:center;width:16px;height:16px;display:flex}.checked-icon{background:var(--Green,#00f0a0)}.loading-icon{background:var(--Grey,#f2f4f5)}.similar-job-popup{background:#f2f4f5;border-radius:24px}.similar-job-popup .ant-modal-content{box-shadow:none;background:#f2f4f5;border-radius:24px}.similar-job-popup .ant-modal-content .ant-modal-header{background:#f2f4f5;border-bottom:none;padding:0}.similar-job-popup .ant-modal-content .ant-modal-body .similar-job-popup-title{color:var(--Black,#000);text-align:center;text-transform:capitalize;font-size:24px;font-weight:700;line-height:32px}.similar-job-popup .ant-modal-content .ant-modal-body .similar-job-popup-title-desc{color:var(--Black,#000);text-align:center;font-size:14px;font-weight:400;line-height:24px}.similar-job-popup .ant-modal-content .ant-modal-body .similar-job-popup-content-container{width:100%}.similar-job-popup .ant-modal-content .ant-modal-body .go-to-application-history-button{background:var(--Black,#000);color:#fff;text-align:center;border:none;border-radius:26px;justify-content:center;align-items:center;width:320px;height:48px;padding:12px 65px;font-size:16px;font-weight:600;line-height:24px;display:inline-flex}.job-card{background:#fff;border-radius:16px;flex-direction:column;flex:0 0 calc(33.3333% - 24px);align-items:flex-start;gap:12px;width:100%;display:flex}.job-card .job-card-first-row{width:100%}.job-card .job-card-first-row .job-card-company-logo{filter:drop-shadow(0 0 2px #0000001a);border-radius:6px;flex:0 0 32px}.job-card .job-card-first-row .job-card-company-name{color:var(--Black,#000);font-size:12px;font-weight:600;line-height:16px}.job-card .job-card-first-row .job-card-company-desc{max-width:200px;color:var(--black-45,#00000073);font-size:12px;font-style:normal;line-height:16px}.job-card .job-card-first-row .job-card-rank-desc{color:var(--Black,#000);text-align:center;text-transform:uppercase;font-size:12px;font-weight:700;line-height:16px}.job-card .job-card-first-row .job-card-match-score-value{color:var(--Black,#000);text-align:center;font-size:16px;font-weight:700;line-height:26.182px}.job-card .job-card-first-row .job-card-match-score-value-suffix{color:var(--Black,#000);font-size:8px;font-weight:700;line-height:24px}.job-card .job-card-second-row{width:100%}.job-card .job-card-second-row .job-card-job-title{color:var(--Black,#000);text-underline-offset:2px;font-size:16px;font-weight:700;line-height:20px;text-decoration:underline 1px #000}.job-card .job-detail-applicant-row{color:var(--Black,#000);font-size:11px;font-weight:400;line-height:16px}.job-card .job-detail-applicant-row .ant-typography{font-size:11px;line-height:16px}.job-card .job-detail-applicant-row .job-card-applicant-detail{font-weight:700}.job-card button.ant-btn.go-to-details-button{width:100%;height:32px;color:var(--Black,#000);text-align:center;text-transform:uppercase;background:var(--Green,#00f0a0);box-shadow:none;border:none;border-radius:8px;justify-content:center;align-items:center;padding:0;font-size:13px;font-weight:700;line-height:16px}.job-card button.ant-btn.go-to-details-button:hover{color:#000;background-color:#00f0a0cc}.progress-text{font-size:10px;font-weight:600;line-height:24px}.progress-text strong{font-size:20px;font-weight:700}@media (height<=840px){.autofill-status-body{max-height:320px;overflow-y:auto}}.autofill-status-body,.not-available-status-body{width:368px;padding:12px;overflow-y:auto}.autofill-status-body .not-available-status-body-item,.not-available-status-body .not-available-status-body-item{border:1px solid var(--Grey,#f2f4f5);width:100%;height:52px;box-shadow:none;text-align:left;border-radius:8px;justify-content:space-between;align-items:center;gap:8px;padding:16px;display:flex}.autofill-status-body .not-available-status-body-item .ant-image,.not-available-status-body .not-available-status-body-item .ant-image{flex:none}.autofill-status-body .not-available-status-body-item .ant-typography,.not-available-status-body .not-available-status-body-item .ant-typography{flex:1 0 auto}.external-job-action-buttons{border-top:1px solid #f2f4f5;flex-direction:column;justify-content:center;align-items:center;gap:8px;width:100%;padding-top:12px;display:flex}.external-job-add-new-job-button{cursor:pointer;width:100%;height:40px;box-shadow:none;background:#fff;border:1px solid #f2f4f5;border-radius:8px;justify-content:center;align-items:center;gap:5px;padding:12px;display:flex}.external-job-add-new-job-button :hover{background:#fff}.external-job-generate-resume-button{cursor:pointer;width:100%;height:40px;box-shadow:none;background:#00f0a0;border:none;border-radius:8px;justify-content:center;align-items:center;gap:5px;padding:12px;display:flex}.external-job-generate-resume-button :hover{background:#00f0a0}.external-job-generate-resume-button-text-hint,.external-job-add-new-job-button-text-hint{letter-spacing:0%;text-align:center;text-transform:capitalize;font-size:14px;font-weight:600;line-height:16px}#feedback-entry{color:#000;background:var(--green-20,#00f0a033);border:none;border-radius:16px;outline:none;justify-content:center;align-items:center;gap:3px;margin-inline-start:auto;padding:8px;font-size:12px;font-weight:500;line-height:16px;display:flex}#feedback-entry:hover{background:var(--green-20,#00f0a033)}.feedback-popup-root .feedback-popup .ant-form{flex-flow:column;gap:16px;display:flex}.feedback-popup-root .feedback-popup .ant-form-item{margin-bottom:0}.feedback-popup-root .feedback-popup .ant-form-item-label{color:var(--Black,#000);padding:0 0 12px;font-size:13px;font-weight:600;line-height:16px}.feedback-popup-root .feedback-popup .feedback-popup-title{font-size:16px;font-weight:700;line-height:24px}.feedback-popup-root .feedback-popup .feedback-popup-divider{background:#f2f4f5;margin:0}.feedback-popup-root .feedback-popup .feedback-popup-radio-group{flex-flow:column;gap:8px;width:100%;display:flex}.feedback-popup-root .feedback-popup .feedback-popup-sub-radio-group{border-left:2px solid var(--Grey,#f2f4f5);padding-inline-start:24px}.feedback-popup-root .feedback-popup .feedback-popup-radio-item{color:var(--Black,#000);align-items:center;height:20px;margin:0;font-size:13px;font-weight:400;line-height:16px;display:flex}.feedback-popup-root .feedback-popup .feedback-popup-radio-item .ant-checkbox-inner,.feedback-popup-root .feedback-popup .feedback-popup-radio-item .ant-radio-inner{width:20px;height:20px;box-shadow:0 0 2px #828ca080}.feedback-popup-root .feedback-popup .feedback-popup-radio-item .ant-checkbox-checked .ant-checkbox-inner{box-shadow:none}.feedback-popup-root .feedback-popup .feedback-popup-textarea.feedback-popup-input{resize:none;height:88px;min-height:120px;box-shadow:none;background:var(--grey-60,#f2f4f599);border:none;border-radius:8px;outline:none;padding:12px;font-size:13px;font-weight:400;line-height:16px}.feedback-popup-root .feedback-popup .feedback-popup-textarea.feedback-popup-input ::placeholder{color:var(--black-45,#00000073)}.feedback-popup-root .feedback-popup .feedback-popup-checkbox{color:#000;font-size:13px;font-weight:400;line-height:16px}.feedback-popup-root .feedback-popup .feedback-popup-discord{color:var(--Black,#000);background:var(--green-20,#00f0a033);border-radius:8px;margin-block-end:16px;padding:8px 12px;font-size:14px;font-weight:400;line-height:18px}.feedback-popup-root .feedback-popup .feedback-popup-discord a{color:var(--Black,#000);font-size:14px;font-weight:700;line-height:18px;text-decoration:underline}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group{flex-flow:row;justify-content:space-between;width:100%;margin-block-end:0;display:flex}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .ant-form-item-row{flex:auto;width:100%}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .feedback-popup-button{height:40px;box-shadow:none;border:none;border-radius:8px;flex:50%;padding:0;font-size:14px;font-weight:600;line-height:20px}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .feedback-popup-button-cancel{outline:1px solid #f2f4f5}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .feedback-popup-button-cancel:hover{background-color:#f2f4f5}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .feedback-popup-button-submit{background:#00f0a0}.feedback-popup-root .feedback-popup .feedback-popup-form-action-button-group .feedback-popup-button-submit:hover{background:#00f0a099}.feedback-popup-root .feedback-popup :global .ant-modal-body{flex-flow:column;gap:16px;display:flex}.feedback-popup-root .feedback-popup :global .ant-modal-content{box-shadow:none;border-radius:16px;padding:16px}.feedback-popup-root .feedback-popup :global .ant-modal-content .ant-form-item:last-child{margin-block-end:0}.feedback-popup-root .feedback-popup :global .ant-modal-content .ant-form-item{margin-block-end:16px}.feedback-popup-root .feedback-popup :global .ant-modal-content .ant-form-item .ant-form-item-row{width:100%}.feedback-popup-root .feedback-popup :global .ant-modal-content .ant-form-item .ant-form-item-label{margin-block-end:16px;padding-block-end:0;line-height:normal}.feedback-popup-root .feedback-popup :global .ant-modal-content .ant-form-item .ant-form-item-label label{color:var(--Black,#000);font-size:14px;font-weight:600;line-height:18px}.feedback-popup-root .feedback-popup :global .ant-checkbox-checked .ant-checkbox-inner:after{border-bottom-color:#000;border-right-color:#000}.feedback-button{width:32px;color:var(--Black,#000);text-align:center;background:#fff;border:none;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:4px 0;font-size:13px;font-weight:500;line-height:16px;display:flex;box-shadow:0 2px 4px #00000005}.feedback-scale{color:#00000073;justify-content:space-between;align-items:center;font-size:13px;font-weight:400;line-height:16px}.rate-button.rate-button-overwrite{background:#fff;border:none;border-radius:4px;outline:1px solid #828ca01a;justify-content:center;align-items:center;transition:none;display:flex}.rate-button.rate-button-overwrite.rate-button-hightlight{background:var(--green-30,#00f0a04d)!important;border:none!important;outline:none!important}.external-job-entry-container{cursor:pointer;background-color:#f2f4f599;border-radius:8px;flex-direction:column;justify-content:center;align-items:center;gap:8px;width:100%;padding:32px 16px;display:flex}.external-job-entry-plus-button{background-color:#9296a01a;border-radius:50%;justify-content:center;align-items:center;width:48px;height:48px;display:flex}.external-job-entry-text-hint{color:var(--Black,#000);text-align:center;font-size:13px;line-height:16px}.external-job-back-home-button{cursor:pointer;background:#f2f4f5;border-radius:50%;justify-content:center;align-items:center;width:20px;height:20px;display:flex}.external-job-form-header{background:#fff;justify-content:start;align-items:center;gap:8px;width:100%;margin-inline:-12px;padding:12px 0;display:flex}.external-job-form-header-title{color:var(--Black,#000);font-size:14px;font-weight:600;line-height:16px}.external-job-form-divider{border-top:1px solid var(--Grey,#f2f4f5);width:100%;margin:0 0 12px}.external-job-form-body{width:100%;padding-bottom:12px}@media (height<=800px){.external-job-form-body{max-height:calc(100vh - 150px);position:relative;overflow-y:auto}}.external-job-form-submit-button{background:var(--Green,#00f0a0);cursor:pointer;border-radius:8px;justify-content:center;align-items:center;width:100%;height:40px;display:flex}@media (height<=800px){.external-job-form-submit-button{z-index:10;position:sticky;bottom:0}}.external-job-form-submit-button-text-hint{color:#000;font-size:14px;font-weight:600;line-height:16px}.external-job-analyze-header{background:#fff;justify-content:start;align-items:center;width:100%;margin-inline:-12px;padding:12px 0;display:flex}.external-job-analyze-body{flex-direction:column;justify-content:center;align-items:center;gap:8px;width:100%;padding:36px 0 48px;display:flex}.external-job-analyze-body-text{color:var(--Black,#000);text-align:center;font-size:13px;line-height:16px}.external-job-analyze-body-text-link{color:var(--Black,#000)!important;font-weight:500!important;text-decoration:underline!important}.external-job-analyze-body-title{color:var(--Black,#000);text-align:center;font-size:16px;font-weight:600;line-height:24px}.external-job-form-analyze-failed-button{background:var(--Green,#00f0a0);cursor:pointer;border-radius:8px;justify-content:center;align-items:center;width:240px;height:40px;display:flex}.tailor-resume-loading-linear-progress{z-index:0;background:var(--deepgrey-10,#828ca01a);border-radius:2px;width:65%;height:2px;display:block;position:relative;overflow:hidden}.tailor-resume-loading-linear-progress-first{transform-origin:0;background:var(--Black,#000);border-radius:2px;width:auto;transition:transform .2s linear;animation:2.1s cubic-bezier(.65,.815,.735,.395) infinite animation-first;position:absolute;top:0;bottom:0;left:0}.tailor-resume-loading-linear-progress-second{transform-origin:0;background:var(--Black,#000);border-radius:2px;width:auto;transition:transform .2s linear;animation:2.1s cubic-bezier(.165,.84,.44,1) 1.15s infinite animation-second;position:absolute;top:0;bottom:0;left:0}@keyframes animation-first{0%{left:-35%;right:100%}60%{left:100%;right:-90%}to{left:100%;right:-90%}}@keyframes animation-second{0%{left:-200%;right:100%}60%{left:107%;right:-8%}to{left:107%;right:-8%}}.external-job-form-analyze-failed-button-text-hint{color:#000;font-size:14px;font-weight:600;line-height:16px}.external-job-form-body .ant-form{flex-direction:column;display:flex}.external-job-form-body .ant-form-item-label{color:var(--Black,#000);font-size:13px;font-weight:600;line-height:16px}.external-job-form-body .ant-form-item-label label.ant-form-item-required:before{color:var(--Red,#ff465a);font-size:13px;font-weight:600;line-height:16px}.external-job-form-body .ant-select{height:40px;box-shadow:none;background:0 0;border:none;border-radius:8px}.external-job-form-body .ant-select:hover{background:var(--Grey,#f2f4f5)}.external-job-form-body .ant-select-selector,.external-job-form-body .ant-input-affix-wrapper,.external-job-form-body .ant-input{border-radius:8px;height:40px;font-size:13px;font-weight:400;line-height:16px;box-shadow:none!important;background:var(--grey-60,#f2f4f599)!important;border:0!important;outline:none!important}.external-job-form-body .ant-select-selector:hover,.external-job-form-body .ant-input-affix-wrapper:hover,.external-job-form-body .ant-input:hover,.external-job-form-body .ant-select-selector:focus,.external-job-form-body .ant-input-affix-wrapper:focus,.external-job-form-body .ant-input:focus,.external-job-form-body .ant-select-selector:active,.external-job-form-body .ant-input-affix-wrapper:active,.external-job-form-body .ant-input:active{background:var(--grey-60,#f2f4f599)!important;box-shadow:none!important;border:none!important}.custom-drawer-root.custom-drawer-root-overwrite :global .ant-drawer-mask{background:#0003}.custom-drawer-root.custom-drawer-root-overwrite :global .ant-drawer-content-wrapper{box-shadow:none;border-radius:20px 0 0 20px}.custom-drawer-root.custom-drawer-root-overwrite .custom-drawer{border-top-left-radius:20px;border-bottom-left-radius:20px}.custom-drawer-root.custom-drawer-root-overwrite .custom-drawer .custom-drawer-header{box-sizing:border-box;color:var(--Black,#000);border-bottom:1px solid #f2f3f4;padding:16px;font-size:16px;font-weight:700;line-height:24px}.custom-drawer-root.custom-drawer-root-overwrite .custom-drawer .custom-drawer-header .custom-drawer-close{cursor:pointer;border:1px solid #f2f4f5;border-radius:8px;width:32px;height:32px}.resume-review-container .ant-modal-content{padding:0}.resume-review-container .ant-modal-header{border-bottom:1px solid var(--Grey,#f2f4f5);height:60px;margin-block-end:0;padding:20px 0 20px 24px}.resume-review-container .ant-modal-body{padding-inline:24px}.resume-review-container .ant-modal-footer{margin-top:0}.resume-review-container .resume-review-resume-tip{background:var(--Grey,#f2f4f5);color:#000;border-radius:16px;margin-block-start:24px;padding:8px;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;line-height:16px}.resume-review-container .resume-review-resume-tip a{color:#000;text-decoration-skip-ink:auto;text-underline-offset:auto;text-underline-position:from-font;font-family:Inter;font-size:13px;font-style:normal;font-weight:600;line-height:16px;text-decoration-line:underline;text-decoration-style:solid;text-decoration-thickness:auto}.resume-review-container .resume-review-sidebar{height:100%;padding-block:12px 24px}.resume-review-container .resume-review-sidebar .ant-radio-group{flex-direction:column;gap:16px;display:flex}.resume-review-container .resume-review-sidebar .ant-radio-wrapper{background:var(--grey-60,#f2f4f599);border-radius:8px;height:20px;margin-inline-end:0;display:flex}.resume-review-container .resume-review-sidebar .ant-radio-wrapper span.ant-radio+*{padding-inline-end:0}.resume-review-container .resume-review-sidebar .resume-review-resume-name{flex:0 auto}.resume-review-container .resume-review-sidebar .resume-review-primary-tag,.resume-review-container .resume-review-sidebar .resume-review-tailor-tag,.resume-review-container .resume-review-sidebar .resume-review-last-used-tag{height:20px;color:var(--Black,#000);text-transform:uppercase;background:linear-gradient(266deg,#a0ffdc 0%,#d2ffc8 100%);border-radius:12px;flex:none;justify-self:flex-end;padding:2px 6px;font-family:Inter;font-size:10px;font-weight:600;line-height:16px}.resume-review-container .resume-review-sidebar .resume-review-tailor-tag{background:var(--Green,#00f0a0)}.resume-review-container .resume-review-sidebar .resume-review-last-used-tag{background:var(--deepgrey-20,#828ca033)}.resume-review-container .resume-review-sidebar .resume-review-resume-tips{background:var(--green-20,#00f0a033);color:var(--Black,#000);border-radius:16px;margin-top:auto;margin-bottom:24px;padding:12px;font-family:Inter;font-size:14px;font-style:normal;font-weight:400;line-height:18px}.resume-review-container .resume-review-collapse-content{font-size:13px;font-weight:400;line-height:18px}.resume-review-container :global .ant-tag{margin-inline-end:0}#resume-align-submit-container{border-top:1px solid #f2f4f5;justify-content:center;gap:12px;padding:20px 0}#resume-align-submit-container .resume-align-return-button{background:#00f0a033;border:none;border-radius:20px;width:40px;height:40px;padding:8px}#resume-align-submit-container .resume-align-return-button:hover{background:#00f0a0}#resume-align-submit-container .resume-align-submit-button{background:var(--Green,#00f0a0);color:#000;text-align:center;min-width:240px;height:40px;font-size:16px;font-weight:600;line-height:24px}#resume-align-submit-container .resume-align-submit-button:hover{color:#000;background:var(--green-60,#00f0a099)}#resume-align-submit-container .resume-align-submit-button:disabled{background:var(--green-20,#00f0a033);color:#00000073}#resume-align-submit-container :global .ant-btn{box-shadow:none;justify-content:center;align-items:center;display:flex}.sider-section{border:1px solid var(--Grey,#f2f4f5);background:#fff;border-radius:16px;flex:0 0 368px;gap:16px;padding:16px}.sider-section .sider-section-title{color:var(--Black,#000);margin:0;font-family:Inter;font-size:14px;font-weight:700;line-height:24px}.tailor-style-template{cursor:pointer;border-radius:8px;width:162px;height:232px;position:relative}.tailor-style-template.tailor-style-template-selected .tailor-style-template-image{border:4px solid var(--green-30,#00f0a04d)}.tailor-style-template .tailor-style-template-image{border:4px solid var(--Grey,#f2f4f5);border-radius:8px}.tailor-style-template .tailor-style-template-recommended{background:var(--Green,#00f0a0);width:154px;height:32px;color:var(--Black,#000);border-radius:4px;padding:4px 8px;font-family:Inter;font-size:13px;font-weight:600;line-height:16px;position:absolute;bottom:25px}*{box-sizing:border-box}.jobright-helper-double-confirm-popup .ant-modal-content{background:#fff;border:2px solid #fff;border-radius:16px;flex-direction:column;align-items:flex-start;gap:12px;padding:12px;display:inline-flex;box-shadow:0 24px 32px #000a1426}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body{flex-flow:column;gap:12px;display:flex}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body .jobright-helper-double-confirm-popup-desc{color:var(--Black,#000);font-size:14px;font-weight:500;line-height:18px}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body div.jobright-helper-double-confirm-popup-footer button.jobright-helper-double-confirm-popup-cancel-btn{border:1px solid var(--Grey,#f2f4f5);border-color:#0000;justify-content:center;align-items:center;width:120px;height:40px;display:flex}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body div.jobright-helper-double-confirm-popup-footer button.jobright-helper-double-confirm-popup-cancel-btn:hover{background:var(--Green,#f2f4f5cc);color:var(--Black,#000)}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body div.jobright-helper-double-confirm-popup-footer button.jobright-helper-double-confirm-popup-confirm-btn{background:var(--Green,#00f0a0);border:none;justify-content:center;align-items:center;width:120px;height:40px;display:flex}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body div.jobright-helper-double-confirm-popup-footer button.jobright-helper-double-confirm-popup-confirm-btn:hover{background:var(--Green,#00f0a0cc);color:var(--Black,#000)}.jobright-helper-double-confirm-popup .ant-modal-content .ant-modal-body div.jobright-helper-double-confirm-popup-footer .ant-btn{box-shadow:none;color:var(--Black,#000);text-align:center;text-transform:capitalize;border-radius:8px;padding:0;font-size:14px;font-weight:600;line-height:20px;transition:none}</style><div id="plasmo-shadow-container" style="z-index: 2147483647; position: relative;"><div class="react-draggable" style="position: fixed; right: 0px; top: 0px; z-index: 1000; font-family: Inter; transform: translate(0px, 0px);"></div><div class="jobright-helper-content-container ant-flex css-1xouon8 ant-flex-align-stretch ant-flex-vertical" id="jobright-helper-id" style="visibility: hidden; gap: 12px;"><div class="header ant-flex css-1xouon8 ant-flex-align-center ant-flex-justify-space-between" style="gap: 12px;"><div draggable="false" class="ant-image css-1xouon8" style="width: 128px; height: 32px;"><img draggable="false" alt="logo-image" class="ant-image-img css-1xouon8" src="data:image/svg+xml,%3Csvg%20width%3D%22144%22%20height%3D%2236%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M47.314%207.714h2.057c.285%200%20.515.23.515.515v18c0%201.136-.921%202.057-2.057%202.057h-6.686a.514.514%200%200%201-.514-.515v-2.057c0-1.136.92-2.057%202.057-2.057h2.571V9.771c0-1.136.921-2.057%202.057-2.057ZM51.686%2020.571a7.715%207.715%200%201%201%2015.429.001%207.715%207.715%200%200%201-15.43%200Zm4.628%200a3.086%203.086%200%201%201%206.172%200%203.086%203.086%200%200%201-6.172%200ZM70.972%207.714h2.057c.284%200%20.514.23.514.515v5.27a7.715%207.715%200%201%201%200%2014.145v.127c0%20.284-.23.515-.514.515h-2.057a2.057%202.057%200%200%201-2.058-2.058V9.771c0-1.136.921-2.057%202.058-2.057Zm2.57%2012.86a3.086%203.086%200%201%200%200-.005v.005ZM88.2%2012.857h6.686c.284%200%20.514.23.514.514v2.057a2.057%202.057%200%200%201-2.057%202.058H90.77V27.77c0%20.284-.23.515-.514.515H88.2a2.057%202.057%200%200%201-2.057-2.058V14.915c0-1.136.92-2.057%202.057-2.057ZM99.257%207.714h2.057c.284%200%20.515.23.515.515v3.085a.515.515%200%200%201-.515.514h-2.057a2.057%202.057%200%201%201%200-4.114Zm0%205.143h2.057c.284%200%20.515.23.515.514v14.4a.515.515%200%200%201-.515.515h-2.057a2.057%202.057%200%200%201-2.057-2.058V14.915c0-1.136.921-2.057%202.057-2.057ZM124.972%207.714h-2.058a2.057%202.057%200%200%200-2.057%202.057v16.457c0%201.137.921%202.058%202.057%202.058h2.058c.284%200%20.514-.23.514-.515V8.23a.514.514%200%200%200-.514-.515Zm3.342%205.143h-2.828v4.629h2.828v8.742c0%201.137.921%202.058%202.057%202.058h2.058c.284%200%20.514-.23.514-.515V14.914a2.057%202.057%200%200%200-2.057-2.057h-2.572ZM111.343%2012.857a7.715%207.715%200%201%200%20.128%2015.428h1.929a1.029%201.029%200%201%201%200%202.058h-3.749a2.294%202.294%200%200%200-2.294%202.293v1.98c0%20.196.16.355.356.355h5.687a5.657%205.657%200%200%200%204.015-9.642%207.678%207.678%200%200%200%201.642-4.758v-7.2a.514.514%200%200%200-.514-.514h-2.054c-.678%200-1.28.328-1.655.833a7.686%207.686%200%200%200-3.491-.833Zm0%204.629a3.086%203.086%200%201%200%200%206.172%203.086%203.086%200%200%200%200-6.172ZM138.857%207.714H136.8a2.057%202.057%200%200%200-2.057%202.057v16.457c0%201.137.921%202.058%202.057%202.058H141.943A2.057%202.057%200%200%200%20144%2026.228v-2.057a.514.514%200%200%200-.514-.514h-4.115v-6.171h2.572A2.057%202.057%200%200%200%20144%2015.428v-2.057a.514.514%200%200%200-.514-.514h-4.115V8.23a.514.514%200%200%200-.514-.515Z%22%20fill%3D%22%23000%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M18%200C8.059%200%200%208.059%200%2018s8.059%2018%2018%2018c1.484%200%202.926-.18%204.305-.518%203.028-.433%206.1-.482%209.142-.144l1.28.143a.82.82%200%200%200%20.882-1.032l-1.458-5.323A17.923%2017.923%200%200%200%2036%2018c0-9.941-8.059-18-18-18Z%22%20fill%3D%22%2300F0A0%22%2F%3E%3Cpath%20d%3D%22M23.815%2024.627A25.882%2025.882%200%200%201%207.261%2030.58c-1.454%200-2.88-.12-4.269-.35a29.085%2029.085%200%200%200%208.754-5.603h12.07Z%22%20fill%3D%22%2300F0A0%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.12%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M13.517%2019.147a19.244%2019.244%200%200%201-6.087%204.736c-.59.291-1.195.552-1.814.78a21.519%2021.519%200%200%200%2010.27%202.676h.077l.084.001h.084a12.41%2012.41%200%200%200%206.942-2.167%2012.534%2012.534%200%200%200%203.482-3.589l-1.59%201.346-4.175-.232-7.273-3.551Z%22%20fill%3D%22%2300F0A0%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22m26.153%2022.174-1.303%201.104-4.176-.232-7.405-3.616a18.9%2018.9%200%200%200%203.445-5.56%208.18%208.18%200%200%201%2013.638-2.227%203.701%203.701%200%200%200-1.838%203.2v.03c0%202.727-.876%205.25-2.36%207.301Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M30.352%2011.643a3.701%203.701%200%200%200-1.838%203.2v.03c0%204.279-2.156%208.054-5.44%2010.3a12.41%2012.41%200%200%201-6.943%202.167h-.246a21.519%2021.519%200%200%201-10.27-2.677c.62-.229%201.225-.489%201.815-.78%204.089-2.018%207.412-5.5%209.183-9.765l.101-.248a8.18%208.18%200%200%201%2013.638-2.227Z%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.12%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M20.282%2022.983%205.342%2015.26a2.32%202.32%200%200%201-.57-3.707l.086-.086a.928.928%200%200%201%20.897-.237l13.498%203.665%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M20.282%2022.983%205.342%2015.26a2.32%202.32%200%200%201-.57-3.707l.086-.086a.928.928%200%200%201%20.897-.237l13.498%203.665%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.12%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M26.884%2021.04a4.961%204.961%200%201%201-7.633-6.144l.002-.001%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.12%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2226.252%22%20cy%3D%2212.03%22%20fill%3D%22%23000%22%20r%3D%22.812%22%2F%3E%3C%2Fsvg%3E" width="128" height="32" style="height: 32px; user-select: none; pointer-events: none;"></div><button id="feedback-entry" type="button" class="ant-btn css-1xouon8 ant-btn-default"><div class="ant-image css-1xouon8"><img alt="logo-image" class="ant-image-img css-1xouon8" src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.667%204.133C1.667%202.955%202.622%202%203.8%202h8.4c1.178%200%202.133.955%202.133%202.133v6.4a2.133%202.133%200%200%201-2.133%202.134h-1.924a.667.667%200%200%200-.471.195L8.66%2014.007a.933.933%200%200%201-1.32%200l-1.145-1.145a.667.667%200%200%200-.471-.195H3.8a2.133%202.133%200%200%201-2.133-2.134v-6.4Z%22%20fill%3D%22%23fff%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M6%206.333v-.277c0-.254.075-.502.216-.713l.06-.089a1.896%201.896%200%200%201%203.234.131v0c.103.185.157.393.157.604v.08c0%20.562-.343%201.068-.865%201.277l-.288.115A.818.818%200%200%200%208%208.22v.446%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M7.667%2010.667a.333.333%200%201%201%20.666%200%20.333.333%200%200%201-.666%200Z%22%20stroke%3D%22%23000%22%20stroke-width%3D%22.667%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"></div><span>Feedback</span></button><button type="button" class="ant-btn css-1xouon8 ant-btn-default toggle-handler"><div class="ant-image css-1xouon8"><img alt="logo-image" class="ant-image-img css-1xouon8" src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m7%204%203%204-3%204%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"></div></button></div><div class="not-available-status-container ant-flex css-1xouon8 ant-flex-align-stretch ant-flex-vertical"><div class="not-available-status-header ant-flex css-1xouon8 ant-flex-align-center ant-flex-justify-space-between"><span class="ant-typography not-available-status-header-title css-1xouon8"><div class="status-header-icon"></div>Autofill Not Supported</span><span class="ant-typography not-available-status-submit-request css-1xouon8">Submit Request</span></div><div class="not-available-status-body ant-flex css-1xouon8 ant-flex-align-center ant-flex-justify-center ant-flex-vertical" style="gap: 12px;"><div class="external-job-entry-container"><div class="external-job-entry-plus-button"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.75V16.25" stroke="black" stroke-width="1.55" stroke-linecap="round"></path><path d="M16.25 10L3.75 10" stroke="black" stroke-width="1.55" stroke-linecap="round"></path></svg></div><div class="external-job-entry-text-hint">Add A New Job to Get Job Match Score &amp;<br> Tailor Your Resume</div></div><a href="https://jobright.ai/jobs/recommend" target="_blank" class="ant-btn css-1xouon8 ant-btn-link not-available-status-body-item" tabindex="0"><div class="ant-image css-1xouon8" style="width: 20px; height: 20px;"><img class="ant-image-img css-1xouon8" src="data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.25%209.8c0-1.68%200-2.52.327-3.162a3%203%200%200%201%201.311-1.311C3.53%205%204.37%205%206.05%205h7.9c1.68%200%202.52%200%203.162.327a3%203%200%200%201%201.311%201.311c.327.642.327%201.482.327%203.162v4.15c0%201.68%200%202.52-.327%203.162a3%203%200%200%201-1.311%201.311c-.642.327-1.482.327-3.162.327h-7.9c-1.68%200-2.52%200-3.162-.327a3%203%200%200%201-1.311-1.311c-.327-.642-.327-1.482-.327-3.162V9.8Z%22%20fill%3D%22%23fff%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22m15%205-.293-1.171a3.21%203.21%200%200%200-1.522-2.009v0a6.42%206.42%200%200%200-6.37%200v0a3.21%203.21%200%200%200-1.522%202.01L5%205M1.25%208.75l3.513%201.873a9.62%209.62%200%200%200%2010.862-1.248v0%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E" width="20" height="20" style="height: 20px;"></div><span class="ant-typography css-1xouon8">Find More Jobs on Jobright</span><div class="ant-image css-1xouon8" style="width: 20px; height: 20px;"><img class="ant-image-img css-1xouon8" src="data:image/svg+xml,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m12%205%203%203-3%203%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E" width="20" height="20" style="height: 20px;"></div></a></div></div></div></div></template></plasmo-csui><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-rc-order="prependQueue" data-css-hash="1gvl60q" data-token-hash="ceha6z">.anticon{display:inline-flex;align-items:center;color:inherit;font-style:normal;line-height:0;text-align:center;text-transform:none;vertical-align:-0.125em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.anticon >*{line-height:1;}.anticon svg{display:inline-block;}.anticon .anticon .anticon-icon{display:block;}</style>
+		<title>Apache Kafka</title>
+		<style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.33333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1em}.svg-inline--fa.fa-stack-2x{height:2em;width:2em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}</style><link rel="stylesheet" href="./Apache Kafka_files/styles.css" type="text/css">
+		<link rel="icon" type="image/gif" href="https://kafka.apache.org/images/apache_feather.gif">
+		<meta name="robots" content="index,follow">
+		<meta name="language" content="en">
+		<meta name="keywords" content="apache kafka messaging queuing distributed stream processing">
+		<meta name="description" content="Apache Kafka: A Distributed Streaming Platform.">
+		
+		<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
+		<meta property="og:title" content="Apache Kafka">
+		<meta property="og:image" content="http://apache-kafka.org/images/apache-kafka.png">
+		<meta property="og:description" content="Apache Kafka: A Distributed Streaming Platform.">
+		<meta property="og:site_name" content="Apache Kafka">
+		<meta property="og:type" content="website">
+		<link href="./Apache Kafka_files/fonts.css" rel="stylesheet">
+		<script async="" src="./Apache Kafka_files/matomo.js"></script><script src="./Apache Kafka_files/jquery.min.js"></script>
+		<script defer="" src="./Apache Kafka_files/fontawesome.js"></script>
+
+		<link rel="stylesheet" href="./Apache Kafka_files/prism.min.css">
+		<script defer="" src="./Apache Kafka_files/prism.min.js"></script>
+
+		<script>
+			// DO NOT NEED TO UPDATE
+			// Legacy versions of the documentation to not do frontend redirect for
+			// These docs are written as a single super long file so no need to re-route
+			var legacyDocPaths = [
+				'/07/documentation',
+				'/07/documentation/',
+				'/08/documentation',
+				'/08/documentation/',
+				'/081/documentation',
+				'/081/documentation/',
+				'/082/documentation',
+				'/082/documentation/',
+				'/090/documentation',
+				'/090/documentation/',
+				'/0100/documentation',
+				'/0100/documentation/'
+			];
+
+			// Any direct request for Streams documentation in docs versions prior to 0101
+			// Redirect these requests to the standalone Streams doc page
+			var currentPath = window.location.pathname;
+			var shouldRedirect = !legacyDocPaths.includes(currentPath);
+			var isDocumenationPage = currentPath.includes('/documentation');
+
+			var hasNotSpecifiedFullPath = !currentPath.includes('/documentation/streams') && !currentPath.includes('/documentation/streams/');
+
+			// Look for legacy anchors to clue us in on what full path the user needs
+			// Add more as needed
+			var specifiedStreamsAnchor = window.location.hash.includes('#streams_');
+
+			if (shouldRedirect && isDocumenationPage && hasNotSpecifiedFullPath) {
+				if (specifiedStreamsAnchor) {
+					window.location.pathname = currentPath + 'streams';
+				}
+			}
+		</script>
+		<!-- Matomo -->
+		<script>
+			var _paq = window._paq = window._paq || [];
+			/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+			/* We explicitly disable cookie tracking to avoid privacy issues */
+			_paq.push(['disableCookies']);
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function() {
+				var u="//analytics.apache.org/";
+				_paq.push(['setTrackerUrl', u+'matomo.php']);
+				_paq.push(['setSiteId', '26']);
+				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+				g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+			})();
+		</script>
+		<!-- End Matomo Code -->
+	</head>
+
+<body class="page-quickstart ">
+<div class="main">
+	<div class="header" id="header">
+		<a href="https://kafka.apache.org/" class="logo-link">
+			<span class="visually-hidden">Apache Kafka</span>
+		</a>
+
+		<button type="button" class="top-nav-toggle burger-toggle" id="top-nav-toggle" aria-haspopup="true" aria-expanded="false">
+			<span class="visually-hidden">Toggle navigation</span>
+			<span class="burger-line"></span>
+			<span class="burger-line"></span>
+			<span class="burger-line"></span>
+		</button>
+		
+		<div class="top-nav-container" id="top-nav-container">
+			<nav class="top-nav" role="navigation" aria-label="Main menu">
+				<ul class="top-nav-list">
+					<li class="top-nav-item" role="menuitem">
+						<a href="https://kafka.apache.org/quickstart#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false">
+							Get Started
+						</a>
+						<ul class="top-nav-menu" aria-hidden="true" role="menu" title="Get Started">
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/intro" class="top-nav-anchor">
+									Introduction
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/quickstart" class="top-nav-anchor">
+									Quickstart
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/uses" class="top-nav-anchor">
+									Use Cases
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/books-and-papers" class="top-nav-anchor">
+									Books &amp; Papers
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/videos" class="top-nav-anchor">
+									Videos
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a href="https://kafka.apache.org/podcasts" class="top-nav-anchor">
+									Podcasts
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="top-nav-item" role="menuitem">
+						<a href="https://kafka.apache.org/documentation" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-documentation-menu">
+							Docs
+						</a>
+						<ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-documentation-menu" title="Docs">
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#gettingStarted">
+									Key Concepts
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#api">
+									APIs
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#configuration">
+									Configuration
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#design">
+									Design
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#implementation">
+									Implementation
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#operations">
+									Operations
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#security">
+									Security
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank">
+									Clients
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation#connect">
+									Kafka Connect
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/documentation/streams">
+									Kafka Streams
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="top-nav-item" role="menuitem">
+						<a class="top-nav-item-anchor" href="https://kafka.apache.org/powered-by">
+							Powered By
+						</a>
+					</li>
+					<li class="top-nav-item" role="menuitem">
+						<a href="https://kafka.apache.org/quickstart#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-community-menu">
+							Community
+						</a>
+						<ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-community-menu" title="Community">
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/blog" target="_blank">
+									Blog
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka-summit.org/" target="_blank">
+									Kafka Summit
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/project">
+									Project Info
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/trademark">
+									Trademark
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://cwiki.apache.org/confluence/display/KAFKA/Ecosystem" target="_blank">
+									Ecosystem
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/events">
+									Events
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://kafka.apache.org/contact">
+									Contact us
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="top-nav-item" role="menuitem">
+						<a href="https://kafka.apache.org/quickstart#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-community-menu">
+							Apache
+						</a>
+						<ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-community-menu" title="Community">
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://www.apache.org/licenses/" target="_blank">
+									License
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://www.apache.org/foundation/sponsorship.html" target="_blank">
+									Donate
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://www.apache.org/foundation/thanks.html" target="_blank">
+									Sponsors
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://www.apache.org/security/" target="_blank">
+									Security
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank">
+									Privacy
+								</a>
+							</li>
+							<li class="top-nav-menu-item" role="menuitem">
+								<a class="top-nav-anchor" href="https://www.apache.org/" target="_blank">
+									Apache.org
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="top-nav-item" role="menuitem">
+						<a href="https://kafka.apache.org/downloads" class="top-nav-download" id="top-nav-download">
+							Download Kafka
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+<script type="text/javascript">
+  function loadVideo () {
+    var videoPlaceholder = document.getElementById("video_placeholder"); 
+    var iframe = document.createElement('iframe');
+    iframe.class="youtube-embed page-header-video-embed";
+    iframe.width="480";
+    iframe.height="270";
+    iframe.src="https://www.youtube.com/embed/vHbvbwSEYGo?modestbranding=1";
+    iframe.frameborder="0";
+    iframe.allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+    iframe.setAttribute('allowFullScreen', '');
+    iframe.setAttribute('class','youtube-embed page-header-video-embed');
+    videoPlaceholder.parentNode.replaceChild(iframe, videoPlaceholder);
+    document.getElementById('notification').style.display = 'none';
+  }
+</script>
+<div class="content">
+  <!-- TODO: should we completely remove this? -->
+<!--
+<nav class="b-sticky-nav">
+  <div class="nav-scroller">
+    <div class="nav__inner">
+      <a class="b-nav__home nav__item" href="/">home</a>
+      <a class="b-nav__intro nav__item" href="/intro">introduction</a>
+      <a class="b-nav__quickstart nav__item" href="/quickstart">quickstart</a>
+      <a class="b-nav__uses nav__item" href="/uses">use cases</a>
+
+      <div class="nav__item nav__item__with__subs">
+        <a class="b-nav__docs nav__item nav__sub__anchor" href="/documentation">documentation</a>
+        <a class="nav__item nav__sub__item" href="/documentation#gettingStarted">getting started</a>
+        <a class="nav__item nav__sub__item" href="/documentation#api">APIs</a>
+        <a class="nav__item nav__sub__item" href="/documentation#configuration">configuration</a>
+        <a class="nav__item nav__sub__item" href="/documentation#design">design</a>
+        <a class="nav__item nav__sub__item" href="/documentation#implementation">implementation</a>
+        <a class="nav__item nav__sub__item" href="/documentation#operations">operations</a>
+        <a class="nav__item nav__sub__item" href="/documentation#security">security</a>
+        <a class="nav__item nav__sub__item" href="/documentation#connect">kafka connect</a>
+        <a class="b-nav__streams nav__item nav__sub__item" href="/documentation/streams">kafka streams</a>
+      </div>
+
+      <a class="b-nav__performance nav__item" href="/performance">performance</a>
+      <a class="b-nav__poweredby nav__item" href="/powered-by">powered by</a>
+      <a class="b-nav__project nav__item" href="/project">project info</a>
+      <a class="b-nav__ecosystem nav__item" href="https://cwiki.apache.org/confluence/display/KAFKA/Ecosystem" target="_blank">ecosystem</a>
+      <a class="b-nav__clients nav__item" href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank">clients</a>
+      <a class="b-nav__events nav__item" href="/events">events</a>
+      <a class="b-nav__contact nav__item" href="/contact">contact us</a>
+
+      <div class="nav__item nav__item__with__subs">
+        <a class="b-nav__apache nav__item nav__sub__anchor b-nav__sub__anchor" href="#">apache</a>
+        <a class="b-nav__apache nav__item nav__sub__item" href="http://www.apache.org/" target="_blank">foundation</a>
+        <a class="b-nav__apache nav__item nav__sub__item" href="http://www.apache.org/licenses/" target="_blank">license</a>
+        <a class="b-nav__apache nav__item nav__sub__item" href="http://www.apache.org/foundation/sponsorship.html" target="_blank">sponsorship</a>
+        <a class="b-nav__apache nav__item nav__sub__item" href="http://www.apache.org/foundation/thanks.html" target="_blank">thanks</a>
+        <a class="b-nav__apache nav__item nav__sub__item" href="http://www.apache.org/security/" target="_blank">security</a>
+      </div>
+
+      <a class="btn" href="/downloads">download</a>
+      <div class="social-links">
+        <a class="twitter" href="https://twitter.com/apachekafka" target="_blank">@apachekafka</a>
+      </div>
+    </div>
+  </div>
+  <div class="navindicator">
+    <div class="b-nav__home navindicator__item"></div>
+    <div class="b-nav__intro navindicator__item"></div>
+    <div class="b-nav__quickstart navindicator__item"></div>
+    <div class="b-nav__uses navindicator__item"></div>
+    <div class="b-nav__docs navindicator__item"></div>
+    <div class="b-nav__performance navindicator__item"></div>
+    <div class="b-nav__poweredby navindicator__item"></div>
+    <div class="b-nav__project navindicator__item"></div>
+    <div class="b-nav__ecosystem navindicator__item"></div>
+    <div class="b-nav__clients navindicator__item"></div>
+    <div class="b-nav__events navindicator__item"></div>
+    <div class="b-nav__contact navindicator__item"></div>
+  </div>
+</nav>
+-->
+    <div class="page-header">
+      <h1 class="page-header-title">Apache Kafka Quickstart</h1>
+      <p class="page-header-text">Everything you need to know about Kafka in 10 minutes
+        <span id="notification"><br>(clicking the image will load a video from YouTube)</span>
+      </p>
+        <div class="page-header-video">
+           <img id="video_placeholder" width="480" height="270" src="./Apache Kafka_files/what_is_kafka.png" onclick="loadVideo()" style="cursor:pointer">
+        </div>
+    </div>
+
+<!-- should always link the latest release's documentation -->
+    <!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<script>
+  /*
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+// Define variables for doc templates
+var context={
+    "version": "41",
+    "dotVersion": "4.1",
+    "fullDotVersion": "4.1.0",
+    "scalaVersion": "2.13"
+};
+
+</script>
+
+<script id="quickstart-template" type="text/x-handlebars-template">
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_download" href="#quickstart_download"></a>
+            <a href="#quickstart_download">Step 1: Get Kafka</a>
+        </h4>
+
+        <p>
+            <a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/{{fullDotVersion}}/kafka_{{scalaVersion}}-{{fullDotVersion}}.tgz">Download</a>
+            the latest Kafka release and extract it:
+        </p>
+
+        <pre><code class="language-bash">$ tar -xzf kafka_{{scalaVersion}}-{{fullDotVersion}}.tgz
+$ cd kafka_{{scalaVersion}}-{{fullDotVersion}}</code></pre>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_startserver" href="#quickstart_startserver"></a>
+            <a href="#quickstart_startserver">Step 2: Start the Kafka environment</a>
+        </h4>
+
+        <p class="note">NOTE: Your local environment must have Java 17+ installed.</p>
+
+        <p>Kafka can be run using local scripts and downloaded files or the docker image.</p>
+
+        <h5>Using downloaded files</h5>
+
+        <p>Generate a Cluster UUID</p>
+        <pre><code class="language-bash">$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"</code></pre>
+
+        <p>Format Log Directories</p>
+        <pre><code class="language-bash">$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties</code></pre>
+
+        <p>Start the Kafka Server</p>
+        <pre><code class="language-bash">$ bin/kafka-server-start.sh config/server.properties</code></pre>
+
+        <p>Once the Kafka server has successfully launched, you will have a basic Kafka environment running and ready to use.</p>
+
+        <h5>Using JVM Based Apache Kafka Docker Image</h5>
+
+        <p> Get the Docker image:</p>
+        <pre><code class="language-bash">$ docker pull apache/kafka:{{fullDotVersion}}</code></pre>
+
+        <p> Start the Kafka Docker container: </p>
+        <pre><code class="language-bash">$ docker run -p 9092:9092 apache/kafka:{{fullDotVersion}}</code></pre>
+
+        <h5>Using GraalVM Based Native Apache Kafka Docker Image</h5>
+
+        <p>Get the Docker image:</p>
+        <pre><code class="language-bash">$ docker pull apache/kafka-native:{{fullDotVersion}}</code></pre>
+
+        <p>Start the Kafka Docker container:</p>
+        <pre><code class="language-bash">$ docker run -p 9092:9092 apache/kafka-native:{{fullDotVersion}}</code></pre>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_createtopic" href="#quickstart_createtopic"></a>
+            <a href="#quickstart_createtopic">Step 3: Create a topic to store your events</a>
+        </h4>
+
+        <p>
+            Kafka is a distributed <em>event streaming platform</em> that lets you read, write, store, and process
+            <a href="/documentation/#messages"><em>events</em></a> (also called <em>records</em> or
+            <em>messages</em> in the documentation)
+            across many machines.
+        </p>
+
+        <p>
+            Example events are payment transactions, geolocation updates from mobile phones, shipping orders, sensor measurements
+            from IoT devices or medical equipment, and much more. These events are organized and stored in
+            <a href="/documentation/#intro_concepts_and_terms"><em>topics</em></a>.
+            Very simplified, a topic is similar to a folder in a filesystem, and the events are the files in that folder.
+        </p>
+
+        <p>
+            So before you can write your first events, you must create a topic.  Open another terminal session and run:
+        </p>
+
+        <pre><code class="language-bash">$ bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092</code></pre>
+
+        <p>
+            All of Kafka's command line tools have additional options: run the <code>kafka-topics.sh</code> command without any
+            arguments to display usage information. For example, it can also show you
+            <a href="/documentation/#intro_concepts_and_terms">details such as the partition count</a>
+            of the new topic:
+        </p>
+
+        <pre><code class="language-bash">$ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+Topic: quickstart-events        TopicId: NPmZHyhbR9y00wMglMH2sg PartitionCount: 1       ReplicationFactor: 1	Configs:
+Topic: quickstart-events Partition: 0    Leader: 0   Replicas: 0 Isr: 0</code></pre>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_send" href="#quickstart_send"></a>
+            <a href="#quickstart_send">Step 4: Write some events into the topic</a>
+        </h4>
+
+        <p>
+            A Kafka client communicates with the Kafka brokers via the network for writing (or reading) events.
+            Once received, the brokers will store the events in a durable and fault-tolerant manner for as long as you
+            need—even forever.
+        </p>
+
+        <p>
+            Run the console producer client to write a few events into your topic.
+            By default, each line you enter will result in a separate event being written to the topic.
+        </p>
+
+        <pre><code class="language-bash">$ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+&gt;This is my first event
+&gt;This is my second event</code></pre>
+
+        <p>You can stop the producer client with <code>Ctrl-C</code> at any time.</p>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_consume" href="#quickstart_consume"></a>
+            <a href="#quickstart_consume">Step 5: Read the events</a>
+        </h4>
+
+        <p>Open another terminal session and run the console consumer client to read the events you just created:</p>
+
+        <pre><code class="language-bash">$ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+This is my first event
+This is my second event</code></pre>
+
+        <p>You can stop the consumer client with <code>Ctrl-C</code> at any time.</p>
+
+        <p>Feel free to experiment: for example, switch back to your producer terminal (previous step) to write
+            additional events, and see how the events immediately show up in your consumer terminal.</p>
+
+        <p>Because events are durably stored in Kafka, they can be read as many times and by as many consumers as you want.
+            You can easily verify this by opening yet another terminal session and re-running the previous command again.</p>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkaconnect" href="#quickstart_kafkaconnect"></a>
+            <a href="#quickstart_kafkaconnect">Step 6: Import/export your data as streams of events with Kafka Connect</a>
+        </h4>
+
+        <p>
+            You probably have lots of data in existing systems like relational databases or traditional messaging systems,
+            along with many applications that already use these systems.
+            <a href="/documentation/#connect">Kafka Connect</a> allows you to continuously ingest
+            data from external systems into Kafka, and vice versa. It is an extensible tool that runs
+            <i>connectors</i>, which implement the custom logic for interacting with an external system.
+            It is thus very easy to integrate existing systems with Kafka. To make this process even easier,
+            there are hundreds of such connectors readily available.
+        </p>
+
+        <p>
+            In this quickstart we'll see how to run Kafka Connect with simple connectors that import data
+            from a file to a Kafka topic and export data from a Kafka topic to a file.
+        </p>
+
+        <p>
+            First, make sure to add <code class="language-bash">connect-file-{{fullDotVersion}}.jar</code> to the <code>plugin.path</code> property in the Connect worker's configuration.
+            For the purpose of this quickstart we'll use a relative path and consider the connectors' package as an uber jar, which works when the quickstart commands are run from the installation directory.
+            However, it's worth noting that for production deployments using absolute paths is always preferable. See <a href="/documentation/#connectconfigs_plugin.path">plugin.path</a> for a detailed description of how to set this config.
+        </p>
+
+        <p>
+            Edit the <code class="language-bash">config/connect-standalone.properties</code> file, add or change the <code>plugin.path</code> configuration property match the following, and save the file:
+        </p>
+
+        <pre><code class="language-bash">$ echo "plugin.path=libs/connect-file-{{fullDotVersion}}.jar" &gt;&gt; config/connect-standalone.properties</code></pre>
+
+        <p>
+            Then, start by creating some seed data to test with:
+        </p>
+
+        <pre><code class="language-bash">$ echo -e "foo\nbar" &gt; test.txt</code></pre>
+        Or on Windows:
+        <pre><code class="language-bash">$ echo foo &gt; test.txt
+$ echo bar &gt;&gt; test.txt</code></pre>
+
+        <p>
+            Next, we'll start two connectors running in <i>standalone</i> mode, which means they run in a single, local, dedicated
+            process. We provide three configuration files as parameters. The first is always the configuration for the Kafka Connect
+            process, containing common configuration such as the Kafka brokers to connect to and the serialization format for data.
+            The remaining configuration files each specify a connector to create. These files include a unique connector name, the connector
+            class to instantiate, and any other configuration required by the connector.
+        </p>
+
+        <pre><code class="language-bash">$ bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties config/connect-file-sink.properties</code></pre>
+
+        <p>
+            These sample configuration files, included with Kafka, use the default local cluster configuration you started earlier
+            and create two connectors: the first is a source connector that reads lines from an input file and produces each to a Kafka topic
+            and the second is a sink connector that reads messages from a Kafka topic and produces each as a line in an output file.
+        </p>
+
+        <p>
+            During startup you'll see a number of log messages, including some indicating that the connectors are being instantiated.
+            Once the Kafka Connect process has started, the source connector should start reading lines from <code>test.txt</code> and
+            producing them to the topic <code>connect-test</code>, and the sink connector should start reading messages from the topic <code>connect-test</code>
+            and write them to the file <code>test.sink.txt</code>. We can verify the data has been delivered through the entire pipeline
+            by examining the contents of the output file:
+        </p>
+
+
+        <pre><code class="language-bash">$ more test.sink.txt
+foo
+bar</code></pre>
+
+        <p>
+            Note that the data is being stored in the Kafka topic <code>connect-test</code>, so we can also run a console consumer to see the
+            data in the topic (or use custom consumer code to process it):
+        </p>
+
+
+        <pre><code class="language-bash">$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic connect-test --from-beginning
+{"schema":{"type":"string","optional":false},"payload":"foo"}
+{"schema":{"type":"string","optional":false},"payload":"bar"}
+&hellip;</code></pre>
+
+        <p>The connectors continue to process data, so we can add data to the file and see it move through the pipeline:</p>
+
+        <pre><code class="language-bash">$ echo "Another line" &gt;&gt; test.txt</code></pre>
+
+        <p>You should see the line appear in the console consumer output and in the sink file.</p>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkastreams" href="#quickstart_kafkastreams"></a>
+            <a href="#quickstart_kafkastreams">Step 7: Process your events with Kafka Streams</a>
+        </h4>
+
+        <p>
+            Once your data is stored in Kafka as events, you can process the data with the
+            <a href="/documentation/streams">Kafka Streams</a> client library for Java/Scala.
+            It allows you to implement mission-critical real-time applications and microservices, where the input
+            and/or output data is stored in Kafka topics.  Kafka Streams combines the simplicity of writing and deploying
+            standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster
+            technology to make these applications highly scalable, elastic, fault-tolerant, and distributed. The library
+            supports exactly-once processing, stateful operations and aggregations, windowing, joins, processing based
+            on event-time, and much more.
+        </p>
+
+        <p>To give you a first taste, here's how one would implement the popular <code>WordCount</code> algorithm:</p>
+
+        <pre class="line-numbers"><code class="language-java">KStream&lt;String, String&gt; textLines = builder.stream("quickstart-events");
+
+KTable&lt;String, Long&gt; wordCounts = textLines
+            .flatMapValues(line -&gt; Arrays.asList(line.toLowerCase().split(" ")))
+            .groupBy((keyIgnored, word) -&gt; word)
+            .count();
+
+wordCounts.toStream().to("output-topic", Produced.with(Serdes.String(), Serdes.Long()));</code></pre>
+
+        <p>
+            The <a href="/documentation/streams/quickstart">Kafka Streams demo</a>
+            and the <a href="/{{version}}/documentation/streams/tutorial">app development tutorial</a>
+            demonstrate how to code and run such a streaming application from start to finish.
+        </p>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkaterminate" href="#quickstart_kafkaterminate"></a>
+            <a href="#quickstart_kafkaterminate">Step 8: Terminate the Kafka environment</a>
+        </h4>
+
+        <p>
+            Now that you reached the end of the quickstart, feel free to tear down the Kafka environment—or
+            continue playing around.
+        </p>
+
+        <ol>
+            <li>
+                Stop the producer and consumer clients with <code>Ctrl-C</code>, if you haven't done so already.
+            </li>
+            <li>
+                Stop the Kafka broker with <code>Ctrl-C</code>.
+            </li>
+        </ol>
+
+        <p>
+            If you also want to delete any data of your local Kafka environment including any events you have created
+            along the way, run the command:
+        </p>
+
+        <pre><code class="language-bash">$ rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs</code></pre>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkacongrats" href="#quickstart_kafkacongrats"></a>
+            <a href="#quickstart_kafkacongrats">Congratulations!</a>
+        </h4>
+
+        <p>You have successfully finished the Apache Kafka quickstart.</p>
+
+        <p>To learn more, we suggest the following next steps:</p>
+
+        <ul>
+            <li>
+                Read through the brief <a href="/intro">Introduction</a>
+                to learn how Kafka works at a high level, its main concepts, and how it compares to other
+                technologies. To understand Kafka in more detail, head over to the
+                <a href="/documentation/">Documentation</a>.
+            </li>
+            <li>
+                Browse through the <a href="/powered-by">Use Cases</a> to learn how
+                other users in our world-wide community are getting value out of Kafka.
+            </li>
+            <!--
+            <li>
+                Learn how _Kafka compares to other technologies_ you might be familiar with.
+                [note to design team: this new page is not yet written]
+            </li>
+            -->
+            <li>
+                Join a <a href="/events">local Kafka meetup group</a> and
+                <a href="https://kafka-summit.org/past-events/">watch talks from Kafka Summit</a>,
+                the main conference of the Kafka community.
+            </li>
+        </ul>
+    </div>
+</script>
+
+<div class="p-quickstart">
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_download" href="https://kafka.apache.org/quickstart#quickstart_download"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_download">Step 1: Get Kafka</a>
+        </h4>
+
+        <p>
+            <a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/4.1.0/kafka_2.13-4.1.0.tgz">Download</a>
+            the latest Kafka release and extract it:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">tar</span> -xzf kafka_2.13-4.1.0.tgz
+$ <span class="token builtin class-name">cd</span> kafka_2.13-4.1.0</code></pre>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_startserver" href="https://kafka.apache.org/quickstart#quickstart_startserver"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_startserver">Step 2: Start the Kafka environment</a>
+        </h4>
+
+        <p class="note">NOTE: Your local environment must have Java 17+ installed.</p>
+
+        <p>Kafka can be run using local scripts and downloaded files or the docker image.</p>
+
+        <h5>Using downloaded files</h5>
+
+        <p>Generate a Cluster UUID</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token assign-left variable">KAFKA_CLUSTER_ID</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span>bin/kafka-storage.sh random-uuid<span class="token variable">)</span></span>"</span></code></pre>
+
+        <p>Format Log Directories</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-storage.sh <span class="token function">format</span> --standalone -t <span class="token variable">$KAFKA_CLUSTER_ID</span> -c config/server.properties</code></pre>
+
+        <p>Start the Kafka Server</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-server-start.sh config/server.properties</code></pre>
+
+        <p>Once the Kafka server has successfully launched, you will have a basic Kafka environment running and ready to use.</p>
+
+        <h5>Using JVM Based Apache Kafka Docker Image</h5>
+
+        <p> Get the Docker image:</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">docker</span> pull apache/kafka:4.1.0</code></pre>
+
+        <p> Start the Kafka Docker container: </p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">docker</span> run -p <span class="token number">9092</span>:9092 apache/kafka:4.1.0</code></pre>
+
+        <h5>Using GraalVM Based Native Apache Kafka Docker Image</h5>
+
+        <p>Get the Docker image:</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">docker</span> pull apache/kafka-native:4.1.0</code></pre>
+
+        <p>Start the Kafka Docker container:</p>
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">docker</span> run -p <span class="token number">9092</span>:9092 apache/kafka-native:4.1.0</code></pre>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_createtopic" href="https://kafka.apache.org/quickstart#quickstart_createtopic"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_createtopic">Step 3: Create a topic to store your events</a>
+        </h4>
+
+        <p>
+            Kafka is a distributed <em>event streaming platform</em> that lets you read, write, store, and process
+            <a href="https://kafka.apache.org/documentation/#messages"><em>events</em></a> (also called <em>records</em> or
+            <em>messages</em> in the documentation)
+            across many machines.
+        </p>
+
+        <p>
+            Example events are payment transactions, geolocation updates from mobile phones, shipping orders, sensor measurements
+            from IoT devices or medical equipment, and much more. These events are organized and stored in
+            <a href="https://kafka.apache.org/documentation/#intro_concepts_and_terms"><em>topics</em></a>.
+            Very simplified, a topic is similar to a folder in a filesystem, and the events are the files in that folder.
+        </p>
+
+        <p>
+            So before you can write your first events, you must create a topic.  Open another terminal session and run:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092</code></pre>
+
+        <p>
+            All of Kafka's command line tools have additional options: run the <code>kafka-topics.sh</code> command without any
+            arguments to display usage information. For example, it can also show you
+            <a href="https://kafka.apache.org/documentation/#intro_concepts_and_terms">details such as the partition count</a>
+            of the new topic:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+Topic: quickstart-events        TopicId: NPmZHyhbR9y00wMglMH2sg PartitionCount: <span class="token number">1</span>       ReplicationFactor: <span class="token number">1</span>	Configs:
+Topic: quickstart-events Partition: <span class="token number">0</span>    Leader: <span class="token number">0</span>   Replicas: <span class="token number">0</span> Isr: <span class="token number">0</span></code></pre>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_send" href="https://kafka.apache.org/quickstart#quickstart_send"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_send">Step 4: Write some events into the topic</a>
+        </h4>
+
+        <p>
+            A Kafka client communicates with the Kafka brokers via the network for writing (or reading) events.
+            Once received, the brokers will store the events in a durable and fault-tolerant manner for as long as you
+            need—even forever.
+        </p>
+
+        <p>
+            Run the console producer client to write a few events into your topic.
+            By default, each line you enter will result in a separate event being written to the topic.
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+<span class="token operator">&gt;</span>This is my first event
+<span class="token operator">&gt;</span>This is my second event</code></pre>
+
+        <p>You can stop the producer client with <code>Ctrl-C</code> at any time.</p>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_consume" href="https://kafka.apache.org/quickstart#quickstart_consume"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_consume">Step 5: Read the events</a>
+        </h4>
+
+        <p>Open another terminal session and run the console consumer client to read the events you just created:</p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+This is my first event
+This is my second event</code></pre>
+
+        <p>You can stop the consumer client with <code>Ctrl-C</code> at any time.</p>
+
+        <p>Feel free to experiment: for example, switch back to your producer terminal (previous step) to write
+            additional events, and see how the events immediately show up in your consumer terminal.</p>
+
+        <p>Because events are durably stored in Kafka, they can be read as many times and by as many consumers as you want.
+            You can easily verify this by opening yet another terminal session and re-running the previous command again.</p>
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkaconnect" href="https://kafka.apache.org/quickstart#quickstart_kafkaconnect"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_kafkaconnect">Step 6: Import/export your data as streams of events with Kafka Connect</a>
+        </h4>
+
+        <p>
+            You probably have lots of data in existing systems like relational databases or traditional messaging systems,
+            along with many applications that already use these systems.
+            <a href="https://kafka.apache.org/documentation/#connect">Kafka Connect</a> allows you to continuously ingest
+            data from external systems into Kafka, and vice versa. It is an extensible tool that runs
+            <i>connectors</i>, which implement the custom logic for interacting with an external system.
+            It is thus very easy to integrate existing systems with Kafka. To make this process even easier,
+            there are hundreds of such connectors readily available.
+        </p>
+
+        <p>
+            In this quickstart we'll see how to run Kafka Connect with simple connectors that import data
+            from a file to a Kafka topic and export data from a Kafka topic to a file.
+        </p>
+
+        <p>
+            First, make sure to add <code class="language-bash">connect-file-4.1.0.jar</code> to the <code>plugin.path</code> property in the Connect worker's configuration.
+            For the purpose of this quickstart we'll use a relative path and consider the connectors' package as an uber jar, which works when the quickstart commands are run from the installation directory.
+            However, it's worth noting that for production deployments using absolute paths is always preferable. See <a href="https://kafka.apache.org/documentation/#connectconfigs_plugin.path">plugin.path</a> for a detailed description of how to set this config.
+        </p>
+
+        <p>
+            Edit the <code class="language-bash">config/connect-standalone.properties</code> file, add or change the <code>plugin.path</code> configuration property match the following, and save the file:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"plugin.path=libs/connect-file-4.1.0.jar"</span> <span class="token operator">&gt;&gt;</span> config/connect-standalone.properties</code></pre>
+
+        <p>
+            Then, start by creating some seed data to test with:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token builtin class-name">echo</span> -e <span class="token string">"foo<span class="token entity" title="\n">\n</span>bar"</span> <span class="token operator">&gt;</span> test.txt</code></pre>
+        Or on Windows:
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token builtin class-name">echo</span> foo <span class="token operator">&gt;</span> test.txt
+$ <span class="token builtin class-name">echo</span> bar <span class="token operator">&gt;&gt;</span> test.txt</code></pre>
+
+        <p>
+            Next, we'll start two connectors running in <i>standalone</i> mode, which means they run in a single, local, dedicated
+            process. We provide three configuration files as parameters. The first is always the configuration for the Kafka Connect
+            process, containing common configuration such as the Kafka brokers to connect to and the serialization format for data.
+            The remaining configuration files each specify a connector to create. These files include a unique connector name, the connector
+            class to instantiate, and any other configuration required by the connector.
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties config/connect-file-sink.properties</code></pre>
+
+        <p>
+            These sample configuration files, included with Kafka, use the default local cluster configuration you started earlier
+            and create two connectors: the first is a source connector that reads lines from an input file and produces each to a Kafka topic
+            and the second is a sink connector that reads messages from a Kafka topic and produces each as a line in an output file.
+        </p>
+
+        <p>
+            During startup you'll see a number of log messages, including some indicating that the connectors are being instantiated.
+            Once the Kafka Connect process has started, the source connector should start reading lines from <code>test.txt</code> and
+            producing them to the topic <code>connect-test</code>, and the sink connector should start reading messages from the topic <code>connect-test</code>
+            and write them to the file <code>test.sink.txt</code>. We can verify the data has been delivered through the entire pipeline
+            by examining the contents of the output file:
+        </p>
+
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">more</span> test.sink.txt
+foo
+bar</code></pre>
+
+        <p>
+            Note that the data is being stored in the Kafka topic <code>connect-test</code>, so we can also run a console consumer to see the
+            data in the topic (or use custom consumer code to process it):
+        </p>
+
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic connect-test --from-beginning
+<span class="token punctuation">{</span><span class="token string">"schema"</span>:<span class="token punctuation">{</span><span class="token string">"type"</span><span class="token builtin class-name">:</span><span class="token string">"string"</span>,<span class="token string">"optional"</span>:false<span class="token punctuation">}</span>,<span class="token string">"payload"</span><span class="token builtin class-name">:</span><span class="token string">"foo"</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token string">"schema"</span>:<span class="token punctuation">{</span><span class="token string">"type"</span><span class="token builtin class-name">:</span><span class="token string">"string"</span>,<span class="token string">"optional"</span>:false<span class="token punctuation">}</span>,<span class="token string">"payload"</span><span class="token builtin class-name">:</span><span class="token string">"bar"</span><span class="token punctuation">}</span>
+…</code></pre>
+
+        <p>The connectors continue to process data, so we can add data to the file and see it move through the pipeline:</p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"Another line"</span> <span class="token operator">&gt;&gt;</span> test.txt</code></pre>
+
+        <p>You should see the line appear in the console consumer output and in the sink file.</p>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkastreams" href="https://kafka.apache.org/quickstart#quickstart_kafkastreams"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_kafkastreams">Step 7: Process your events with Kafka Streams</a>
+        </h4>
+
+        <p>
+            Once your data is stored in Kafka as events, you can process the data with the
+            <a href="https://kafka.apache.org/documentation/streams">Kafka Streams</a> client library for Java/Scala.
+            It allows you to implement mission-critical real-time applications and microservices, where the input
+            and/or output data is stored in Kafka topics.  Kafka Streams combines the simplicity of writing and deploying
+            standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster
+            technology to make these applications highly scalable, elastic, fault-tolerant, and distributed. The library
+            supports exactly-once processing, stateful operations and aggregations, windowing, joins, processing based
+            on event-time, and much more.
+        </p>
+
+        <p>To give you a first taste, here's how one would implement the popular <code>WordCount</code> algorithm:</p>
+
+        <pre class="line-numbers language-java" tabindex="0"><code class="language-java"><span class="token class-name">KStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> textLines <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token string">"quickstart-events"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">KTable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> wordCounts <span class="token operator">=</span> textLines
+            <span class="token punctuation">.</span><span class="token function">flatMapValues</span><span class="token punctuation">(</span>line <span class="token operator">-&gt;</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">groupBy</span><span class="token punctuation">(</span><span class="token punctuation">(</span>keyIgnored<span class="token punctuation">,</span> word<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> word<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+wordCounts<span class="token punctuation">.</span><span class="token function">toStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">to</span><span class="token punctuation">(</span><span class="token string">"output-topic"</span><span class="token punctuation">,</span> <span class="token class-name">Produced</span><span class="token punctuation">.</span><span class="token keyword">with</span><span class="token punctuation">(</span><span class="token class-name">Serdes<span class="token punctuation">.</span>String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Serdes<span class="token punctuation">.</span>Long</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        <p>
+            The <a href="https://kafka.apache.org/documentation/streams/quickstart">Kafka Streams demo</a>
+            and the <a href="https://kafka.apache.org/41/documentation/streams/tutorial">app development tutorial</a>
+            demonstrate how to code and run such a streaming application from start to finish.
+        </p>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkaterminate" href="https://kafka.apache.org/quickstart#quickstart_kafkaterminate"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_kafkaterminate">Step 8: Terminate the Kafka environment</a>
+        </h4>
+
+        <p>
+            Now that you reached the end of the quickstart, feel free to tear down the Kafka environment—or
+            continue playing around.
+        </p>
+
+        <ol>
+            <li>
+                Stop the producer and consumer clients with <code>Ctrl-C</code>, if you haven't done so already.
+            </li>
+            <li>
+                Stop the Kafka broker with <code>Ctrl-C</code>.
+            </li>
+        </ol>
+
+        <p>
+            If you also want to delete any data of your local Kafka environment including any events you have created
+            along the way, run the command:
+        </p>
+
+        <pre class="language-bash" tabindex="0"><code class="language-bash">$ <span class="token function">rm</span> -rf /tmp/kafka-logs /tmp/kraft-combined-logs</code></pre>
+
+    </div>
+
+    <div class="quickstart-step">
+        <h4 class="anchor-heading">
+            <a class="anchor-link" id="quickstart_kafkacongrats" href="https://kafka.apache.org/quickstart#quickstart_kafkacongrats"></a>
+            <a href="https://kafka.apache.org/quickstart#quickstart_kafkacongrats">Congratulations!</a>
+        </h4>
+
+        <p>You have successfully finished the Apache Kafka quickstart.</p>
+
+        <p>To learn more, we suggest the following next steps:</p>
+
+        <ul>
+            <li>
+                Read through the brief <a href="https://kafka.apache.org/intro">Introduction</a>
+                to learn how Kafka works at a high level, its main concepts, and how it compares to other
+                technologies. To understand Kafka in more detail, head over to the
+                <a href="https://kafka.apache.org/documentation/">Documentation</a>.
+            </li>
+            <li>
+                Browse through the <a href="https://kafka.apache.org/powered-by">Use Cases</a> to learn how
+                other users in our world-wide community are getting value out of Kafka.
+            </li>
+            <!--
+            <li>
+                Learn how _Kafka compares to other technologies_ you might be familiar with.
+                [note to design team: this new page is not yet written]
+            </li>
+            -->
+            <li>
+                Join a <a href="https://kafka.apache.org/events">local Kafka meetup group</a> and
+                <a href="https://kafka-summit.org/past-events/">watch talks from Kafka Summit</a>,
+                the main conference of the Kafka community.
+            </li>
+        </ul>
+    </div>
+</div>
+
+				</div>
+			</div>
+		
+		<div class="footer">
+			<div class="footer__inner">
+				<div class="footer__legal">
+					<span class="footer__legal__one">The contents of this website are © 2024 <a href="https://www.apache.org/" target="_blank">Apache Software Foundation</a> under the terms of the <a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License v2</a>.</span>
+					<span class="footer__legal__two">Apache Kafka, Kafka, and the Kafka logo are either registered trademarks or trademarks of The Apache Software Foundation</span>
+					<span class="footer__legal__three">in the United States and other countries.</span>
+					<div>
+						<a href="https://kafka.apache.org/project-security" target="_blank" rel="noreferrer">Security</a>&nbsp;|&nbsp;
+						<a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer">Donate</a>&nbsp;|&nbsp;
+						<a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer">Thanks</a>&nbsp;|&nbsp;
+						<a href="https://apache.org/events/current-event" target="_blank" rel="noreferrer">Events</a>&nbsp;|&nbsp;
+						<a href="https://apache.org/licenses/" target="_blank" rel="noreferrer">License</a>&nbsp;|&nbsp;
+						<a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noreferrer">Privacy</a>
+					</div>
+				</div>
+				<a class="apache-feather" target="_blank" href="https://www.apache.org/">
+					<img width="40" src="./Apache Kafka_files/feather-small.png" alt="Apache Feather">
+				</a>
+			</div>
+		</div>
+
+		<!-- Script tags should be inside the body tag -- not inside the html tag -->
+		<script src="./Apache Kafka_files/handlebars.js"></script>
+		<script>
+			$(function () {
+				// list of pages that are rendered with Handlebars
+				var templates = [
+					'introduction',
+					'implementation',
+					'design',
+					'api',
+					'configuration',
+					'ops',
+					'security',
+					'connect',
+					'streams',
+					'quickstart',
+					'quickstart-docker',
+					'toc',
+					'upgrade',
+					'content',
+					'zk2kraft-summary',
+					'compatibility-summary',
+					'docker'
+				];
+
+				// loop through all Handlebar templates on the page and render them
+				for(var i = 0; i < templates.length; i++) {
+					var templateScript = $("#" + templates[i] + "-template").html();
+					if(templateScript) {
+						var template = Handlebars.compile(templateScript);
+						var html = template(context);
+						$(".p-" + templates[i]).html(html);
+					}
+				}
+			});
+		</script>
+
+		<script src="./Apache Kafka_files/jquery.sticky-kit.min.js"></script>
+		<script>
+
+			let mobileScrolling = false;
+			let mobileTimeout;
+
+			// Let's start getting rid of jQuery...
+			function checkPageScroll() {
+				if (window.scrollY >= 80 || document.body.scrollTop >= 100) {
+					document.getElementById('header').classList.add('scrolled');
+				} else {
+					document.getElementById('header').classList.remove('scrolled');
+				}
+			}
+
+			function mobilePageScroll() {
+				mobileScrolling = true;
+				mobileTimeout = null;
+				mobileTimeout = setTimeout(checkPageScroll, 200);
+			}
+
+			function pageScroll(e) {
+				requestAnimationFrame(checkPageScroll);
+			};
+
+			function setUpA11yMenus(nav) {
+				const itemsWithMenu = nav.querySelectorAll('[aria-haspopup="true"]');
+				const topLevelItems = nav.querySelectorAll('.top-nav-item-anchor');
+				const navAnchors = nav.querySelectorAll('a');
+				const menus = nav.querySelectorAll('[role="menu"]');
+				const keyMap = {
+					// directions
+					'left': 37, 'up': 38, 'right': 39, 'down': 40,
+					// actions
+					'tab': 9, 'enter': 13, 'esc': 27, 'space': 32,
+				}
+				// TODO: keep synced with the above map
+				const keyCodes = [37, 38, 39, 40, 9, 13, 27, 32];
+
+				// allow # links in the nav so they can have focus and we can treat them like links
+				nav.addEventListener('click', (e) => {
+					if (e.target.hasAttribute('href') && e.target.getAttribute('href') === '#') {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+				});
+
+				for (let i = 0; i < topLevelItems.length; i++) {
+					const item = topLevelItems[i];
+					const attrNames = {
+						currentFocus: 'data-current-focus',
+						hidden: 'aria-hidden',
+						expanded: 'aria-expanded',
+					};
+					// get the actual anchor
+					// get the menu which is a sibling to the item
+					const itemMenu = item.parentNode.querySelector('[role="menu"]');
+
+					function selectPreviousMenuItem(e, keyPressed) {
+						let selectedIndex = -1;
+
+						if (!itemMenu) {
+							selectPreviousTopLevelItem(e);
+						}
+
+						if (itemMenu && itemMenu.hasAttribute(attrNames.currentFocus)) {
+							selectedIndex = parseInt(itemMenu.getAttribute(attrNames.currentFocus), 10);
+						}
+						let nextIndex = selectedIndex - 1;
+						const menuItems = itemMenu.getElementsByTagName('a');
+						 
+						if (nextIndex >= 0) {
+						// select next item
+							menuItems[nextIndex].focus();
+							itemMenu.setAttribute(attrNames.currentFocus, nextIndex);
+						} else if (nextIndex === -1) {
+						// select top level menu item
+							item.focus();
+							itemMenu.setAttribute(attrNames.currentFocus, -1);
+						} else if (nextIndex === -2) {
+							if (keyPressed === 'tab') {
+								// go to the previous top level item
+								selectPreviousTopLevelItem(e);
+							} else {
+								// go to the last menu item
+								menuItems[menuItems.length - 1].focus()
+								itemMenu.setAttribute(attrNames.currentFocus, menuItems.length - 1);
+							}
+						}
+					}
+
+					function selectNextMenuItem(keyPressed) {
+						let selectedIndex = -1;
+						let nextIndex;
+						let menuItems;
+
+						if (!itemMenu) {
+							selectNextTopLevelItem();
+						}
+
+						menuItems = itemMenu.getElementsByTagName('a');
+
+						for (let j = 0; j < menuItems.length; j++) {
+							if (menuItems[j] === document.activeElement) {
+								selectedIndex = j;
+								break;
+							}
+						}
+
+						nextIndex = selectedIndex + 1;
+
+						// debugger;
+						
+						if (keyPressed === 'tab') {
+							if (nextIndex >= menuItems.length) {
+								selectNextTopLevelItem()
+							} else {
+								menuItems[nextIndex].focus();
+							}
+						} else {
+							if (nextIndex < menuItems.length) {
+								menuItems[nextIndex].focus();
+							} else {
+								item.focus();
+							}
+						}
+					}
+					
+					function selectPreviousTopLevelItem() {
+						let newIndex;
+
+						for (let j = 0; j < topLevelItems.length; j++) {
+							if (topLevelItems[j] === item) {
+								newIndex = j - 1;
+								break;
+							}
+						}
+
+						if (itemMenu) {
+							hideMenu();
+						}
+
+						if (newIndex < 0) {
+							document.querySelector('.logo-link').focus();
+						} else {
+							topLevelItems[newIndex].focus();
+						}
+					}
+					
+					function selectNextTopLevelItem() {
+						let newIndex;
+
+						for (let j = 0; j < topLevelItems.length; j++) {
+							if (topLevelItems[j] === item) {
+								newIndex = j + 1;
+								break;
+							}
+						}
+
+						if (itemMenu) {
+							hideMenu();
+						}
+
+						if (newIndex > topLevelItems.length - 1) {
+							document.getElementById('top-nav-download').focus();
+						} else {
+							topLevelItems[newIndex].focus();
+						}
+					}
+
+					function isMenuOpen() {
+						return itemMenu && itemMenu.getAttribute(attrNames.hidden) === 'false';
+					}
+
+					function showMenu() {
+						item.setAttribute(attrNames.expanded, 'true');
+						if (itemMenu) {
+							itemMenu.setAttribute(attrNames.hidden, 'false');
+						}
+					}
+
+					function hideMenu() {
+						item.setAttribute(attrNames.expanded, 'false');
+						if (itemMenu) {
+							itemMenu.setAttribute(attrNames.hidden, 'true');
+							delete itemMenu.dataset.currentFocus;
+						}
+					}
+
+					item.parentNode.addEventListener('mouseover', showMenu);
+					item.parentNode.addEventListener('mouseout', hideMenu);
+					item.parentNode.addEventListener('blur', hideMenu);
+					item.addEventListener('focus', showMenu);
+
+					// use keydown for direction keys
+					item.parentNode.addEventListener('keydown', (e) => {
+						// check for an important keycode
+						if (keyCodes.indexOf(e.keyCode) > -1) {
+							e.preventDefault();
+							e.stopPropagation();
+
+							switch(e.keyCode) {
+								case keyMap.left:
+									if (itemMenu) {
+										if (!isMenuOpen()) {
+											selectPreviousTopLevelItem();
+										} else {
+											hideMenu();
+											item.focus();
+										}
+									} else {
+										selectPreviousTopLevelItem();
+									}
+								break;
+								case keyMap.up:
+									if (itemMenu) {
+										if (isMenuOpen()) {
+											selectPreviousMenuItem(e, 'up');
+										}
+									}
+								break;
+								case keyMap.right:
+									if (!isMenuOpen() || document.activeElement === item) {
+										selectNextTopLevelItem('right');
+									}
+								break;
+								case keyMap.down:
+									if (itemMenu) {
+										if (isMenuOpen()) {
+											selectNextMenuItem('down');
+										} else {
+											showMenu();
+										}
+									}
+								break;
+								case keyMap.tab:
+									const isShiftActive = e.getModifierState('Shift');
+									if (itemMenu) {
+										if (isShiftActive) {
+											selectPreviousTopLevelItem();
+										} else {
+											if (isMenuOpen()) {
+												selectNextMenuItem('tab');
+											} else {
+												showMenu();
+											}
+										}
+									} else {
+										if (isShiftActive) {
+											selectPreviousTopLevelItem();
+										} else {
+											selectNextTopLevelItem('tab');
+										}
+									}
+								break;
+								case keyMap.esc:
+									if (itemMenu && isMenuOpen()) {
+										hideMenu();
+									}
+								break;
+								default:
+									// can probably remove the default case (in this case)
+								break;
+							}
+						}
+					});
+				};
+			}
+
+			function is_touch_enabled() { 
+				return ( 'ontouchstart' in window ) ||  
+							( navigator.maxTouchPoints > 0 ) ||  
+							( navigator.msMaxTouchPoints > 0 ); 
+			}
+
+			function setupDocsNav() {
+				var docsContainer = document.querySelector('.documentation--current');
+				var docsHandle = document.querySelector('.toc-handle');
+
+				function toggleDocsWidth() {
+					let isExpanded = docsContainer.classList.toggle('expanded');
+					// change the arrow direction based on the view state is expanded or not
+					if (isExpanded) {
+						docsHandle.textContent = ">";
+					} else {
+						docsHandle.textContent = "<";
+					}
+				}
+
+				docsHandle.addEventListener('click', toggleDocsWidth);
+			}
+
+			// jQuery free IIFE
+			(function() {
+				var navToggle = document.getElementById('top-nav-toggle');
+				var nav = document.getElementById('top-nav-container');
+				var docsNav = document.querySelector('.docs-nav');
+
+				navToggle.addEventListener('click', () => {
+					navToggle.classList.toggle('active');
+				});
+
+				// skip this for touch devices
+				if (is_touch_enabled()) {
+					nav.querySelectorAll('a').forEach(anchor => anchor.removeAttribute('tabindex'));
+					window.addEventListener('touchmove', mobilePageScroll, false);
+				} else {
+					setUpA11yMenus(nav);
+					window.addEventListener('scroll', pageScroll, false);
+				}
+
+				// jQuery free document ready
+				document.addEventListener("DOMContentLoaded", function() { 
+					// anything to do on dom ready here
+					pageScroll();
+
+					if (docsNav) {
+						setupDocsNav();
+					}
+
+					// document.querySelectorAll('[class^="language-"]').forEach((block) => {
+					// 	hljs.highlightBlock(block);
+					// });
+				});
+			}());
+		</script>
+	
+
+
+<script>
+// Show selected style on nav item
+$(function() { $('.b-nav__quickstart').addClass('selected'); });
+</script>
+</body></html>
