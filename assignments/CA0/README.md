@@ -8,7 +8,7 @@ The hostname is *backwater*.
 
 The machine is called *deepslate*.
 
-![Deepslate](./assets/photos/deepslate.jpg)
+[Deepslate](./assets/photos/deepslate.jpg)
 
 The internal is so crowded because it have to fit within carry-on size limit.
 
@@ -60,13 +60,25 @@ I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set
 
 ### Database
 
+I choose MongoDB.
 
+I followed the [Getting Started Guide](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) to install  the MongoDB with no alternation.
+
+### Orchestrator
+
+I choose K8s + Docker.
+
+I followed [Getting Started Guide][https://docs.docker.com/engine/install/ubuntu/] for docker installation, and then I followed [Post install guide](https://docs.docker.com/engine/install/linux-postinstall/) to make sure non-root user can use Docker. In this case, user "kube".
+
+Then, I followed [Getting Started Guide for K8s](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management) and [Getting Started Guide for MiniKube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download) to set up the environment.
 
 ## Network Diagram
 
 Here is how the network is structured.
 
 ![Backwater Networking](./assets/Networking@Backwater.png)
+
+For firewall on the VMs, I used UFW utility.
 
 ## Configuration Summary Table
 
@@ -153,7 +165,3 @@ Overall, the installation almost use default values, and minimal changes are app
 ![Ports](./assets/screenshots/security/k8s.png)
 
 ![Non-root Container](./assets/screenshots/security/non-root_container.png)
-
-## Demo Video
-
-## Screenshots
