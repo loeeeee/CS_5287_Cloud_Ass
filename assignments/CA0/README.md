@@ -99,20 +99,22 @@ I set all the VM with the same configuration besides IP addresses
 
 ![Download Ubuntu Image](./assets/screenshots/VM_setup/0.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/1.png)
+![Setup General Config](./assets/screenshots/VM_setup/1.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/2.png)
+![Choose Ubuntu IMG](./assets/screenshots/VM_setup/2.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/3.png)
+![Setup MB](./assets/screenshots/VM_setup/3.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/4.png)
+![Setup Storage](./assets/screenshots/VM_setup/4.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/5.png)
+![Setup CPUs](./assets/screenshots/VM_setup/5.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/6.png)
+![Setup Memory](./assets/screenshots/VM_setup/6.png)
 
-![Download Ubuntu Image](./assets/screenshots/VM_setup/7.png)
-![Download Ubuntu Image](./assets/screenshots/VM_setup/8.png)
+![Setup Network](./assets/screenshots/VM_setup/7.png)
+
+![Setup DHCP at Pfsense](./assets/screenshots/VM_setup/8.png)
+
 ![Download Ubuntu Image](./assets/screenshots/VM_setup/9.png)
 ![Download Ubuntu Image](./assets/screenshots/VM_setup/10.png)
 ![Download Ubuntu Image](./assets/screenshots/VM_setup/11.png)
