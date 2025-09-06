@@ -61,6 +61,10 @@ The ration behind not using zookeeper is because zookeeper is deprecated and is 
 
 I followed [Getting Stated on Kafka](https://kafka.apache.org/quickstart) to set up my kafka VM.
 
+#### Localhost event streaming
+
+![It can talk to itself](./assets/screenshots/progress/kafka-localhost_talking.png)
+
 ### Database
 
 I choose MongoDB.
