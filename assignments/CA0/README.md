@@ -83,7 +83,7 @@ Then, I followed [Getting Started Guide for K8s](https://kubernetes.io/docs/task
 
 ```bash
 root@cs-k8s:~# minikube start --driver=none
-* minikube v1.36.0 on Ubuntu 24.04 (lxc/amd64)
+* minikube v1.36.0 on Ubuntu 24.04 (amd64)
 * Using the none driver based on user configuration
 
 X Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.33.1 requires crictl to be installed in root's path
@@ -201,3 +201,6 @@ Overall, the installation almost use default values, and minimal changes are app
 I create a sudo non-root user on each of the machine, and changed the following config:
 
 ![SSHD_config](./assets/screenshots/security/shhd_config.png)
+
+## I was not having a good day
+
