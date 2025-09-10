@@ -144,3 +144,22 @@ I found out this when checking `dmesg` and found out of memory kill. What a pain
   networking.firewall.allowedUDPPorts = [ 53 ];
 }
 ```
+
+## Deep Dive into VM issues
+
+To be honest, I was not able to install any VMs on *Deepslate*. I did my VM installation on the machine back home, which was called *Oak*. *Oak* is an old but reliable machine rocking a dual E5 2695 V3 (ES), but it does not have any Raid configuration, and the access latency is over 300ms.
+
+Anyway, after digging around the Internet. I found that early zen architecture (even production ones) has many hardware bugs, unsurprisingly. (I heard someone had an EPYC ES CPU with 64 cores in 64 NUMA nodes...)
+
+[Bug Report](https://lore.kernel.org/all/20230307174643.1240184-1-andrew.cooper3@citrix.com/)
+
+> AMD Erratum 1386 is summarised as:
+>
+>  XSAVES Instruction May Fail to Save XMM Registers to the Provided
+>  State Save Area
+>
+> This piece of accidental chronomancy causes the %xmm registers to
+> occasionally reset back to an older value.
+>
+> Ignore the XSAVES feature on all AMD Zen1/2 hardware.  The XSAVEC
+> instruction (which works fine) is equivalent on affected parts.
