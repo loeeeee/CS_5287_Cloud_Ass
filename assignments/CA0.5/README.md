@@ -56,6 +56,13 @@ pct create "100102" \
 
 Note: NixOS needs at least 1GiB of RAM in LXC. Otherwise, the command `nixos-rebuild switch` would silently crash. 
 
+```log
+...
+[96792.508817] oom-kill:constraint=CONSTRAINT_MEMCG,nodemask=(null),cpuset=init.scope,mems_allowed=0,oom_memcg=/lxc/100102,task_memcg=/lxc/100102/ns/.lxc,task=nix-build,pid=1355176,uid=100000
+[96792.526471] Memory cgroup out of memory: Killed process 1355176 (nix-build) total-vm:582948kB, anon-rss:486928kB, file-rss:1004kB, shmem-rss:0kB, UID:100000 pgtables:1120kB oom_score_adj:0
+...
+```
+
 I found out this when checking `dmesg` and found out of memory kill. What a pain!
 
 ### Configuration
