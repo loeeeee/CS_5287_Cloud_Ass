@@ -36,7 +36,7 @@
     gid = 1001;
   };
   users.users.mongodb = {
-    description = "MongoDB daemon user";
+    # The description is now handled by the services.mongodb module.
     isSystemUser = true;
     group = "mongodb";
     uid = 1001;
@@ -53,8 +53,8 @@
     enableAuth = true;
     # This option is required by the module when enableAuth is true.
     initialRootPasswordFile = "/etc/mongodb-root-password";
-    # Listen on all container interfaces.
-    bind_ip = [ "0.0.0.0" ];
+    # Listen on all container interfaces. This must be a string.
+    bind_ip = "0.0.0.0";
     # Path for data files, matches the bind mount target.
     dbpath = "/var/lib/mongodb";
     # Run as the dedicated system user.
@@ -64,7 +64,7 @@
   };
 
   # --- Advanced Hardening with Systemd Sandboxing ---
-  # Applies process-level restrictions for defense-in-depth .
+  # Applies process-level restrictions for defense-in-depth.
   systemd.services.mongodb.serviceConfig = {
     # Filesystem protections
     ProtectSystem = "strict";
