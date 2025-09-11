@@ -54,7 +54,6 @@
     dbpath = "/var/lib/mongodb";
     # Run as the dedicated system user and group .
     user = "mongodb";
-    group = "mongodb";
     # Script for one-time initialization of the admin user .
     initialScript =./initialize-mongo.js;
   };
