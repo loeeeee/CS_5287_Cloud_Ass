@@ -6,6 +6,9 @@
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
   ];
 
+  # Allow installation of unfree packages like mongodb-ce
+  nixpkgs.config.allowUnfree = true;
+
   # Enable flakes
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
