@@ -44,17 +44,19 @@
   # --- MongoDB Service Configuration ---
   services.mongodb = {
     enable = true;
-    # Use pre-compiled binaries for significantly faster builds .
+    # Use pre-compiled binaries for significantly faster builds.
     package = pkgs.mongodb-ce;
     # Essential for a hardened setup.
     enableAuth = true;
+    # This option is required by the module when enableAuth is true.
+    initialRootPasswordFile = "/etc/mongodb-root-password";
     # Listen on all container interfaces.
     bind_ip = [ "0.0.0.0" ];
     # Path for data files, matches the bind mount target.
     dbpath = "/var/lib/mongodb";
-    # Run as the dedicated system user and group .
+    # Run as the dedicated system user.
     user = "mongodb";
-    # Script for one-time initialization of the admin user .
+    # Script for one-time initialization of the 'admin' user.
     initialScript =./initialize-mongo.js;
   };
 
