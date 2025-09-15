@@ -11,15 +11,8 @@
 
   # Install necessary system-wide packages
   environment.systemPackages = with pkgs; [
-    # ccache
     rocmPackages.clr
-    # rocmPackages.rocwmma
-    # rocmPackages.clang
-    # rocmPackages.hipcc
-    # rocmPackages.amdsmi
-    # rocmPackages.hipblas
     amdgpu_top
-    # git
     (llama-cpp.override {
       rocmSupport = true;
     })
@@ -60,6 +53,7 @@
   # --- Advanced Hardening with Systemd Sandboxing ---
   # Applies process-level restrictions for defense-in-depth.
   systemd.services.llama-cpp.serviceConfig = {
+    # TODO: Harden the service
     # Filesystem protections
     # ProtectSystem = lib.mkForce "no";
     # ProtectHome = lib.mkForce false;
