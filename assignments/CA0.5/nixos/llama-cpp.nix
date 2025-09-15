@@ -9,10 +9,6 @@
   # Defer network management to Proxmox VE to prevent conflicts
   proxmoxLXC.manageNetwork = false;
 
-  # hardware.amdgpu.opencl.enable = true;
-  # hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
-  nixpkgs.config.ccache = true;
-
   # Install necessary system-wide packages
   environment.systemPackages = with pkgs; [
     ccache
@@ -24,20 +20,9 @@
     rocmPackages.hipblas
     amdgpu_top
     git
-    llama-cpp
-    # (llama-cpp.overrideAttrs (oldAttrs: {
-    #   cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-    #     "-DGGML_HIP=ON"
-    #     "-DAMDGPU_TARGETS=gfx1100"
-    #     "-DCMAKE_BUILD_TYPE=Release"
-    #     "-DGGML_HIP_ROCWMMA_FATTN=ON"
-    #   ];
-    #   preConfigure = (oldAttrs.preConfigure or "") +  ''
-    #     export HIPCXX="$(hipconfig -l)/clang"
-    #     export HIP_PATH="$(hipconfig -R)"
-    #     export CMAKE_HIP_COMPILER="$(hipconfig -R)"
-    #   '';
-    # }))
+    (llama-cpp.override {
+      rocmSupport = true;
+    })
   ];
 
   # Set the state version for compatibility
@@ -59,29 +44,8 @@
     gid=2344;
     members=[ "llama" ];
   };
-  
-  # HIP work around https://nixos.wiki/wiki/AMD_GPU
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  # ];
-  
+
   services.llama-cpp = {
-    package = pkgs.llama-cpp.overrideAttrs (oldAttrs: {
-      # nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [
-      #   pkgs.rocmPackages.hipcc
-      # ];
-
-      cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-        "-DGGML_HIP=ON"
-        "-DAMDGPU_TARGETS=gfx1100"
-        "-DCMAKE_BUILD_TYPE=Release"
-        "-DGGML_HIP_ROCWMMA_FATTN=ON"
-      ];
-      # preConfigure = (oldAttrs.preConfigure or "") +  ''
-      #   export HIP_PATH="${pkgs.rocmPackages.hipcc}"
-      # '';
-    });
-
     enable = true;
     model = "/var/lib/llama/models/llama.cpp/unsloth_phi-4-GGUF_phi-4-Q6_K.gguf";
     host = "0.0.0.0";
