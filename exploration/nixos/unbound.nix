@@ -60,15 +60,14 @@
         so-reuseport = true;
         prefetch = true;
         
-        forward-zone = [
+      };
+      
+      forward-zone = [
         {
           name = "backwater.f5.monster.";
-          forward-addr = [
-            "172.22.0.1"
-          ];
+          forward-addr = "172.22.100.1";
         }
-        ];
-      };
+      ];
 
       # Enable remote-control for the unbound-control command
       remote-control = {
