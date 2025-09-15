@@ -36,10 +36,6 @@
     home="/var/lib/llama/";
   };
 
-  users.users.root = {
-    extraGroups = [ "render" "video" ];
-  };
-
   users.groups.llama = {
     gid=2344;
     members=[ "llama" ];
@@ -55,8 +51,6 @@
     extraFlags = [
       "--n-gpu-layers"
       "99"
-      "--main-gpu"
-      "0"
     ];
   };
 
@@ -77,5 +71,9 @@
 
     User="llama";
     Group="llama";
+    TimeoutStartSec=60;
   };
+  
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 }
