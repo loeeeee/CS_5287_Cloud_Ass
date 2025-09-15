@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath,... }:
+{ config, pkgs, lib, modulesPath,... }:
 
 {
   imports = [
@@ -11,15 +11,15 @@
 
   # Install necessary system-wide packages
   environment.systemPackages = with pkgs; [
-    ccache
+    # ccache
     rocmPackages.clr
-    rocmPackages.rocwmma
-    rocmPackages.clang
-    rocmPackages.hipcc
-    rocmPackages.amdsmi
-    rocmPackages.hipblas
+    # rocmPackages.rocwmma
+    # rocmPackages.clang
+    # rocmPackages.hipcc
+    # rocmPackages.amdsmi
+    # rocmPackages.hipblas
     amdgpu_top
-    git
+    # git
     (llama-cpp.override {
       rocmSupport = true;
     })
@@ -42,6 +42,9 @@
   };
 
   services.llama-cpp = {
+    package = (pkgs.llama-cpp.override {
+      rocmSupport = true;
+    });
     enable = true;
     model = "/var/lib/llama/models/llama.cpp/unsloth_phi-4-GGUF_phi-4-Q6_K.gguf";
     host = "0.0.0.0";
@@ -58,16 +61,20 @@
   # Applies process-level restrictions for defense-in-depth.
   systemd.services.llama-cpp.serviceConfig = {
     # Filesystem protections
-    ProtectSystem = "strict";
-    ProtectHome = true;
-    PrivateTmp = true;
+    # ProtectSystem = lib.mkForce "no";
+    # ProtectHome = lib.mkForce false;
+    # PrivateTmp = lib.mkForce false;
 
-    # Kernel and process protections
-    ProtectKernelTunables = true;
-    ProtectKernelModules = true;
-    ProtectControlGroups = true;
-    MemoryDenyWriteExecute = true;
-    NoNewPrivileges = true;
+    # # Kernel and process protections
+    # ProtectKernelTunables = lib.mkForce false;
+    # ProtectKernelModules = lib.mkForce false;
+    # ProtectControlGroups = lib.mkForce false;
+    # MemoryDenyWriteExecute = lib.mkForce false;
+    # NoNewPrivileges = lib.mkForce false;
+    # DynamicUser = lib.mkForce false; 
+    # SystemCallFilter = lib.mkForce "";
+    # PrivateUsers = lib.mkForce false;
+
 
     User="llama";
     Group="llama";
