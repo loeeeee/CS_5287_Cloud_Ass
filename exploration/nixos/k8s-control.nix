@@ -18,6 +18,7 @@
   ];
   
   services.kubernetes.roles = [ "master" ];
+  services.kubernetes.masterAddress = "172.22.0.118";
 
   # Set the state version for compatibility
   system.stateVersion = "25.05";
