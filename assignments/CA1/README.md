@@ -32,12 +32,13 @@ NixOS is really a Ubuntu with a good CLI. There is no difference in how I should
         - I did not get it compile locally on the machine
         - Otherwise, fairly easy to setup.
     - K8s Control Plane
-        - Pure pain, everything is break because of syscap, cgroup, and AppArmor
+        - Pure pain, everything is broken because of syscap, cgroup, and AppArmor
     - K8s Node
-        - Pure pain, everything is break because of syscap, cgroup, and AppArmor
+        - Pure pain, everything is broken because of syscap, cgroup, and AppArmor
     - Sunshine Streaming Server
         - Stuck at uinput configuration
-        - GPU is detected and used, but no input for LXC
+        - GPU is detected and used, but no kvm for LXC
+        - WayVNC starts
         - Works better with unstable Nix package channel
 - In VM
     - K3s Server
