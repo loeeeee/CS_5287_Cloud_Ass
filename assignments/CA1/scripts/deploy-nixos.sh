@@ -45,7 +45,7 @@ ssh "$REMOTE_USER@$REMOTE_HOST" "
     fi
 
     # Set the hostname
-    echo 'networking.hostName = \"$HOSTNAME\";' | sudo tee -a $CONFIG_FILE
+    sudo sed -i '/^  networking.hostName = ".*";/c\  networking.hostName = "'"$HOSTNAME"'";' $CONFIG_FILE
 "
 
 # Step 4: Run nixos-rebuild switch
