@@ -123,3 +123,8 @@ variable "mongodb_vm_id" {
   type        = number
   description = "The VM ID to assign to the MongoDB VM. If a VM with this ID already exists, it will not be cloned."
 }
+
+variable "kafka_vm_id" {
+  type        = number
+  description = "The VM ID to assign to the Kafka VM. If a VM with this ID already exists, it will not be cloned."
+}

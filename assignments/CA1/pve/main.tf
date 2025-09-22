@@ -33,6 +33,7 @@ locals {
   server_vm_exists  = contains([for vm in data.proxmox_virtual_environment_vms.all.vms : vm.vm_id], var.server_vm_id_k3s_server)
   agent_vm_exists   = contains([for vm in data.proxmox_virtual_environment_vms.all.vms : vm.vm_id], var.agent_vm_id)
   mongodb_vm_exists = contains([for vm in data.proxmox_virtual_environment_vms.all.vms : vm.vm_id], var.mongodb_vm_id)
+  kafka_vm_exists   = contains([for vm in data.proxmox_virtual_environment_vms.all.vms : vm.vm_id], var.kafka_vm_id)
 }
 
 # -----------------------------------------------------------------------------
@@ -122,6 +123,43 @@ resource "proxmox_virtual_environment_vm" "CS-mongodb" {
   vm_id       = var.mongodb_vm_id
   name        = "CS-mongodb"
   description = "A MongoDB server."
+  node_name   = var.proxmox_node
+
+  # --- Template and Cloning ---
+  clone {
+    vm_id = var.vm_template_id_nixos
+    full = true
+  }
+
+  # --- Disk Configuration ---
+  disk {
+    datastore_id = var.vm_storage
+    interface    = "virtio0"
+  }
+
+  # --- System Resources ---
+  cpu {
+    cores   = var.vm_cpu_cores
+    sockets = var.vm_cpu_sockets
+  }
+  memory {
+    dedicated = var.vm_memory
+  }
+
+  # --- Network Configuration ---
+  network_device {
+    model  = "virtio"
+    bridge = var.vm_network_bridge
+  }
+}
+
+resource "proxmox_virtual_environment_vm" "CS-kafka" {
+  count = local.kafka_vm_exists ? 0 : 1
+
+  # --- General VM Settings ---
+  vm_id       = var.kafka_vm_id
+  name        = "CS-kafka"
+  description = "A Kafka server."
   node_name   = var.proxmox_node
 
   # --- Template and Cloning ---

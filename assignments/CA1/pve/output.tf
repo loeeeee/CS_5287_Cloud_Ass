@@ -63,3 +63,23 @@ output "mongodb_vm_ipv4_addresses" {
   description = "The IPv4 addresses assigned to the MongoDB VM"
   value       = try(proxmox_virtual_environment_vm.CS-mongodb[0].ipv4_addresses, [])
 }
+
+output "kafka_vm_id" {
+  description = "The ID of the Kafka VM"
+  value       = try(proxmox_virtual_environment_vm.CS-kafka[0].id, var.kafka_vm_id)
+}
+
+output "kafka_vm_name" {
+  description = "The name of the Kafka VM"
+  value       = try(proxmox_virtual_environment_vm.CS-kafka[0].name, "CS-kafka")
+}
+
+output "kafka_vm_node_name" {
+  description = "The Proxmox node where the Kafka VM is running"
+  value       = try(proxmox_virtual_environment_vm.CS-kafka[0].node_name, var.proxmox_node)
+}
+
+output "kafka_vm_ipv4_addresses" {
+  description = "The IPv4 addresses assigned to the Kafka VM"
+  value       = try(proxmox_virtual_environment_vm.CS-kafka[0].ipv4_addresses, [])
+}
