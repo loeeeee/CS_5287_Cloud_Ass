@@ -28,7 +28,7 @@ Remember to note the API token (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx), it is the
 
 Note: a formatted API token would look like this "tofu@pve!provider=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-## Cloud-init System
+## Cloud-init System with Ubuntu
 
 Referencing [this blog](https://technotim.live/posts/cloud-init-cloud-image/) ([Archive](https://web.archive.org/web/20250829203214/https://technotim.live/posts/cloud-init-cloud-image/)).
 
@@ -205,3 +205,10 @@ root@deepslate:/OlympicPool/Downloads/ISO/template/iso#
 ```
 
 </details>
+
+## How about NixOS?
+
+NixOS is different from using other Linux distro because its purely functional deployment model. This means that NixOS is more or less a Terraform or OpenTofu by itself. Because how accessible it is to change the configuration of the NixOS inside the OS, there is not too much value of doing cloud-init, though doable.
+
+A better way of configuring NixOS would be leverage the template system of qemu and NixOS's declarative configuration. However, doing so would mean that the server will be less configurable before the start up. My solution to this is to load SSH public key into the template before converting the VM into a template, and thus I could automate the deployment with Ansible.
+
