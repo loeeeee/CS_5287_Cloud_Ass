@@ -10,8 +10,10 @@ set -e
 # Edit these variables to set your remote hosts and hostnames
 REMOTE_SERVER_HOST="172.22.0.127"
 REMOTE_AGENT_HOST="172.22.0.128"
+REMOTE_MONGODB_HOST="172.22.0.129"
 REMOTE_SERVER_HOSTNAME="k3s-server"
 REMOTE_AGENT_HOSTNAME="k3s-agent"
+REMOTE_MONGODB_HOSTNAME="mongodb"
 
 # Check if hosts are set
 if [ "$REMOTE_SERVER_HOST" = "your-server-hostname-or-ip" ]; then
@@ -24,6 +26,11 @@ if [ "$REMOTE_AGENT_HOST" = "your-agent-hostname-or-ip" ]; then
     exit 1
 fi
 
+if [ "$REMOTE_MONGODB_HOST" = "your-mongodb-hostname-or-ip" ]; then
+    echo "Error: Please edit REMOTE_MONGODB_HOST in the script"
+    exit 1
+fi
+
 # Variables
 SERVER_FILE="nixos/k3s/k3s-server.nix"
 AGENT_FILE="nixos/k3s/k3s-agent.nix"
@@ -33,5 +40,8 @@ AGENT_FILE="nixos/k3s/k3s-agent.nix"
 
 # Deploy to agent
 ./scripts/deploy-nixos.sh "$AGENT_FILE" "$REMOTE_AGENT_HOST" "$REMOTE_AGENT_HOSTNAME"
+
+# Deploy to MongoDB
+./scripts/deploy-mongodb.sh "$REMOTE_MONGODB_HOST" "$REMOTE_MONGODB_HOSTNAME"
 
 echo "All deployments completed successfully!"
