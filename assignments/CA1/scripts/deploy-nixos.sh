@@ -6,25 +6,31 @@
 set -e
 
 # Check arguments
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <local_nix_file> <remote_host>"
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 <local_nix_file> <remote_host> <hostname>"
     exit 1
 fi
 
 LOCAL_FILE="$1"
 REMOTE_HOST="$2"
+HOSTNAME="$3"
 REMOTE_USER="$USER"
 REMOTE_FILENAME=$(basename "$LOCAL_FILE")
+TEMP_PATH="/tmp/$REMOTE_FILENAME"
 REMOTE_PATH="/etc/nixos/$REMOTE_FILENAME"
 CONFIG_FILE="/etc/nixos/configuration.nix"
 
 echo "Deploying $REMOTE_FILENAME to $REMOTE_USER@$REMOTE_HOST"
 
-# Step 1: SCP the file to remote server
-echo "Copying $REMOTE_FILENAME via SCP..."
-scp "$LOCAL_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"
+# Step 1: SCP the file to /tmp on remote server
+echo "Copying $REMOTE_FILENAME via SCP to /tmp..."
+scp "$LOCAL_FILE" "$REMOTE_USER@$REMOTE_HOST:$TEMP_PATH"
 
-# Step 2: SSH to remote server and modify configuration.nix
+# Step 2: Move the file to /etc/nixos with sudo
+echo "Moving $REMOTE_FILENAME to /etc/nixos..."
+ssh "$REMOTE_USER@$REMOTE_HOST" "sudo mv $TEMP_PATH $REMOTE_PATH"
+
+# Step 3: SSH to remote server and modify configuration.nix
 echo "Modifying configuration.nix to import $REMOTE_FILENAME..."
 ssh "$REMOTE_USER@$REMOTE_HOST" "
     # Backup configuration.nix
@@ -37,9 +43,12 @@ ssh "$REMOTE_USER@$REMOTE_HOST" "
     else
         echo 'Import already exists in configuration.nix'
     fi
+
+    # Set the hostname
+    echo 'networking.hostName = \"$HOSTNAME\";' | sudo tee -a $CONFIG_FILE
 "
 
-# Step 3: Run nixos-rebuild switch
+# Step 4: Run nixos-rebuild switch
 echo "Running nixos-rebuild switch on $REMOTE_HOST..."
 ssh "$REMOTE_USER@$REMOTE_HOST" "sudo nixos-rebuild switch"
 

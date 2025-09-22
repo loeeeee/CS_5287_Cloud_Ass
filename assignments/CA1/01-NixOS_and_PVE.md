@@ -138,7 +138,7 @@ The resulting configuration file would look like this,
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
       AllowUsers = [
         "loe"
       ]; # Allows all users by default. Can be [ "user1" "user2" ]
@@ -147,6 +147,8 @@ The resulting configuration file would look like this,
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
+
+  security.sudo.wheelNeedsPassword = false; # Disable sudo password for easy deployment
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 
