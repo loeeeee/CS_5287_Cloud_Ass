@@ -1,0 +1,21 @@
+{
+  "name": "postgresql-sink-connector",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "topics": "demo-messages",
+    "connection.url": "jdbc:postgresql://172.22.0.133:5432/kafka",
+    "connection.user": "kafka",
+    "connection.password": "kafka123",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "insert.mode": "insert",
+    "table.name.format": "kafka_messages",
+    "pk.mode": "none",
+    "transforms": "addTimestamp",
+    "transforms.addTimestamp.type": "org.apache.kafka.connect.transforms.InsertField$Value",
+    "transforms.addTimestamp.timestamp.field": "processed_at",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}

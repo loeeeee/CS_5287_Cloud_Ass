@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kafka-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: kafka
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow traffic from Kafka Connect
+  - from:
+    - podSelector:
+        matchLabels:
+          app: kafka-connect
+    ports:
+    - protocol: TCP
+      port: 9092
+  # Allow traffic from syslog-ng
+  - from:
+    - podSelector:
+        matchLabels:
+          app: syslog-ng
+    ports:
+    - protocol: TCP
+      port: 9092
+  # Allow traffic from ClamAV scanner
+  - from:
+    - podSelector:
+        matchLabels:
+          app: clamav-scanner
+    ports:
+    - protocol: TCP
+      port: 9092
+  # Allow traffic from demo producer
+  - from:
+    - podSelector:
+        matchLabels:
+          app: kafka-producer-demo
+    ports:
+    - protocol: TCP
+      port: 9092
+  egress:
+  # Allow DNS resolution
+  - to: []
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow traffic to Zookeeper
+  - to:
+    - podSelector:
+        matchLabels:
+          app: zookeeper
+    ports:
+    - protocol: TCP
+      port: 2181

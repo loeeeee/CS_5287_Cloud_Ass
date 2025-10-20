@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: clamav-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: clamav-scanner
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # No ingress needed - scanner app connects to ClamAV daemon locally
+  egress:
+  # Allow DNS resolution
+  - to: []
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow traffic to Kafka
+  - to:
+    - podSelector:
+        matchLabels:
+          app: kafka
+    ports:
+    - protocol: TCP
+      port: 9092
+  # Allow traffic to ClamAV daemon (local socket)
+  - to:
+    - podSelector:
+        matchLabels:
+          app: clamav-scanner
+    ports:
+    - protocol: TCP
+      port: 3310

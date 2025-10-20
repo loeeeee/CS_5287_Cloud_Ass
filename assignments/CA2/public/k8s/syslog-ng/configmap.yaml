@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: syslog-ng-config
+  namespace: default
+data:
+  syslog-ng.conf: |
+    @version: 4.10
+    @include "scl.conf"
+    
+    # Global options
+    options {
+      time-reap(30);
+      mark-freq(10);
+      keep-hostname(yes);
+      keep-timestamp(yes);
+      use-dns(no);
+      use-fqdn(no);
+      create-dirs(yes);
+      log-msg-size(65536);
+    };
+    
+    # Network source for receiving syslog messages
+    source s_network {
+      network(
+        ip(0.0.0.0)
+        port(514)
+        transport(udp)
+        flags(no-parse)
+      );
+      network(
+        ip(0.0.0.0)
+        port(514)
+        transport(tcp)
+        flags(no-parse)
+      );
+    };
+    
+    # Parse syslog messages
+    parser p_syslog {
+      syslog-parser(
+        flags(assume-utf8, expect-hostname)
+        template("${ISODATE} ${HOST} ${MSGHDR}${MSG}")
+      );
+    };
+    
+    # JSON template for Kafka output
+    template t_json {
+      template('{
+        "timestamp": "${ISODATE}",
+        "host": "${HOST}",
+        "facility": "${FACILITY}",
+        "priority": "${PRIORITY}",
+        "level": "${LEVEL}",
+        "tag": "${TAG}",
+        "program": "${PROGRAM}",
+        "pid": "${PID}",
+        "message": "${MSG}",
+        "source_ip": "${SOURCEIP}",
+        "source_port": "${SOURCEPORT}",
+        "raw_message": "${RAWMSG}"
+      }');
+    };
+    
+    # Kafka destination for syslog messages
+    destination d_kafka {
+      kafka(
+        bootstrap-servers("kafka:9092")
+        topic("syslog-raw")
+        key("${HOST}")
+        message("$(format-json --cast timestamp=${ISODATE} host=${HOST} facility=${FACILITY} priority=${PRIORITY} level=${LEVEL} program=${PROGRAM} pid=${PID} message=${MSG} source_ip=${SOURCEIP} source_port=${SOURCEPORT} raw_message=${RAWMSG})")
+      );
+    };
+    
+    # File destination for backup logging
+    destination d_file {
+      file("/var/log/syslog-ng/syslog-raw.log" template(t_json));
+    };
+    
+    # Log path: network -> parse -> kafka + file
+    log {
+      source(s_network);
+      parser(p_syslog);
+      destination(d_kafka);
+      destination(d_file);
+      flags(final);
+    };

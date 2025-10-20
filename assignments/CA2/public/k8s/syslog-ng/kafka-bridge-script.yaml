@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-bridge-script
+  namespace: default
+data:
+  bridge.py: |
+    #!/usr/bin/env python3
+    """
+    Kafka Bridge for Syslog-ng
+    Reads syslog messages from file and forwards to Kafka
+    """
+    
+    import json
+    import os
+    import time
+    import logging
+    from kafka import KafkaProducer
+    
+    # Configure logging
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+    
+    def main():
+        kafka_servers = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'kafka:9092')
+        kafka_topic = os.getenv('KAFKA_TOPIC', 'syslog-raw')
+        log_file = '/var/log/syslog-ng/syslog-raw.log'
+        
+        logger.info(f"Starting Kafka bridge: {kafka_servers} -> {kafka_topic}")
+        
+        # Initialize Kafka producer
+        producer = KafkaProducer(
+            bootstrap_servers=kafka_servers,
+            value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+            retries=3,
+            acks='all'
+        )
+        
+        # Wait for log file to exist
+        while not os.path.exists(log_file):
+            logger.info(f"Waiting for log file: {log_file}")
+            time.sleep(5)
+        
+        logger.info(f"Log file found, starting to tail: {log_file}")
+        
+        # Tail the log file and forward to Kafka
+        with open(log_file, 'r') as f:
+            # Go to end of file
+            f.seek(0, 2)
+            
+            while True:
+                line = f.readline()
+                if line:
+                    try:
+                        # Parse JSON log entry
+                        log_entry = json.loads(line.strip())
+                        
+                        # Send to Kafka
+                        producer.send(kafka_topic, log_entry)
+                        logger.debug(f"Sent message to Kafka: {log_entry.get('host', 'unknown')}")
+                        
+                    except json.JSONDecodeError as e:
+                        logger.warning(f"Failed to parse JSON: {line.strip()}")
+                    except Exception as e:
+                        logger.error(f"Error processing message: {e}")
+                else:
+                    time.sleep(0.1)
+    
+    if __name__ == "__main__":
+        main()

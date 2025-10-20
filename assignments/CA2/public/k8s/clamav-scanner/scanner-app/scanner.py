@@ -1,0 +1,229 @@
+#!/usr/bin/env python3
+"""
+ClamAV Scanner for Syslog Messages
+Scans incoming syslog messages for malicious content and patterns
+"""
+
+import json
+import logging
+import re
+import socket
+import time
+import uuid
+from datetime import datetime
+from typing import Dict, Any, Optional
+
+import pyclamd
+from kafka import KafkaConsumer, KafkaProducer
+from pythonjsonlogger import jsonlogger
+
+# Configure logging
+logHandler = logging.StreamHandler()
+formatter = jsonlogger.JsonFormatter()
+logHandler.setFormatter(formatter)
+logger = logging.getLogger()
+logger.addHandler(logHandler)
+logger.setLevel(logging.INFO)
+
+class SyslogScanner:
+    def __init__(self):
+        self.kafka_bootstrap_servers = "kafka:9092"
+        self.input_topic = "syslog-raw"
+        self.output_topic = "scan-results"
+        self.clamd_socket = "/tmp/clamd.socket"
+        
+        # Initialize Kafka consumer and producer
+        self.consumer = KafkaConsumer(
+            self.input_topic,
+            bootstrap_servers=self.kafka_bootstrap_servers,
+            value_deserializer=lambda m: json.loads(m.decode('utf-8')),
+            group_id="syslog-scanner-group",
+            auto_offset_reset='latest',
+            enable_auto_commit=True
+        )
+        
+        self.producer = KafkaProducer(
+            bootstrap_servers=self.kafka_bootstrap_servers,
+            value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+            retries=3,
+            acks='all'
+        )
+        
+        # Initialize ClamAV connection
+        self.clamd = None
+        self._connect_clamd()
+        
+        # Malicious patterns to detect
+        self.malicious_patterns = {
+            'base64_payload': re.compile(r'data:image/[^;]+;base64,([A-Za-z0-9+/=]{100,})', re.IGNORECASE),
+            'suspicious_url': re.compile(r'https?://(?:[-\w.])+(?:[:\d]+)?(?:/(?:[\w/_.])*(?:\?(?:[\w&=%.])*)?(?:#(?:[\w.])*)?)?', re.IGNORECASE),
+            'eicar_test': re.compile(r'X5O!P%@AP\[4\\PZX54\(P\^\)7CC\)7\}\$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!\$H\+H\*', re.IGNORECASE),
+            'powershell_encoded': re.compile(r'powershell.*-enc|powershell.*-e\s+[A-Za-z0-9+/=]+', re.IGNORECASE),
+            'cmd_injection': re.compile(r'[;&|]\s*(?:cat|ls|dir|type|more|less|grep|find|wget|curl|nc|netcat)', re.IGNORECASE),
+            'sql_injection': re.compile(r'(?:union|select|insert|update|delete|drop|create|alter)\s+.*(?:from|into|where)', re.IGNORECASE),
+        }
+        
+        logger.info("SyslogScanner initialized", extra={
+            "input_topic": self.input_topic,
+            "output_topic": self.output_topic,
+            "clamd_connected": self.clamd is not None
+        })
+
+    def _connect_clamd(self):
+        """Connect to ClamAV daemon"""
+        try:
+            self.clamd = pyclamd.ClamdUnixSocket(self.clamd_socket)
+            # Test connection
+            version = self.clamd.version()
+            logger.info("Connected to ClamAV", extra={"version": version})
+        except Exception as e:
+            logger.error("Failed to connect to ClamAV", extra={"error": str(e)})
+            self.clamd = None
+
+    def _scan_content(self, content: str) -> Dict[str, Any]:
+        """Scan content for malicious patterns and with ClamAV"""
+        scan_result = {
+            "threat_detected": False,
+            "threat_name": None,
+            "threat_type": None,
+            "severity": "clean",
+            "patterns_found": [],
+            "clamav_result": None
+        }
+        
+        # Check for malicious patterns
+        for pattern_name, pattern in self.malicious_patterns.items():
+            matches = pattern.findall(content)
+            if matches:
+                scan_result["threat_detected"] = True
+                scan_result["patterns_found"].append({
+                    "pattern": pattern_name,
+                    "matches": len(matches),
+                    "sample": matches[0][:100] if matches else None
+                })
+                
+                # Set severity based on pattern type
+                if pattern_name in ['eicar_test', 'powershell_encoded']:
+                    scan_result["severity"] = "high"
+                    scan_result["threat_name"] = f"Malicious pattern: {pattern_name}"
+                    scan_result["threat_type"] = "malware"
+                elif pattern_name in ['cmd_injection', 'sql_injection']:
+                    scan_result["severity"] = "high"
+                    scan_result["threat_name"] = f"Injection attempt: {pattern_name}"
+                    scan_result["threat_type"] = "injection"
+                elif pattern_name in ['base64_payload', 'suspicious_url']:
+                    scan_result["severity"] = "medium"
+                    scan_result["threat_name"] = f"Suspicious content: {pattern_name}"
+                    scan_result["threat_type"] = "suspicious"
+
+        # Scan with ClamAV if available
+        if self.clamd and content:
+            try:
+                # ClamAV scan of the content string
+                result = self.clamd.scan_stream(content.encode('utf-8'))
+                if result and result[0] == 'FOUND':
+                    scan_result["threat_detected"] = True
+                    scan_result["clamav_result"] = result[1]
+                    scan_result["threat_name"] = f"ClamAV: {result[1]}"
+                    scan_result["threat_type"] = "virus"
+                    scan_result["severity"] = "high"
+            except Exception as e:
+                logger.warning("ClamAV scan failed", extra={"error": str(e)})
+
+        return scan_result
+
+    def _process_message(self, message: Dict[str, Any]) -> Dict[str, Any]:
+        """Process a single syslog message"""
+        try:
+            # Extract message content for scanning
+            message_content = message.get('message', '')
+            raw_message = message.get('raw_message', '')
+            
+            # Combine message and raw message for comprehensive scanning
+            full_content = f"{message_content} {raw_message}".strip()
+            
+            # Perform scan
+            scan_result = self._scan_content(full_content)
+            
+            # Create scan result record
+            scan_record = {
+                "scan_id": str(uuid.uuid4()),
+                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "source_ip": message.get('source_ip', 'unknown'),
+                "source_host": message.get('host', 'unknown'),
+                "source_port": message.get('source_port', 'unknown'),
+                "facility": message.get('facility', 'unknown'),
+                "priority": message.get('priority', 'unknown'),
+                "level": message.get('level', 'unknown'),
+                "program": message.get('program', 'unknown'),
+                "pid": message.get('pid', 'unknown'),
+                "message": message_content,
+                "raw_message": raw_message,
+                "threat_detected": scan_result["threat_detected"],
+                "threat_name": scan_result["threat_name"],
+                "threat_type": scan_result["threat_type"],
+                "severity": scan_result["severity"],
+                "patterns_found": scan_result["patterns_found"],
+                "clamav_result": scan_result["clamav_result"],
+                "processed_at": datetime.utcnow().isoformat() + "Z"
+            }
+            
+            return scan_record
+            
+        except Exception as e:
+            logger.error("Error processing message", extra={
+                "error": str(e),
+                "message": str(message)[:200]
+            })
+            return None
+
+    def run(self):
+        """Main scanning loop"""
+        logger.info("Starting syslog scanner", extra={
+            "input_topic": self.input_topic,
+            "output_topic": self.output_topic
+        })
+        
+        try:
+            for message in self.consumer:
+                try:
+                    # Process the message
+                    scan_record = self._process_message(message.value)
+                    
+                    if scan_record:
+                        # Send to output topic
+                        self.producer.send(self.output_topic, scan_record)
+                        
+                        # Log scan result
+                        if scan_record["threat_detected"]:
+                            logger.warning("Threat detected", extra={
+                                "scan_id": scan_record["scan_id"],
+                                "threat_name": scan_record["threat_name"],
+                                "severity": scan_record["severity"],
+                                "source_host": scan_record["source_host"]
+                            })
+                        else:
+                            logger.debug("Message scanned clean", extra={
+                                "scan_id": scan_record["scan_id"],
+                                "source_host": scan_record["source_host"]
+                            })
+                    
+                except Exception as e:
+                    logger.error("Error processing Kafka message", extra={
+                        "error": str(e),
+                        "topic": message.topic,
+                        "partition": message.partition,
+                        "offset": message.offset
+                    })
+                    
+        except KeyboardInterrupt:
+            logger.info("Scanner stopped by user")
+        except Exception as e:
+            logger.error("Scanner error", extra={"error": str(e)})
+        finally:
+            self.consumer.close()
+            self.producer.close()
+
+if __name__ == "__main__":
+    scanner = SyslogScanner()
+    scanner.run()

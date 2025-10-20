@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clamav-scanner
+  namespace: default
+  labels:
+    app: clamav-scanner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clamav-scanner
+  template:
+    metadata:
+      labels:
+        app: clamav-scanner
+    spec:
+      initContainers:
+      - name: update-virus-db
+        image: clamav/clamav:latest
+        command: ["freshclam"]
+        volumeMounts:
+        - name: clamav-data
+          mountPath: /var/lib/clamav
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+      containers:
+      - name: clamav-daemon
+        image: clamav/clamav:latest
+        command: ["clamd"]
+        ports:
+        - containerPort: 3310
+          name: clamd
+        volumeMounts:
+        - name: clamav-data
+          mountPath: /var/lib/clamav
+        - name: clamav-socket
+          mountPath: /tmp
+        env:
+        - name: CLAMD_STREAMMAXLENGTH
+          value: "25M"
+        - name: CLAMD_MAXFILESIZE
+          value: "25M"
+        - name: CLAMD_MAXRECURSION
+          value: "16"
+        - name: CLAMD_MAXFILES
+          value: "10000"
+        - name: CLAMD_MAXSCANSIZE
+          value: "100M"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          exec:
+            command:
+            - clamdscan
+            - --version
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          exec:
+            command:
+            - clamdscan
+            - --version
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      - name: scanner-app
+        image: python:3.11-slim
+        command: ["/bin/bash"]
+        args: ["-c", "pip install kafka-python pyclamd python-json-logger && python /app/scanner.py"]
+        volumeMounts:
+        - name: clamav-socket
+          mountPath: /tmp
+        - name: scanner-script
+          mountPath: /app
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+      volumes:
+      - name: clamav-data
+        emptyDir: {}
+      - name: clamav-socket
+        emptyDir: {}
+      - name: scanner-script
+        configMap:
+          name: scanner-script

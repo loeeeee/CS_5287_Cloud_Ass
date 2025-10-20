@@ -1,0 +1,30 @@
+# SOPS configuration for Infrastructure as Code project
+# This file defines which Age keys to use for encrypting different files
+
+# Default configuration for all files
+creation_rules:
+  # NixOS secrets - use host-specific Age keys
+  - path_regex: nix/.*/secrets\.yaml$
+    age: >-
+      age1k3s-server-key-here,
+      age1k3s-agent-key-here,
+      age1k3s-agent1-key-here,
+      age1postgresql-key-here,
+      age1code-server-key-here,
+      age1jellyfin-key-here,
+      age1unbound-key-here
+
+  # Terraform/OpenTofu secrets
+  - path_regex: pve/secrets\.yaml$
+    age: >-
+      age1terraform-key-here
+
+  # Kubernetes secrets (will be converted to SealedSecrets)
+  - path_regex: k8s/.*/secrets\.yaml$
+    age: >-
+      age1k8s-key-here
+
+  # Global secrets
+  - path_regex: secrets/.*\.yaml$
+    age: >-
+      age1global-key-here

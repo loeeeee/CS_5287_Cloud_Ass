@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syslog-kafka-bridge
+  namespace: default
+  labels:
+    app: syslog-kafka-bridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syslog-kafka-bridge
+  template:
+    metadata:
+      labels:
+        app: syslog-kafka-bridge
+    spec:
+      containers:
+      - name: kafka-bridge
+        image: python:3.11-slim
+        command: ["/bin/bash"]
+        args: ["-c", "pip install kafka-python && python /app/bridge.py"]
+        volumeMounts:
+        - name: syslog-logs
+          mountPath: /var/log/syslog-ng
+        - name: bridge-script
+          mountPath: /app
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka:9092"
+        - name: KAFKA_TOPIC
+          value: "syslog-raw"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+      volumes:
+      - name: syslog-logs
+        emptyDir: {}
+      - name: bridge-script
+        configMap:
+          name: kafka-bridge-script

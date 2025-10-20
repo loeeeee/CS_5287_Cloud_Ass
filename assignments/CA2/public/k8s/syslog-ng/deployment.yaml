@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syslog-ng
+  namespace: default
+  labels:
+    app: syslog-ng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syslog-ng
+  template:
+    metadata:
+      labels:
+        app: syslog-ng
+    spec:
+      containers:
+      - name: syslog-ng
+        image: balabit/syslog-ng:latest
+        ports:
+        - containerPort: 514
+          name: syslog-udp
+          protocol: UDP
+        - containerPort: 514
+          name: syslog-tcp
+          protocol: TCP
+        env:
+        - name: SYSLOG_NG_OPTS
+          value: "--no-caps"
+        volumeMounts:
+        - name: config
+          mountPath: /etc/syslog-ng/syslog-ng.conf
+          subPath: syslog-ng.conf
+        - name: var-lib
+          mountPath: /var/lib/syslog-ng
+        - name: var-log
+          mountPath: /var/log
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "100m"
+        securityContext:
+          capabilities:
+            add:
+            - NET_BIND_SERVICE
+      volumes:
+      - name: config
+        configMap:
+          name: syslog-ng-config
+      - name: var-lib
+        emptyDir: {}
+      - name: var-log
+        emptyDir: {}

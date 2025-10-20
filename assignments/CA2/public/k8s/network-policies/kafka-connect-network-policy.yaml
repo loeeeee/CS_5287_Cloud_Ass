@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kafka-connect-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: kafka-connect
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow REST API access from authorized sources
+  - from: []
+    ports:
+    - protocol: TCP
+      port: 8083
+  egress:
+  # Allow DNS resolution
+  - to: []
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow traffic to Kafka
+  - to:
+    - podSelector:
+        matchLabels:
+          app: kafka
+    ports:
+    - protocol: TCP
+      port: 9092
+  # Allow traffic to PostgreSQL
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 5432

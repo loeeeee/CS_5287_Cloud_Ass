@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: syslog-ng
+  namespace: default
+  labels:
+    app: syslog-ng
+spec:
+  type: NodePort
+  ports:
+  - name: syslog-udp
+    port: 514
+    targetPort: 514
+    protocol: UDP
+    nodePort: 30514
+  - name: syslog-tcp
+    port: 514
+    targetPort: 514
+    protocol: TCP
+    nodePort: 30515
+  selector:
+    app: syslog-ng
